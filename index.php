@@ -6,6 +6,7 @@
   $library_mdb_css_folder = $assets_folder."library/mdb/css/";
   $library_mdb_js_folder = $assets_folder."library/js/";
 ?>
+<!-- jewel -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
