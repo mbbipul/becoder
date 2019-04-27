@@ -33,6 +33,11 @@
       filter:blur(1px);
       font-size: 20px;
     }
+    .becoder_tutorial_header{
+      filter:blur(1px);
+      margin-bottom: 3px;
+    }
+
     .navbar .navbar-brand{
       margin-left:10% !important;
     }
@@ -137,38 +142,39 @@
         </nav>
     <!--/.Navbar-->
 
-    </header>
+  </header>
 
 
   <!--Main Navigation-->
-
+  <div class="row wow fadeIn" data-wow-delay="0.2s">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2 class="h2-responsive">Learn to be a Coder</h2>
+        <br>
+        <p>In communications and information processing, code is a
+        system of rules to convert information—such as a letter, word, sound,
+        image, or gesture—into another form or representation, sometimes
+        shortened or secret, for communication through a communication channel
+         or storage in a storage medium.</p>
+        <hr>
+        <p>Register and get access to code</p>
+        <a  href="" class="btn btn-outline-unique" rel="nofollow">Register
+          <i class="fas fa-download right"></i>
+        </a>
+        <a href="" class="btn btn-unique btn-ptc"
+          rel="nofollow">Log in <i class="fas fa-book right"></i></a>
+      </div>
+    </div>
+  </div>
+  <!--Grid row-->
+  <!--Section: Post-->
   <!--Main layout-->
+
   <main>
     <div class="container-fluid">
 
-      <!--Section: Post-->
       <section class="mt-4">
-        <div class="row wow fadeIn" data-wow-delay="0.2s">
-          <div class="col-md-12">
-            <div class="jumbotron">
-              <h2 class="h2-responsive">Learn to be a Coder</h2>
-              <br>
-              <p>In communications and information processing, code is a
-              system of rules to convert information—such as a letter, word, sound,
-              image, or gesture—into another form or representation, sometimes
-              shortened or secret, for communication through a communication channel
-               or storage in a storage medium.</p>
-              <hr>
-              <p>Register and get access to code</p>
-              <a  href="" class="btn btn-outline-unique" rel="nofollow">Register
-                <i class="fas fa-download right"></i>
-              </a>
-              <a href="" class="btn btn-unique btn-ptc"
-                rel="nofollow">Log in <i class="fas fa-book right"></i></a>
-            </div>
-          </div>
-        </div>
-        <!--Grid row-->
+
         <div class="row">
 
           <!--Grid column-->
@@ -322,49 +328,91 @@
 
               <!-- Search form -->
                 <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-                  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search coder " aria-label="Search">
                   <i class="fas fa-search" aria-hidden="true"></i>
                 </form>
               <!-- Content -->
             </div>
             <!--Card: Jumbotron-->
 
-            <!--Card : Dynamic content wrapper-->
-            <div class="card mb-4 text-center wow fadeIn">
+            <!--Card : COntest card-->
+            <div class="card mb-4 wow fadeIn">
 
-              <div class="card-header">Do you want to get informed about new articles?</div>
+              <div class="card-header">Running Contests</div>
 
               <!--Card content-->
               <div class="card-body">
 
-                <!-- Default form login -->
-                <form>
-
-                  <!-- Default input email -->
-                  <label for="defaultFormEmailEx" class="grey-text">Your email</label>
-                  <input type="email" id="defaultFormLoginEmailEx" class="form-control">
-
-                  <br>
-
-                  <!-- Default input password -->
-                  <label for="defaultFormNameEx" class="grey-text">Your name</label>
-                  <input type="text" id="defaultFormNameEx" class="form-control">
-
-                  <div class="text-center mt-4">
-                    <button class="btn btn-info btn-md" type="submit">Sign up</button>
-                  </div>
-                </form>
-                <!-- Default form login -->
-
+                <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media my-4">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                </ul>
+                <div class="mt-3">Upcoming Contests</div>
+                <hr>
+                <ul class="list-unstyled mt-3">
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media my-4">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body">
+                 <a href="#!" class="card-link">View All</a>
               </div>
 
             </div>
             <!--/.Card : Dynamic content wrapper-->
-
-            <!--Card-->
             <div class="card mb-4 wow fadeIn">
 
-              <div class="card-header">Related articles</div>
+              <div class="card-header">Recent Tutorials</div>
 
               <!--Card content-->
               <div class="card-body">
@@ -400,6 +448,55 @@
                 </ul>
 
               </div>
+              <div class="card-body">
+                 <a href="#!" class="card-link">View All</a>
+              </div>
+
+
+            </div>
+            <!--Card-->
+            <div class="card mb-4 wow fadeIn">
+
+              <div class="card-header">Recent articles</div>
+
+              <!--Card content-->
+              <div class="card-body">
+
+                <ul class="list-unstyled">
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder7.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media my-4">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder6.jpg" alt="An image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                  <li class="media">
+                    <img class="d-flex mr-3" src="https://mdbootstrap.com/img/Photos/Others/placeholder5.jpg" alt="Generic placeholder image">
+                    <div class="media-body">
+                      <a href="">
+                        <h5 class="mt-0 mb-1 font-weight-bold">List-based media object</h5>
+                      </a>
+                      Cras sit amet nibh libero, in gravida nulla (...)
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+              <div class="card-body">
+                 <a href="#!" class="card-link">View All</a>
+              </div>
+
 
             </div>
             <!--/.Card-->
