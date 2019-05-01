@@ -1,6 +1,19 @@
 <?php require_once"header/head.php" ?>
 <?php require_once"header/nav.php" ?>
 
+<script>
+	// Material Select Initialization
+$(document).ready(function() {
+$('.mdb-select').materialSelect();
+});
+</script>
+
+<style>
+	.submit-form{
+    margin-top: 20px;
+}
+</style>
+
 <main>
     <div class="container-fluid">
 
@@ -88,7 +101,55 @@
   							</div>
 
   							<div class="tab-pane fade " id="submit" role="tabpanel" aria-labelledby="submit-tab">
-  							submits form here
+  							<!-- Horizontal material form -->
+<form class="submit-form">
+  <!-- Grid row -->
+  <div class="form-group row">
+    <!-- Material input -->
+    <label for="problemId" class="col-sm-2 col-form-label">Problem Id:</label>
+    <div class="col-sm-10">
+      <div class="md-form mt-0">
+        <input type="number" class="form-control" id="problemId" placeholder="Problem Id">
+      </div>
+    </div>
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <div class="form-group row">
+    <!-- Material input -->
+    <label for="problemId" class="col-sm-2 col-form-label">Language:</label>
+		<select class="mdb-select md-form">
+		  <option value="" disabled selected>Choose Language</option>
+		  <option value="1">ANCI C</option>
+		  <option value="2">ANCI C++</option>
+		  <option value="3">JAVA</option>
+		  <option value="3">Python</option>
+		</select>
+	</div>
+
+  <!-- Grid row -->
+<div class="form-group row">
+    <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">Code:</label>
+  <div class="form-group shadow-textarea">
+  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
+</div>
+</div>
+
+  <!-- Grid row -->
+ <div class="form-group row">
+    <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">.. or file Upload:</label>
+  <div class="form-group shadow-textarea">
+  <input type="file">
+</div>
+</div>
+  <!-- Grid row -->
+<a href="#"><button type="button" class="btn btn-primary">Submit Code</button></a>
+
+</form>
+<!-- Horizontal material form -->
   							</div>
 
   							<div class="tab-pane fade " id="mySubmission" role="tabpanel" aria-labelledby="mySubmission-tab">
@@ -265,6 +326,10 @@
     	</section>
 	</div>
 </main>
+
+
+
+
 
 
 
