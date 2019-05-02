@@ -58,7 +58,7 @@ $('.mdb-select').materialSelect();
     								<tbody>
       									<tr>
         									<th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+        									<td><a href="problems.php" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
         									<td><h5><span class="badge badge-pill badge-default">9382</span></h5></td>
         									<td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
       									</tr>
