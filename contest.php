@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=2, shrink-to-fit=no">
   <link rel="icon" href="<?php echo $images_folder?>becoder_logo.jpg" type="image/gif" sizes="16x16">
-  <title>becoder</title>
+  <title>contest page</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -79,6 +79,23 @@
      .navbar .btn-group .dropdown-menu a:active {
          color: #fff !important;
      }
+
+     /* for Register and details button */
+     .RD:link {
+        text-decoration: none;
+      }
+
+      .RD:visited {
+        text-decoration: none;
+      }
+
+      .RD:hover {
+        text-decoration: underline;
+      }
+
+      .RD:active {
+        text-decoration: underline;
+      }
    </style>
 </head>
 
@@ -165,141 +182,194 @@
               <h1>All Contests</h1>
             </div>
             <hr class="extra-margins">
+            <h3 style="padding-left:15px"> <b>Running</b></h3>
 
-            <!--Second row-->
-            <div class="row">
-              <!--First columnn-->
-              <div class="col-lg-4" height="200px !important">
-                <!--Card-->
-                <div class="card wow fadeIn " data-wow-delay="0.2s">
 
-                  <!--Card image-->
-                  <img class="img-fluid " src="<?php echo $images_folder;?>algorithm.jpg"
-                    alt="Card image cap" height="100px" width="100px">
 
-                  <!--Card content-->
-                  <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title">Data Structure</h4>
-                    <!--Text-->
-                    <p class="card-text">In computer science, a data structure is a
-                      data organization, management and storage format that enables
-                      efficient access.</p>
-                    <a href="#" class="btn btn-info">Learn Algorithm</a>
-                  </div>
+            <!--Second row Start -->
+           <div class="col-md-12">
+               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
 
-                </div>
-                <!--/.Card-->
-              </div>
-              <!--First columnn-->
-
-              <!--Second columnn-->
-              <div class="col-lg-4">
-                <!--Card-->
-                <div class="card wow fadeIn" data-wow-delay="0.4s">
-
-                  <!--Card image-->
-                  <img class="img-fluid " src="<?php echo $images_folder;?>algorithm.jpg"
-                    alt="Card image cap" height="100px" width="100px">
-
-                  <!--Card content-->
-                  <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title">Algorithm</h4>
-                    <!--Text-->
-                    <p class="card-text">In mathematics and computer science,
-                      an algorithm is an unambiguous specification of how to solve a
-                      class of problems. </p>
-                    <a href="#" class="btn btn-info">Learn Algorithm</a>
-                  </div>
-
-                </div>
-                <!--/.Card-->
-
-              </div>
-              <!--Second columnn-->
-
-              <!--Third columnn-->
-              <div class="col-lg-4">
-                <!--Card-->
-                <div class="card wow fadeIn" data-wow-delay="0.6s">
-
-                  <!--Card image-->
-                  <img class="img-fluid " src="<?php echo $images_folder;?>algorithm.jpg"
-                    alt="Card image cap" height="100px" width="100px">
-                  <!--Card content-->
-                  <div class="card-body">
-                    <!--Title-->
-                    <h4 class="card-title">Mathmatics</h4>
-                    <!--Text-->
-                    <p class="card-text">Mathematics includes the study of such
-                      topics as quantity, structure, space, and change.
-                      Mathematicians seek</p>
-                    <a href="#" class="btn btn-info">Learn Mathmatics</a>
-                  </div>
-
-                </div>
-                <!--/.Card-->
-              </div>
-              <!--Third columnn-->
-            </div>
-            <!--/.Second row-->
-            <hr class="extra-margins">
-            <div class="becoder_tutorial_header mt-3">
-              <h3 class="mt-3"> Read Articles</h3>
-              <h2>Articles</h2>
-            </div>
-            <div class="row">
-
-              <div class="col-md-12">
-      <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-         <div class="card-body d-flex flex-column align-items-start">
-            <strong class="d-inline-block mb-2 text-success">Health</strong>
-            <h6 class="mb-0">
-               <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
-            </h6>
-            <div class="mb-1 text-muted small">Nov 11</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            <a class="btn btn-outline-success btn-sm" href="">Continue reading</a>
-         </div>
-         <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 300px; height: 250px;">
-      </div>
-   </div>
-   <div class="col-md-12">
-<div class="card flex-md-row mb-4 shadow-sm h-md-250">
-<div class="card-body d-flex flex-column align-items-start">
- <strong class="d-inline-block mb-2 text-success">Health</strong>
- <h6 class="mb-0">
-    <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
- </h6>
- <div class="mb-1 text-muted small">Nov 11</div>
- <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
- <a class="btn btn-outline-success btn-sm" href="">Continue reading</a>
-</div>
-<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 300px; height: 250px;">
-</div>
-</div>
-<div class="col-md-12">
-<div class="card flex-md-row mb-4 shadow-sm h-md-250">
-<div class="card-body d-flex flex-column align-items-start">
-<strong class="d-inline-block mb-2 text-success">Health</strong>
-<h6 class="mb-0">
- <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
-</h6>
-<div class="mb-1 text-muted small">Nov 11</div>
-<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-<a class="btn btn-outline-success btn-sm" href="">Continue reading</a>
-</div>
-<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 300px; height: 250px;">
-</div>
-</div>
-      <!--Grid column-->
-            </div>
-
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><b style="color:#008000">Becoder Round 01</b></td>
+                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
+                                <td><b>Type:</b> Algorithm</td>
+                                <td> <a class="RD"  href="">Registered</a> </td>
+                            </tr>
+                            <tr>
+                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
+                                <td><b>Duration:</b> 3 hr</td>
+                                <td><b>Counter:</b> 40</td>
+                                <td> <a class="RD"  href="">Details</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+               </div>
           </div>
+
+          <div class="col-md-12">
+              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                   <table class="table">
+                       <tbody>
+                           <tr>
+                               <td><b style="color:#008000">Becoder Round 02</b></td>
+                               <td><b>Start at:</b> 5 June 9.30 PM</td>
+                               <td><b>Type:</b> Data structure</td>
+                               <td> <a class="RD"  href="">Register Now</a> </td>
+                           </tr>
+                           <tr>
+                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
+                               <td><b>Duration:</b> 2 hr</td>
+                               <td><b>Counter:</b> 78</td>
+                               <td> <a class="RD"  href="">Details</a> </td>
+                           </tr>
+                       </tbody>
+                   </table>
+              </div>
+         </div>
+
+            <!--/.Second row End-->
+
+
+            <hr class="extra-margins">
+            <h3 style="padding-left:15px"> <b>Up Comming</b></h3>
+            <!--third row Start (Upccomming contest) -->
+           <div class="col-md-12">
+               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><b style="color:#008000">Becoder Round 01</b></td>
+                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
+                                <td><b>Type:</b> Algorithm</td>
+                                <td> <a class="RD"  href="">Registered</a> </td>
+                            </tr>
+                            <tr>
+                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
+                                <td><b>Duration:</b> 3 hr</td>
+                                <td><b>Counter:</b> 40</td>
+                                <td> <a class="RD"  href="">Details</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+               </div>
+          </div>
+
+          <div class="col-md-12">
+              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                   <table class="table">
+                       <tbody>
+                           <tr>
+                               <td><b style="color:#008000">Becoder Round 02</b></td>
+                               <td><b>Start at:</b> 5 June 9.30 PM</td>
+                               <td><b>Type:</b> Data structure</td>
+                               <td> <a class="RD"  href="">Register Now</a> </td>
+                           </tr>
+                           <tr>
+                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
+                               <td><b>Duration:</b> 2 hr</td>
+                               <td><b>Counter:</b> 78</td>
+                               <td> <a class="RD"  href="">Details</a> </td>
+                           </tr>
+                       </tbody>
+                   </table>
+              </div>
+         </div>
+
+          <!-- Third row end (Upccomming contest) -->
+
+
+
+          <hr class="extra-margins">
+          <h3 style="padding-left:15px"> <b>Previous </b></h3>
+          <!--Forth row Start (Previous contest) -->
+          <div class="col-md-12">
+             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                  <table class="table">
+                      <tbody>
+                          <tr>
+                              <td><b style="color:#008000">Becoder Round 01</b></td>
+                              <td><b>Date:</b> 3 May,19 </td>
+                              <td><b>Particepant:</b> 311</td>
+                              <td> <a class="RD"  href="">Enter</a> </td>
+                          </tr>
+                      </tbody>
+                  </table>
+             </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                 <table class="table">
+                     <tbody>
+                       <tr>
+                           <td><b style="color:#008000">Becoder Round 02</b></td>
+                           <td><b>Date:</b> 3 April,19 </td>
+                           <td><b>Particepant:</b> 311</td>
+                           <td> <a class="RD"  href="">Enter</a> </td>
+                       </tr>
+                     </tbody>
+                 </table>
+            </div>
+          </div>
+
+
+          <div class="col-md-12">
+             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                  <table class="table">
+                      <tbody>
+                        <tr>
+                            <td><b style="color:#008000">Becoder Round 03</b></td>
+                            <td><b>Date:</b> 3 March,19 </td>
+                            <td><b>Particepant:</b> 311</td>
+                            <td> <a class="RD"  href="">Enter</a> </td>
+                        </tr>
+                      </tbody>
+                  </table>
+             </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+
+                 <table class="table">
+                     <tbody>
+                       <tr>
+                           <td><b style="color:#008000">Becoder Round 04</b></td>
+                           <td><b>Date:</b> 3 February,19 </td>
+                           <td><b>Particepant:</b> 311</td>
+                           <td> <a class="RD"  href="">Enter</a> </td>
+                       </tr>
+                     </tbody>
+                 </table>
+            </div>
+          </div>
+
+          <!-- Forth row end (Previous contest) -->
+
+
+
+
+            <hr class="extra-margins">
+    <div class="row">
+      <!--Grid column-->
+    </div>
+
+
+
+
+    </div>
          <div class="col-md-4 mb-4">
             <!--Card: Jumbotron-->
-            <div class="">
+            <div class=""><br><br>
 
               <!-- Search form -->
                 <form class="form-inline md-form form-sm active-cyan-2 mt-2">
@@ -427,17 +497,17 @@
     <!--/.Call to action-->
 
     <!--Copyright-->
+
     <div class="footer-copyright py-3 text-center">
-      <div class="containter-fluid">
-        © 2019 Copyright: <a href="<?php echo $root;?>"> becoder.com </a>
-      </div>
+        <div class="containter-fluid"> © 2019 Copyright: <a href="<?php echo $root;?>"> becoder.com </a></div>
     </div>
     <!--/.Copyright-->
   </footer>
   <!--/.Footer-->
-  <script>
-  new WOW().init();
-  </script>
-</body>
 
+        <script>
+        new WOW().init();
+        </script>
+
+</body>
 </html>
