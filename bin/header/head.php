@@ -1,14 +1,4 @@
-<?php
-  $root = "http://localhost/becoder/";
-  $assets_folder = $root."assets/";
-  $css_folder = $assets_folder."css/";
-  $images_folder = $assets_folder."images/";
-  $library_mdb_css_folder = $assets_folder."library/mdb/css/";
-  $library_mdb_js_folder = $assets_folder."library/js/";
-?>
-
-
-<!-- jewel -->
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/becoder/config.php")?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,4 +69,3 @@
      }
    </style>
 </head>
-
