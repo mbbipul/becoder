@@ -8,6 +8,12 @@
 		 <div class="row wow fadeIn" data-wow-delay="0.2s">
 		    <div class="col-md-12">
 		      <div class="jumbotron">
+
+		      	<div class="d-flex mb-3">
+  					<div class="mr-auto p-2"><button type="button" class="btn btn-secondary">Previous</button></div>
+  					<div class="p-2"><button type="button" class="btn btn-secondary">Next</button></div>
+				</div>
+
 		      	<div class="d-flex  col-example"><h2>Problem Id : 38226</h2></div>
 		      	<div class="d-flex  col-example"><h4>Problem Name:What is Lorem Ipsum?
 		Lorem Ipsum is simply dummy text of the printing</h4></div>
