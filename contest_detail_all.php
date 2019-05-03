@@ -182,176 +182,385 @@
               <h1>All Contests</h1>
             </div>
             <hr class="extra-margins">
-            <h3 style="padding-left:15px"> <b>Running</b></h3>
+            <h3 style="padding-left:0px"> <b>Running</b></h3>
 
 
 
-            <!--Second row Start -->
-           <div class="col-md-12">
-               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+            <!--Second row Start for Running contest -->
+            <div class=" card container" >
+                   <div class="row" >
+                     <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                       <div class="row">
 
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><b style="color:#008000">Becoder Round 01</b></td>
-                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
-                                <td><b>Type:</b> Algorithm</td>
-                                <td> <a class="RD"  href="">Registered</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
-                                <td><b>Duration:</b> 3 hr</td>
-                                <td><b>Counter:</b> 40</td>
-                                <td> <a class="RD"  href="">Details</a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-               </div>
-          </div>
+                         <div class="col-md-4">
+                           <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                         </div>
 
-          <div class="col-md-12">
-              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                         <div class="col-md-4">
+                           <p class="text-dark" >CountDown: 00:53:12</p>
+                         </div>
 
-                   <table class="table">
-                       <tbody>
-                           <tr>
-                               <td><b style="color:#008000">Becoder Round 02</b></td>
-                               <td><b>Start at:</b> 5 June 9.30 PM</td>
-                               <td><b>Type:</b> Data structure</td>
-                               <td> <a class="RD"  href="">Register Now</a> </td>
-                           </tr>
-                           <tr>
-                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
-                               <td><b>Duration:</b> 2 hr</td>
-                               <td><b>Counter:</b> 78</td>
-                               <td> <a class="RD"  href="">Details</a> </td>
-                           </tr>
-                       </tbody>
-                   </table>
+                         <div class="col-md-4">
+                           <p class="text-dark">Duration: 2 hr</p>
+                         </div>
+                       </div>
+
+
+
+                       <div class="row">
+                         <div class="col-md-6">
+                           <p class="card-text mb-auto" style="font-family:cursive;font-size: 80% !important" >
+                             Author: Sajal Debnath, Bu cse3
+                           </p>
+                         </div>
+                         <div class="col-md-6">
+                           <p><a href="" style="margin-left:100px; font-size: 80%;padding-left: 10px; color:black;">  Details Here   </a></p>
+                         </div>
+                       </div>
+                     </div>
+
+
+                     <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                            <div class="row" style="padding-top:12px !important " >
+                                     <a class="RD"  href="" style="font-size: 90%">Register Now</a>
+                            </div>
+                             <div class="row">
+                                     <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepanting: <i>145</i>    </p>
+                            </div>
+                            <div class="row">
+                                     <p class="card-text mb-auto" style="font-size: 90% !important" >
+                                       Type: Algorithm
+                                     </p>
+                            </div>
+                     </div>
+                   </div>
+                 </div>
+               </br>
+
+
+         <!--From bipul for running contest -->
+         <div class=" card container">
+                <div class="row" >
+                  <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                  	<div class="row">
+
+                      <div class="col-md-4">
+                        <strong class="d-inline-block mb-2 text-success"> Becoder Round 02</strong>
+                      </div>
+
+                      <div class="col-md-4">
+                        <p class="text-dark" >CountDown: 00:53:12</p>
+                      </div>
+
+                      <div class="col-md-4">
+                        <p class="text-dark">Duration: 2 hr</p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p class="card-text mb-auto" style="font-family:cursive;font-size: 80% !important" >
+                          Author: Sajal Debnath, Bu cse3
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p><a href="" style="margin-left:100px; font-size: 80%;padding-left: 10px; color:black;">  Details Here   </a></p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                         <div class="row" style="padding-top:12px !important " >
+                                  <a class="RD"  href="" style="font-size: 90%">Register Now</a>
+                         </div>
+                          <div class="row">
+                                  <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepanting: <i>145</i>    </p>
+                         </div>
+                         <div class="row">
+                                  <p class="card-text mb-auto" style="font-size: 90% !important" >
+                                    Type: Algorithm
+                                  </p>
+                         </div>
+                  </div>
+                </div>
               </div>
-         </div>
 
             <!--/.Second row End-->
 
 
             <hr class="extra-margins">
-            <h3 style="padding-left:15px"> <b>Up Comming</b></h3>
+            <h3 style="padding-left:0px"> <b>Up Comming</b></h3>
             <!--third row Start (Upccomming contest) -->
-           <div class="col-md-12">
-               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
 
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><b style="color:#008000">Becoder Round 01</b></td>
-                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
-                                <td><b>Type:</b> Algorithm</td>
-                                <td> <a class="RD"  href="">Registered</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
-                                <td><b>Duration:</b> 3 hr</td>
-                                <td><b>Counter:</b> 40</td>
-                                <td> <a class="RD"  href="">Details</a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-               </div>
-          </div>
 
-          <div class="col-md-12">
-              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
 
-                   <table class="table">
-                       <tbody>
-                           <tr>
-                               <td><b style="color:#008000">Becoder Round 02</b></td>
-                               <td><b>Start at:</b> 5 June 9.30 PM</td>
-                               <td><b>Type:</b> Data structure</td>
-                               <td> <a class="RD"  href="">Register Now</a> </td>
-                           </tr>
-                           <tr>
-                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
-                               <td><b>Duration:</b> 2 hr</td>
-                               <td><b>Counter:</b> 78</td>
-                               <td> <a class="RD"  href="">Details</a> </td>
-                           </tr>
-                       </tbody>
-                   </table>
+            <div class=" card container" >
+                   <div class="row" >
+                     <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                       <div class="row">
+
+                         <div class="col-md-4">
+                           <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                         </div>
+
+                         <div class="col-md-4">
+                           <p class="text-dark" >Start at: 19 May, 2019</p>
+                         </div>
+
+                         <div class="col-md-4">
+                           <p class="text-dark">Duration: 2 hr</p>
+                         </div>
+                       </div>
+
+
+
+                       <div class="row">
+                         <div class="col-md-6">
+                           <p class="card-text mb-auto" style="font-family:cursive;font-size: 80% !important" >
+                             Author: Sajal Debnath, Bu cse3
+                           </p>
+                         </div>
+                         <div class="col-md-6">
+                           <p><a href="" style="margin-left:100px; font-size: 80%;padding-left: 10px; color:black;">  Details Here   </a></p>
+                         </div>
+                       </div>
+                     </div>
+
+
+                     <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                            <div class="row" style="padding-top:12px !important " >
+                                     <a class="RD"  href="" style="font-size: 90%">Register Now</a>
+                            </div>
+                             <div class="row">
+                                     <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepanting: <i>145</i>    </p>
+                            </div>
+                            <div class="row">
+                                     <p class="card-text mb-auto" style="font-size: 90% !important" >
+                                       Type: Algorithm
+                                     </p>
+                            </div>
+                     </div>
+                   </div>
+                 </div>
+               </br>
+
+
+         <!--From bipul for up coming contest -->
+         <div class=" card container">
+                <div class="row" >
+                  <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                    <div class="row">
+
+                      <div class="col-md-4">
+                        <strong class="d-inline-block mb-2 text-success"> Becoder Round 02</strong>
+                      </div>
+
+                      <div class="col-md-4">
+                        <p class="text-dark" >Start at: 03 May, 2019</p>
+                      </div>
+
+                      <div class="col-md-4">
+                        <p class="text-dark">Duration: 2 hr</p>
+                      </div>
+                    </div>
+
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p class="card-text mb-auto" style="font-family:cursive;font-size: 80% !important" >
+                          Author: Sajal Debnath, Bu cse3
+                        </p>
+                      </div>
+                      <div class="col-md-6">
+                        <p><a href="" style="margin-left:100px; font-size: 80%;padding-left: 10px; color:black;">  Details Here   </a></p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                         <div class="row" style="padding-top:12px !important " >
+                                  <a class="RD"  href="" style="font-size: 90%">Register Now</a>
+                         </div>
+                          <div class="row">
+                                  <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepanting: <i>145</i>    </p>
+                         </div>
+                         <div class="row">
+                                  <p class="card-text mb-auto" style="font-size: 90% !important" >
+                                    Type: Algorithm
+                                  </p>
+                         </div>
+                  </div>
+                </div>
               </div>
-         </div>
+
+
 
           <!-- Third row end (Upccomming contest) -->
 
 
 
           <hr class="extra-margins">
-          <h3 style="padding-left:15px"> <b>Previous </b></h3>
+          <h3 style="padding-left:0px"> <b>Previous </b></h3>
           <!--Forth row Start (Previous contest) -->
-          <div class="col-md-12">
-             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                  <table class="table">
-                      <tbody>
-                          <tr>
-                              <td><b style="color:#008000">Becoder Round 01</b></td>
-                              <td><b>Date:</b> 3 May,19 </td>
-                              <td><b>Particepant:</b> 311</td>
-                              <td> <a class="RD"  href="">Enter</a> </td>
-                          </tr>
-                      </tbody>
-                  </table>
-             </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                 <table class="table">
-                     <tbody>
-                       <tr>
-                           <td><b style="color:#008000">Becoder Round 02</b></td>
-                           <td><b>Date:</b> 3 April,19 </td>
-                           <td><b>Particepant:</b> 311</td>
-                           <td> <a class="RD"  href="">Enter</a> </td>
-                       </tr>
-                     </tbody>
-                 </table>
-            </div>
-          </div>
 
 
-          <div class="col-md-12">
-             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+          <div class=" card container" >
+                 <div class="row" >
+                   <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                     <div class="row">
 
-                  <table class="table">
-                      <tbody>
-                        <tr>
-                            <td><b style="color:#008000">Becoder Round 03</b></td>
-                            <td><b>Date:</b> 3 March,19 </td>
-                            <td><b>Particepant:</b> 311</td>
-                            <td> <a class="RD"  href="">Enter</a> </td>
-                        </tr>
-                      </tbody>
-                  </table>
-             </div>
-          </div>
+                       <div class="col-md-4">
+                         <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                       </div>
 
-          <div class="col-md-12">
-            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                       <div class="col-md-4" style="font-size: 90% !important">
+                         <p class="text-dark" >Date: 02 February, 2019 </p>
+                       </div>
 
-                 <table class="table">
-                     <tbody>
-                       <tr>
-                           <td><b style="color:#008000">Becoder Round 04</b></td>
-                           <td><b>Date:</b> 3 February,19 </td>
-                           <td><b>Particepant:</b> 311</td>
-                           <td> <a class="RD"  href="">Enter</a> </td>
-                       </tr>
-                     </tbody>
-                 </table>
-            </div>
-          </div>
+                       <div class="col-md-4">
+                         <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepation: <i>145</i>    </p>
+                       </div>
+                     </div>
+                   </div>
+
+
+                   <div class="col-md-3" style="border-left: 1px inset;padding-left:100px;"> <!--divided into 9:3 in 12-->
+                          <div class="row" style="padding-top:12px !important " >
+                                   <a class="RD"  href="" style="font-size: 90%">Enter</a>
+                          </div>
+
+                   </div>
+                 </div>
+               </div>
+             </br>
+
+
+
+             <div class=" card container" >
+                    <div class="row" >
+                      <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                        <div class="row">
+
+                          <div class="col-md-4">
+                            <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                          </div>
+
+                          <div class="col-md-4" style="font-size: 90% !important">
+                            <p class="text-dark" >Date: 02 February, 2019 </p>
+                          </div>
+
+                          <div class="col-md-4">
+                            <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepation: <i>145</i>    </p>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-3" style="border-left: 1px inset;padding-left:100px;"> <!--divided into 9:3 in 12-->
+                             <div class="row" style="padding-top:12px !important " >
+                                      <a class="RD"  href="" style="font-size: 90%">Enter</a>
+                             </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </br>
+
+                <div class=" card container" >
+                       <div class="row" >
+                         <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                           <div class="row">
+
+                             <div class="col-md-4">
+                               <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                             </div>
+
+                             <div class="col-md-4" style="font-size: 90% !important">
+                               <p class="text-dark" >Date: 02 February, 2019 </p>
+                             </div>
+
+                             <div class="col-md-4">
+                               <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepation: <i>145</i>    </p>
+                             </div>
+                           </div>
+                         </div>
+
+
+                         <div class="col-md-3" style="border-left: 1px inset;padding-left:100px;"> <!--divided into 9:3 in 12-->
+                                <div class="row" style="padding-top:12px !important " >
+                                         <a class="RD"  href="" style="font-size: 90%">Enter</a>
+                                </div>
+
+                         </div>
+                       </div>
+                     </div>
+                   </br>
+
+
+                   <div class=" card container" >
+                          <div class="row" >
+                            <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                              <div class="row">
+
+                                <div class="col-md-4">
+                                  <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                                </div>
+
+                                <div class="col-md-4" style="font-size: 90% !important">
+                                  <p class="text-dark" >Date: 02 February, 2019 </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                  <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepation: <i>145</i>    </p>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div class="col-md-3" style="border-left: 1px inset;padding-left:100px;"> <!--divided into 9:3 in 12-->
+                                   <div class="row" style="padding-top:12px !important " >
+                                            <a class="RD"  href="" style="font-size: 90%">Enter</a>
+                                   </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </br>
+
+                      <div class=" card container" >
+                             <div class="row" >
+                               <div class="col-md-9"style="padding-top:12px !important ">   <!-- divided into 9:3 in 12 -->
+                                 <div class="row">
+
+                                   <div class="col-md-4">
+                                     <strong class="d-inline-block mb-2 text-success"> Becoder Round 01</strong>
+                                   </div>
+
+                                   <div class="col-md-4" style="font-size: 90% !important">
+                                     <p class="text-dark" >Date: 02 February, 2019 </p>
+                                   </div>
+
+                                   <div class="col-md-4">
+                                     <p class="card-text mb-auto" style="font-size: 90% !important" >  Particepation: <i>145</i>    </p>
+                                   </div>
+                                 </div>
+                               </div>
+
+
+                               <div class="col-md-3" style="border-left: 1px inset;padding-left:100px;"> <!--divided into 9:3 in 12-->
+                                      <div class="row" style="padding-top:12px !important " >
+                                               <a class="RD"  href="" style="font-size: 90%">Enter</a>
+                                      </div>
+
+                               </div>
+                             </div>
+                           </div>
+                         </br>
 
           <!-- Forth row end (Previous contest) -->
 
