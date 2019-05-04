@@ -21,6 +21,10 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="<?php echo $librarymdb__js_folder;?>mdb.min.js"></script>
   <style>
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
     /*becoder style*/
     .becoder_tutorial_header > h3{
       filter:blur(1px);
@@ -67,5 +71,8 @@
      .navbar .btn-group .dropdown-menu a:active {
          color: #fff !important;
      }
+
+     /* login/register form*/
+	
    </style>
 </head>
