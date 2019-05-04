@@ -1,6 +1,8 @@
-
-<?php require_once"header/head.php" ?>
-<?php require_once"header/nav.php" ?>
+<?php
+	require_once($_SERVER['DOCUMENT_ROOT']."/becoder/config.php");
+	require_once($header);
+	require_once($navbar);
+	?>
 
   <!--Main Navigation-->
   <div class="row wow fadeIn" data-wow-delay="0.2s">
@@ -370,10 +372,10 @@
     </div>
   </main>
   <!--Main layout-->
-  
+
 
   <!--Footer layout-->
 
-  <?php require_once"footer/footer.php" ?>
+  <?php require_once($footer) ?>
 
   <!--End Footer Layout-->

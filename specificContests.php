@@ -1,5 +1,8 @@
-<?php require_once"header/head.php" ?>
-<?php require_once"header/nav.php" ?>
+<?php
+	require_once($_SERVER['DOCUMENT_ROOT']."/becoder/config.php");
+	require_once($header);
+	require_once($navbar);
+	?>
 
 <script>
 	// Material Select Initialization
@@ -264,7 +267,7 @@ $('.mdb-select').materialSelect();
         									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
         									<td>2019-03-20 16:58:20</td>
         									<td>0.000</td>
-        									
+
       									</tr>
 									     <tr>
 									        <th scope="row">13454</th>
@@ -339,6 +342,6 @@ $('.mdb-select').materialSelect();
 
   <!--Footer layout-->
 
-  <?php require_once"footer/footer.php" ?>
+  <?php require_once($footer) ?>
 
   <!--End Footer Layout-->

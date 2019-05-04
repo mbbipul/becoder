@@ -1,3 +1,4 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/becoder/config.php")?>
 <!--Footer-->
   <footer class="page-footer text-center text-md-left mt-4 pt-4">
     <!--Footer links-->

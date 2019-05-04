@@ -1,4 +1,4 @@
-
+<?php require_once($_SERVER['DOCUMENT_ROOT']."/becoder/config.php")?>
 <body class="grey lighten-3">
 
   <!--Main Navigation-->
