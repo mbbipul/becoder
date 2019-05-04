@@ -63,8 +63,8 @@
 
     </header>
 
-<!--Modal: Login / Register Form-->
-<!--Modal: Login / Register Form-->
+
+    <!--Modal: Login / Register Form-->
 <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
@@ -94,26 +94,34 @@
             <div class="modal-body mb-1">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput10" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput10">Your email</label>
+                <input type="email" placeholder="email" id="modalLRInput10" class="form-control form-control-sm validate">
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput11" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput11">Your password</label>
+                <input type="password" placeholder="password" id="modalLRInput11" class="form-control form-control-sm validate">
               </div>
               <div class="text-center mt-2">
                 <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
               </div>
             </div>
             <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-                <p>Not a member? <a href="#" class="blue-text">Sign Up</a></p>
-                <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+            <div class="login_connect_with">
+                Or Connect With
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
             </div>
 
           </div>
@@ -126,33 +134,46 @@
             <div class="modal-body">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
+                <input type="email" placeholder="email" id="modalLRInput12" class="form-control form-control-sm validate">
+            
               </div>
-              <label for="modalLRInput13">Your password</label>
 
-              <div class="md-form">
+              <div class="md-form form-sm mb-5">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+                <input type="password" placeholder="password" id="modalLRInput13" class="form-control form-control-sm validate">
+               
               </div>
 
-              <div class="mb-4">
-                <!-- Default input -->
-<label for="exampleForm2">Default input</label>
-<input type="text" id="exampleForm2" class="form-control">
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
               </div>
-
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
+                              Terms and Conditions</a></label>
+            </div>
               <div class="text-center form-sm mt-2">
                 <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
               </div>
 
             </div>
+              <div class="login_connect_with">
+                Or Connect With
+              </div>
             <!--Footer-->
             <div class="modal-footer">
-              <div class="options text-right">
-                <p class="pt-1">Already have an account? <a href="#" class="blue-text">Log In</a></p>
-              </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
             </div>
           </div>
           <!--/.Panel 8-->

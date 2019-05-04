@@ -72,7 +72,50 @@
          color: #fff !important;
      }
 
-     /* login/register form*/
-	
+  /*login/register*/
+    .social {
+        float: left;
+        margin: 0 auto 30px;
+        text-align: center;
+    }
+
+    .social .circle{
+           width: 50px;
+       height: 50px;
+       -moz-border-radius: 70px; 
+       -webkit-border-radius: 70px; 
+       border-radius: 70px;
+
+        background-color: #EEEEEE;
+        color: #FFFFFF;
+        display: inline-block;
+        margin: 5px 13px;
+        padding: 15px;
+    }
+     .social .circle .fab{
+        font-size: 20px;
+    }
+    .social .facebook{
+        background-color: #455CA8;
+        color: #FFFFFF;
+    }
+    .social .google{
+        background-color: #F74933;
+    }
+    .social .github{
+        background-color: #403A3A;
+    }
+    .facebook:hover{
+        background-color: #6E83CD;
+    }
+    .google:hover{
+        background-color: #FF7566;
+    }
+    .github:hover{
+        background-color: #4D4D4d;;
+    }
+    .login_connect_with{
+        text-align: center;
+    }
    </style>
 </head>

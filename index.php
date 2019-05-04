@@ -17,10 +17,10 @@
          or storage in a storage medium.</p>
         <hr>
         <p>Register and get access to code</p>
-        <a  href="" class="btn btn-outline-unique" rel="nofollow">Register
+        <a  href="" data-toggle="modal" data-target="#modalLRForm"  class="btn btn-outline-unique" rel="nofollow">Register
           <i class="fas fa-download right"></i>
         </a>
-        <a href="" class="btn btn-unique btn-ptc"
+        <a href="" data-toggle="modal" data-target="#modalLRForm"  class="btn btn-unique btn-ptc"
           rel="nofollow">Log in <i class="fas fa-book right"></i></a>
       </div>
     </div>
