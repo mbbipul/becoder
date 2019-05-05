@@ -319,7 +319,60 @@ $('.mdb-select').materialSelect();
   							</div>
 
   							<div class="tab-pane fade " id="standing" role="tabpanel" aria-labelledby="standing-tab">
-  							standing here
+  							<div class="table-responsive">
+  							<!--Table-->
+  								<table class="table table-striped">
+
+  									<!--Table head-->
+								    <thead>
+								      <tr>
+								        <th>#Team</th>
+								        <th>#Position</th>
+								        <th>#Total Solved</th>
+								        <th>#Total Submission</th>
+								      </tr>
+								    </thead>
+								    <!--Table head-->
+
+
+   							 <!--Table body-->
+    								<tbody>
+      									<tr>
+        									<th scope="row">Code Wrriors</th>
+        									<td><h5><span class="badge badge-pill badge-default">1 <sup>st</sup></span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">5</span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">16</span></h5></td>
+      									</tr>
+									    <tr>
+        									<th scope="row">becoder</th>
+        									<td><h5><span class="badge badge-pill badge-default">2 <sup>nd</sup></span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">4</span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">20</span></h5></td>
+      									</tr>
+									    <tr>
+        									<th scope="row">ABC</th>
+        									<td><h5><span class="badge badge-pill badge-default">3 <sup>rd</sup></span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">5</span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">16</span></h5></td>
+      									</tr>
+									   <tr>
+        									<th scope="row">Code Wrriors</th>
+        									<td><h5><span class="badge badge-pill badge-default">4 <sup>th</sup></span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">5</span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">16</span></h5></td>
+      									</tr>
+									    <tr>
+        									<th scope="row">Code Wrriors</th>
+        									<td><h5><span class="badge badge-pill badge-default">1 <sup>st</sup></span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">5</span></h5></td>
+        									<td><h5><span class="badge badge-pill badge-default">16</span></h5></td>
+      									</tr>
+									  
+    								</tbody>
+    							<!--Table body-->
+  								</table>
+  							<!--Table-->
+							</div>
   							</div>
 						</div>
 						<!-- End tab Contents -->
