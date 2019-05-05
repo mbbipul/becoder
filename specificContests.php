@@ -16,7 +16,7 @@ $('.mdb-select').materialSelect();
     margin-top: 20px;
 }
 </style>
-
+</head>
 <main>
     <div class="container-fluid">
 

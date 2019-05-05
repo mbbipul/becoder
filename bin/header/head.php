@@ -82,8 +82,8 @@
     .social .circle{
            width: 50px;
        height: 50px;
-       -moz-border-radius: 70px; 
-       -webkit-border-radius: 70px; 
+       -moz-border-radius: 70px;
+       -webkit-border-radius: 70px;
        border-radius: 70px;
 
         background-color: #EEEEEE;
@@ -117,5 +117,17 @@
     .login_connect_with{
         text-align: center;
     }
+    .contest_reg_button{
+        border: 1px solid black;
+        padding: 5px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 5px;
+        font-size: 20px;
+        z-index: 0;
+      }
+.no_padding{
+  padding: 0;
+  margin: 0;
+}
    </style>
-</head>

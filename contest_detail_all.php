@@ -3,223 +3,319 @@
 	require_once($header);
 	require_once($navbar);
 	?>
+	<style>
 
-  <main>
-    <div class="container-fluid">
+	.clockdiv{
+		font-family: sans-serif;
+	  font-size: 10px;
+		display: inline-block;
+		text-align: center;
+		font-weight:bold;
+	}
 
-      <section class="mt-4">
+	.clockdiv > div{
+		display: inline-block;
+	}
+	.clockdiv strong{
+		font-size: 15px;
+	}
+	.clockdiv div > span{
+	  color:black;
+		padding-left: 5px;
+		padding-right: 5px;
+		font-size: 20px;
+		display: inline-block;
+	}
 
+	.smalltext{
+	  color: black;
+		padding-top: 0;
+	}
+</style>
+</head>
+<main>
+    <div class="container-fluid ">
+      <section>
         <div class="row">
-
           <!--Grid column-->
           <div class="col-md-8 mb-4 ">
             <!--/.First row-->
-
             <div class="becoder_tutorial_header">
-
               <h1>All Contests</h1>
             </div>
             <hr class="extra-margins">
-            <h3 style="padding-left:15px"> <b>Running</b></h3>
-
-
-
-            <!--Second row Start -->
-           <div class="col-md-12">
-               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><b style="color:#008000">Becoder Round 01</b></td>
-                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
-                                <td><b>Type:</b> Algorithm</td>
-                                <td> <a class="RD"  href="">Registered</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
-                                <td><b>Duration:</b> 3 hr</td>
-                                <td><b>Counter:</b> 40</td>
-                                <td> <a class="RD"  href="">Details</a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-               </div>
-          </div>
-
-          <div class="col-md-12">
-              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                   <table class="table">
-                       <tbody>
-                           <tr>
-                               <td><b style="color:#008000">Becoder Round 02</b></td>
-                               <td><b>Start at:</b> 5 June 9.30 PM</td>
-                               <td><b>Type:</b> Data structure</td>
-                               <td> <a class="RD"  href="">Register Now</a> </td>
-                           </tr>
-                           <tr>
-                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
-                               <td><b>Duration:</b> 2 hr</td>
-                               <td><b>Counter:</b> 78</td>
-                               <td> <a class="RD"  href="">Details</a> </td>
-                           </tr>
-                       </tbody>
-                   </table>
+            <h3 style="padding-left:0px"> <b>Running</b></h3>
+            <!--Second row Start for Running contest -->
+         <!--From bipul for running contest -->
+		        <div class=" card border-success mb-3 card-header">
+                <div class="row " >
+                  <div class="col-md-9">   <!-- divided into 9:3 in 12 -->
+                  	<div class="row ">
+                      <div class="col-md-8">
+                        <h1 class="d-inline-block mb-2"> <strong>Becoder Round  hello...</strong></h1>
+                      </div>
+                      <div class="col-md-4">
+												<div id="clockdiv" class="clockdiv">
+												  <div>
+												    <span class="hours"></span> <strong>:</strong>
+												    <div class="smalltext">Hours</div>
+												  </div>
+												  <div>
+												    <span class="minutes"></span> <strong>:</strong>
+												    <div class="smalltext">Minutes</div>
+												  </div>
+												  <div>
+												    <span class="seconds"></span>
+												    <div class="smalltext">Seconds</div>
+												  </div>
+												</div>
+						          </div>
+                		</div>
+                    <div class="row">
+                      <div class="col-md-5 card-text" style="font-family:cursive;font-size: 80% !important" >
+                        Sajal Debnath, Bu cse3
+                      </div>
+											<div class="col-md-3 no_padding">
+												<a href="" class="text-success" style="font-size: 80%;">  Details Here </a>
+                      </div>
+                  		<div class="col-md-4 text-primary" style="padding-left:20px;">
+												2:30 hours
+											</div>
+                    </div>
+                  </div>
+                <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                    <div class="row" style="padding-top:10px !important " >
+                        <a class="contest_reg_button"  href="">Enter Now</a>
+                    </div>
+										<div class="row" style="font-size: 15px;padding-left: 10px;padding-top:5px">
+											<span class="badge badge-secondary ml-2"><i class="fas fa-user"></i>124</span>
+											<strong class="badge badge-pill badge-secondary ml-2">algorithm</strong>
+										</div>
+                </div>
               </div>
-         </div>
+            </div>
+		         <div class=" card border-success mb-3 card-header">
+                <div class="row " >
+                  <div class="col-md-9">   <!-- divided into 9:3 in 12 -->
+                  	<div class="row ">
 
+                      <div class="col-md-8">
+                        <h1 class="d-inline-block mb-2"> <strong>Becoder Round  hello...</strong></h1>
+                      </div>
+                      <div class="col-md-4">
+												<div id="clockdiv1" class="clockdiv">
+
+					  <div>
+					    <span class="hours"></span> <strong>:</strong>
+					    <div class="smalltext">Hours</div>
+					  </div>
+					  <div>
+					    <span class="minutes"></span> <strong>:</strong>
+					    <div class="smalltext">Minutes</div>
+					  </div>
+					  <div>
+					    <span class="seconds"></span>
+					    <div class="smalltext">Seconds</div>
+					  </div>
+					</div>
+
+          </div>
+                </div>
+
+
+
+                    <div class="row">
+                      <div class="col-md-5 card-text" style="font-family:cursive;font-size: 80% !important" >
+                        Sajal Debnath, Bu cse3
+                      </div>
+											<div class="col-md-3 no_padding">
+												<a href="" class="text-success" style="font-size: 80%;">  Details Here </a>
+                      </div>
+                  		<div class="col-md-4 text-primary" style="padding-left:20px;">
+												2:30 hours
+											</div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                         <div class="row" style="padding-top:10px !important " >
+                                  <a class="contest_reg_button"  href="">Enter Now</a>
+                         </div>
+												 <div class="row" style="font-size: 15px;padding-left: 10px;padding-top:5px">
+													 <span class="badge badge-secondary ml-2"><i class="fas fa-user"></i>124</span>
+													 <strong class="badge badge-pill badge-secondary ml-2">algorithm</strong>
+												 </div>
+
+                  </div>
+                </div>
+              </div>
             <!--/.Second row End-->
 
 
             <hr class="extra-margins">
-            <h3 style="padding-left:15px"> <b>Up Comming</b></h3>
+            <h3 style="padding-left:0px"> <b>Up Comming</b></h3>
             <!--third row Start (Upccomming contest) -->
-           <div class="col-md-12">
-               <div class="card flex-md-row mb-4 shadow-sm h-md-250">
 
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td><b style="color:#008000">Becoder Round 01</b></td>
-                                <td><b>Start at:</b> 3 June,19 3.30 PM</td>
-                                <td><b>Type:</b> Algorithm</td>
-                                <td> <a class="RD"  href="">Registered</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Author:</b> Sajal Debnath, CSE3 BU</td>
-                                <td><b>Duration:</b> 3 hr</td>
-                                <td><b>Counter:</b> 40</td>
-                                <td> <a class="RD"  href="">Details</a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-               </div>
-          </div>
 
-          <div class="col-md-12">
-              <div class="card flex-md-row mb-4 shadow-sm h-md-250">
 
-                   <table class="table">
-                       <tbody>
-                           <tr>
-                               <td><b style="color:#008000">Becoder Round 02</b></td>
-                               <td><b>Start at:</b> 5 June 9.30 PM</td>
-                               <td><b>Type:</b> Data structure</td>
-                               <td> <a class="RD"  href="">Register Now</a> </td>
-                           </tr>
-                           <tr>
-                               <td><b>Author:</b> Mahin Shefat, CSE3 BU</td>
-                               <td><b>Duration:</b> 2 hr</td>
-                               <td><b>Counter:</b> 78</td>
-                               <td> <a class="RD"  href="">Details</a> </td>
-                           </tr>
-                       </tbody>
-                   </table>
+						<div class=" card border-success mb-3 card-header">
+                <div class="row " >
+                  <div class="col-md-9">   <!-- divided into 9:3 in 12 -->
+                  	<div class="row ">
+                      <div class="col-md-8">
+                        <h1 class="d-inline-block mb-2"> <strong>Becoder Round  hello...</strong></h1>
+                      </div>
+                      <div class="col-md-4">
+												<div id="clockdivup1" class="clockdiv">
+												  <div>
+												    <span class="days"></span> <strong>:</strong>
+												    <div class="smalltext">Days</div>
+												  </div>
+												  <div>
+												    <span class="hours"></span> <strong>:</strong>
+												    <div class="smalltext">Hours</div>
+												  </div>
+												  <div>
+												    <span class="minutes"></span> <strong>:</strong>
+												    <div class="smalltext">Minutes</div>
+												  </div>
+												  <div>
+												    <span class="seconds"></span>
+												    <div class="smalltext">Seconds</div>
+												  </div>
+												</div>
+						          </div>
+                		</div>
+                    <div class="row">
+                      <div class="col-md-5 card-text" style="font-family:cursive;font-size: 80% !important" >
+                        Sajal Debnath, Bu cse3
+                      </div>
+											<div class="col-md-3 no_padding">
+												<a href="" class="text-success" style="font-size: 80%;">  Details Here </a>
+                      </div>
+                  		<div class="col-md-4 text-primary" style="padding-left:20px;">
+												2:30 hours
+											</div>
+                    </div>
+                  </div>
+                <div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+                    <div class="row" style="padding-top:10px !important " >
+                        <a class="contest_reg_button"  href="">Register Now</a>
+                    </div>
+										<div class="row" style="font-size: 15px;padding-left: 10px;padding-top:5px">
+											<span class="badge badge-secondary ml-2"><i class="fas fa-user"></i>124</span>
+											<strong class="badge badge-pill badge-secondary ml-2">algorithm</strong>
+										</div>
+                </div>
               </div>
-         </div>
+            </div>
+
+						<div class=" card border-success mb-3 card-header">
+								<div class="row " >
+									<div class="col-md-9">   <!-- divided into 9:3 in 12 -->
+										<div class="row ">
+											<div class="col-md-8">
+												<h1 class="d-inline-block mb-2"> <strong>Becoder Round  hello...</strong></h1>
+											</div>
+											<div class="col-md-4">
+												<div id="clockdivup2" class="clockdiv">
+													<div>
+														<span class="days"></span> <strong>:</strong>
+														<div class="smalltext">Days</div>
+													</div>
+													<div>
+														<span class="hours"></span> <strong>:</strong>
+														<div class="smalltext">Hours</div>
+													</div>
+													<div>
+														<span class="minutes"></span> <strong>:</strong>
+														<div class="smalltext">Minutes</div>
+													</div>
+													<div>
+														<span class="seconds"></span>
+														<div class="smalltext">Seconds</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-5 card-text" style="font-family:cursive;font-size: 80% !important" >
+												Sajal Debnath, Bu cse3
+											</div>
+											<div class="col-md-3 no_padding">
+												<a href="" class="text-success" style="font-size: 80%;">  Details Here </a>
+											</div>
+											<div class="col-md-4 text-primary" style="padding-left:20px;">
+												2:30 hours
+											</div>
+										</div>
+									</div>
+								<div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+										<div class="row" style="padding-top:10px !important " >
+												<a class="contest_reg_button"  href="">Register Now</a>
+										</div>
+										<div class="row" style="font-size: 15px;padding-left: 10px;padding-top:5px">
+											<span class="badge badge-secondary ml-2"><i class="fas fa-user"></i>124</span>
+											<strong class="badge badge-pill badge-secondary ml-2">algorithm</strong>
+										</div>
+								</div>
+							</div>
+						</div>
+
 
           <!-- Third row end (Upccomming contest) -->
 
 
 
           <hr class="extra-margins">
-          <h3 style="padding-left:15px"> <b>Previous </b></h3>
+          <h3 style="padding-left:0px"> <b>Previous </b></h3>
           <!--Forth row Start (Previous contest) -->
-          <div class="col-md-12">
-             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                  <table class="table">
-                      <tbody>
-                          <tr>
-                              <td><b style="color:#008000">Becoder Round 01</b></td>
-                              <td><b>Date:</b> 3 May,19 </td>
-                              <td><b>Particepant:</b> 311</td>
-                              <td> <a class="RD"  href="">Enter</a> </td>
-                          </tr>
-                      </tbody>
-                  </table>
-             </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                 <table class="table">
-                     <tbody>
-                       <tr>
-                           <td><b style="color:#008000">Becoder Round 02</b></td>
-                           <td><b>Date:</b> 3 April,19 </td>
-                           <td><b>Particepant:</b> 311</td>
-                           <td> <a class="RD"  href="">Enter</a> </td>
-                       </tr>
-                     </tbody>
-                 </table>
-            </div>
-          </div>
-
-
-          <div class="col-md-12">
-             <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                  <table class="table">
-                      <tbody>
-                        <tr>
-                            <td><b style="color:#008000">Becoder Round 03</b></td>
-                            <td><b>Date:</b> 3 March,19 </td>
-                            <td><b>Particepant:</b> 311</td>
-                            <td> <a class="RD"  href="">Enter</a> </td>
-                        </tr>
-                      </tbody>
-                  </table>
-             </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-
-                 <table class="table">
-                     <tbody>
-                       <tr>
-                           <td><b style="color:#008000">Becoder Round 04</b></td>
-                           <td><b>Date:</b> 3 February,19 </td>
-                           <td><b>Particepant:</b> 311</td>
-                           <td> <a class="RD"  href="">Enter</a> </td>
-                       </tr>
-                     </tbody>
-                 </table>
-            </div>
-          </div>
-
-          <!-- Forth row end (Previous contest) -->
-
-
-
-
-            <hr class="extra-margins">
-    <div class="row">
-      <!--Grid column-->
+					<?php
+						$x=0;
+						while($x<10){?>
+							<div class=" card border-success mb-3 card-header" onclick="myFunction(<?php echo $x;?>)">
+									<div class="row " >
+										<div class="col-md-9">   <!-- divided into 9:3 in 12 -->
+											<div class="row ">
+												<div class="col-md-6">
+													<h3 class="d-inline-block mb-2"> <strong>Becoder Round  hello...</strong></h3>
+												</div>
+												<div class="col-md-4 mt-2">
+													<p class="text-dark" >Date: 02 February, 2019 </p>
+												</div>
+												<div class="col-md-2 mt-2">
+													<span class="badge badge-secondary ml-2"><i class="fas fa-user"></i>124</span>
+												</div>
+											</div>
+											<div class="row" id="toggleviews<?php echo $x;?>" style="display:none">
+												<div class="col-md-5 card-text" style="font-family:cursive;font-size: 80% !important" >
+													Sajal Debnath, Bu cse3
+												</div>
+												<div class="col-md-3 no_padding">
+													<a href="" class="text-success" style="font-size: 80%;">  Details Here </a>
+												</div>
+												<div class="col-md-4 text-primary" style="padding-left:20px;">
+													2:30 hours
+												</div>
+											</div>
+										</div>
+									<div class="col-md-3" style="border-left: 1px inset;padding-left:45px;"> <!--divided into 9:3 in 12-->
+											<div class="row" style="padding-top:0 !important " >
+													<a class="contest_reg_button"  href="">View Contest</a>
+											</div>
+											<div class="row " id="toggleviews2<?php echo $x;?>" style="display: none;font-size: 15px;padding-left: 10px;padding-top:5px">
+												<strong class="badge badge-pill badge-secondary ml-2">algorithm</strong>
+											</div>
+									</div>
+								</div>
+							</div>
+							<?php $x++;
+						}
+					 ?>
     </div>
-
-
-
-
-    </div>
-         <div class="col-md-4 mb-4">
-            <!--Card: Jumbotron-->
-            <div class=""><br><br>
-
-              <!-- Search form -->
-                <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-                  <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search Contest " aria-label="Search">
-                  <i class="fas fa-search" aria-hidden="true"></i>
-                </form>
-            </div><br>
-
-            <!--/.Card-->
-
-            <!--/Capied By sajal for button card -->
-            <div class="card mb-4 wow fadeIn">
+					<div class="col-md-4" style="padding-top:10px;">
+			            <div class="card mb-4 wow fadeIn">
 
               <!--Card content-->
               <div class="card-body">
@@ -227,6 +323,8 @@
                  <a href="#!" class="card-link">Manage Contest</a>
               </div>
             </div>
+						<?php require_once($becoder_right_side) ?>
+
           <!-- Capied End by sajal for button card -->
         </div>
           <!--Grid column-->
@@ -239,113 +337,108 @@
     </div>
   </main>
   <!--Main layout-->
-  <!--Footer-->
-  <footer class="page-footer text-center text-md-left mt-4 pt-4">
-    <!--Footer links-->
-    <div class="container-fluid">
-      <div class="row">
-        <!--First column-->
-        <div class="col-lg-3 col-md-6 ml-auto">
-          <h5 class="title mb-3"><strong>About becoder</strong></h5>
-          <p>In mathematics and computer science, an algorithm is an unambiguous
-             specification of how to solve a class of problems.</p>
-          <p>In mathematics and computer science, an algorithm is an unambiguous
-            specification of how to solve a class of problems.</p>
-        </div>
-        <!--/.First column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Second column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>First column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Second column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Third column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>Second column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Third column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Fourth column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>Third column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Fourth column-->
-      </div>
-    </div>
-    <!--/.Footer links-->
-    <hr>
-    <!--Call to action-->
-    <div class="call-to-action text-center my-4">
-      <h4 class="mb-4">Learn to code</h4>
-      <h5 class="mb-4">Register and start coding</h5>
-      <ul class="list-unstyled list-inline">
-        <li class="list-inline-item">
-          <a href="#" class="btn btn-primary waves-effect waves-light"
-            rel="nofollow">Register</a>
-        </li>
-        <li class="list-inline-item">
-          <a  href="#" class="btn btn-info waves-effect waves-light"
-            rel="nofollow">Log in</a>
-        </li>
-      </ul>
-    </div>
-    <!--/.Call to action-->
+<!-- for days countdown -->
+<script>
 
-    <!--Copyright-->
+function myFunction(a) {
+  var x = document.getElementById("toggleviews"+a);
+	var y = document.getElementById("toggleviews2"+a);
 
-    <div class="footer-copyright py-3 text-center">
-        <div class="containter-fluid"> © 2019 Copyright: <a href="<?php echo $root;?>"> becoder.com </a></div>
-    </div>
-    <!--/.Copyright-->
-  </footer>
-  <!--/.Footer-->
+  if (x.style.display === "none") {
+    x.style.display = "";
+		y.style.display = "";
+  } else {
+    x.style.display = "none";
+		y.style.display = "none";
+  }
+}
 
-        <script>
-        new WOW().init();
-        </script>
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  return {
+    'total': t,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
 
-</body>
-</html>
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 9000 * 1000);
+var deadline1 = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+
+initializeClock('clockdiv', deadline);
+initializeClock('clockdiv1', deadline);
+
+
+// for days countdowntimer
+function getTimeRemainingd(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClockd(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemainingd(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+var deadlined = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+initializeClockd('clockdivup1', deadlined);
+initializeClockd('clockdivup2', deadlined);
+
+</script>
+
+<?php require_once($footer);?>
