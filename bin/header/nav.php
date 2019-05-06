@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#">Practice</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contest.php">Contests</a>
+                <a class="nav-link" href="contests.php">Contests</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Resource</a>

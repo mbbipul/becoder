@@ -25,6 +25,9 @@
     max-width: 100%;
     overflow-x: hidden;
   }
+      .card{
+          background-color: #fafafa ;
+      }
     /*becoder style*/
     .becoder_tutorial_header > h3{
       filter:blur(1px);
