@@ -1,0 +1,14 @@
+var root = "";
+var bin_folder = root + "bin/";
+var becoder_right_side = bin_folder + "becoderRightSide.php";
+var footer_folder = bin_folder + "footer/";
+var footer = footer_folder + "footer.php";
+var header_folder = bin_folder + "header/";
+var header = header_folder + "head.php";
+var navbar = header_folder + "nav.php";
+var assets_folder = root + "assets/";
+var css_folder = assets_folder + "css/";
+var js_folder = assets_folder + "js/";
+var images_folder = assets_folder + "images/";
+var library_mdb_css_folder = assets_folder + "library/mdb/css/";
+var library_mdb_js_folder = assets_folder + "library/js/";
