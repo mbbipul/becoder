@@ -135,7 +135,7 @@
   margin: 0;
 }
    </style>
-    
+
 	<style>
 
 	.clockdiv{
@@ -164,7 +164,7 @@
 	  color: black;
 		padding-top: 0;
 	}
-        
+
     .becoder-hover:hover
     {
         box-shadow: 0px 0px 5px #000000;
@@ -172,7 +172,7 @@
         -webkit-transition: all 200ms ease-in;
         -webkit-transform: scale(1);
         -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1);   
+        -ms-transform: scale(1);
         -moz-transition: all 200ms ease-in;
         -moz-transform: scale(1);
         transition: all 200ms ease-in;
@@ -186,7 +186,7 @@
         -webkit-transition: all 200ms ease-in;
         -webkit-transform: scale(1);
         -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1);   
+        -ms-transform: scale(1);
         -moz-transition: all 200ms ease-in;
         -moz-transform: scale(1);
         transition: all 200ms ease-in;
@@ -200,7 +200,7 @@
         -webkit-transition: all 200ms ease-in;
         -webkit-transform: scale(1);
         -ms-transition: all 200ms ease-in;
-        -ms-transform: scale(1);   
+        -ms-transform: scale(1);
         -moz-transition: all 200ms ease-in;
         -moz-transform: scale(1);
         transition: all 200ms ease-in;
@@ -210,8 +210,94 @@
         color: #1BCD63;
     }
     .register-now {
-        color: #FF4959;   
+        color: #FF4959;
     }
+
+
+/* create context */
+.form label {
+	width: 200px;
+	color: black;
+	margin-right: 3px;
+}
+.form input,select {
+	padding: 10px;
+	margin-bottom: 15px;
+}
+.td{
+	width: 200px;
+}
+#stime {
+	width: 68px;
+}
+#sdate {
+	width: 150px;
+}
+
+.modal-width{
+	width: 600px;
+}
+
+.head {
+	padding: 5px;
+	border-bottom: 1px solid #8D8D8D;
+	margin-bottom: 10px;
+}
+.head h2 {
+	padding: 5px;
+	color: #09605B;
+	font-size: 33px;
+	font-weight: bold;
+}
+.head p {
+
+	margin-bottom: 10px;
+	padding: 5px;
+	color: #333444;
+}
+.file {
+	display: none;
+}
+.img {
+	height: 25px;
+	width: 25px;
+	background: #d6e4e4d6;
+	padding: 5px;
+	border-radius: 5px;
+}
+.img:hover{
+	background: #333;
+}
+img.img{
+	cursor: pointer;
+}
+
+.saveButton {
+	position: absolute;
+	padding: 5px;
+	border: 2px solid #6C6C6C;
+	border-radius: 5px;
+	width: 80px;
+	background: #7F7F7F;
+}
+
+.saveButton:hover {
+	background: #b76161;
+	border: #a24c4c;
+}
+.saveButton a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #f0f0f0;
+	font-weight: bold;
+}
+label.required::after {
+  content: '*';
+  margin-left: 2px;
+  color: red;
+  font-size:20px;
+}
+
 </style>
 </head>
     <body class="grey lighten-3">
@@ -350,13 +436,13 @@
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
                 <input type="email" placeholder="email" id="modalLRInput12" class="form-control form-control-sm validate">
-            
+
               </div>
 
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-lock prefix"></i>
                 <input type="password" placeholder="password" id="modalLRInput13" class="form-control form-control-sm validate">
-               
+
               </div>
 
               <div class="md-form form-sm mb-4">
@@ -419,7 +505,7 @@
                   <li class=""><a href="#previous-contest" style="color: black;"><strong>Previous</strong></a></li>
                 </ul>
             </div>
-            
+
             <h3 class="tracked" id="running-contest" style="padding-left:0px"> <b>Running</b></h3>
             <!--Second row Start for Running contest -->
          <!--From bipul for running contest -->
@@ -683,18 +769,18 @@
 									</div>
 								</div>
 							</div>
-							
+
     </div>
         <div class="col-md-4" style="padding-top:10px;">
             <div class="card mb-4 wow fadeIn rounded-lg">
 
               <!--Card content-->
             <div class="card-body">
-                <a href="#!" class="card-link text-secondary mb-3"><strong>Create Contest</strong></a><br>
+                <a data-toggle="modal" data-target="#modalLoginForm" class="card-link text-secondary mb-3"><strong>Create Contest</strong></a><br>
                 <a href="#!" class="card-link text-secondary"><strong>Manage Contest</strong></a>
             </div>
             </div>
-						
+
             <!--Card: Jumbotron-->
             <div class="mt-4">
 
@@ -995,6 +1081,99 @@
     <!--/.Copyright-->
   </footer>
   <!--/.Footer-->
+
+  <!-- create contest -->
+
+
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+            <div class=" modal-dialog "  role="document">
+              <div class="modal-content" style="width:600px">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Create Contest</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                <table class="form">
+                  <tr>
+                        <td class="td">
+                            <label class="required">Contest Name</label>
+                        </td>
+                        <td>
+                            <input type="text" name="contestname" placeholder="Enter Contest Name..." class="form-control" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                                <td class="td">
+                                    <label class="required">Organization Type</label>
+                                </td>
+                                <td>
+                                    <select id="select" name="select" class="form-control">
+                                        <option value="1">School</option>
+                                        <option value="2">Company</option>
+                                        <option value="3">Others</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr>
+                        <td class="td">
+                            <label class="required">Organization Name</label>
+                        </td>
+                        <td>
+                            <input type="text" name="organizationname" placeholder="Enter Organization Name..." class="form-control" />
+                        </td>
+                  </tr>
+
+
+
+                            <tr>
+                        <td class="td">
+                            <label class="required">Start Time</label>
+                        </td>
+                        <td class="input-group">
+                          <input id="sdate" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                           <input style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                      <td class="td" >
+                          <label class="required">End Time</label>
+                      </td>
+                      <td class="input-group">
+                        <input id="sdate" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                         <input style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                      </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td mt-3">
+                            <label class="required">Contest goal</label>
+                        </td>
+                        <td>
+                          <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                        </td>
+                  </tr>
+                </table>
+
+            </form>
+
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <a href="landingPage.html" type="button" class="btn btn-success">Next</a>
+                </div>
+              </div>
+            </div>
+        </div>
+  <!-- /create contest -->
+
   <script>
   new WOW().init();
   </script>

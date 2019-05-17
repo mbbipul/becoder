@@ -1,12 +1,62 @@
 
 'use strict';
 
-// Signs-in becoder 
+// Signs-in becoder
 function signIn() {
   // TODO 1: Sign in Firebase with credential from the Google user.
     var provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider);
-    console.log("sing in")
+    firebase.auth().signInWithPopup(provider);
+    console.log("sing in");
+}
+
+function signUpWithEmailPassword(){
+  var email = userSignUpEmail.value;
+  var username = userSignUpUsername.value;
+  var password = userSignUpPass.value;
+  var auth = firebase.auth();
+  auth.createUserWithEmailAndPassword(email,password).then(function() {
+  // Sign-out successful.
+  console.log("ahhh santi");
+  var user = auth.currentUser;
+
+  user.updateProfile({
+    displayName: "Jane Q. User",
+    photoURL: "https://example.com/jane-q-user/profile.jpg"
+  }).then(function() {
+    // Update successful.
+    console.log("Update successfully");
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
+  }).catch(function(error) {
+    // An error happened.
+    console.log("aaah cude gelo");
+  });
+
+  console.log(getUserName());
+  var db = firebase.firestore();
+  db.collection("user").add({
+      username: username,
+      email: email
+  })
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+}
+function signInWithEmailPassword(){
+    var email = document.getElementById("user-sign-in-email").value;
+    var password = document.getElementById("user-sign-in-password").value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
 }
 
 // Signs-out of becoder
@@ -17,9 +67,37 @@ function signOut() {
 
 // Initiate firebase auth.
 function initFirebaseAuth() {
-  // TODO 3: Initialize Firebase.
-      firebase.auth().onAuthStateChanged(authStateObserver);
+  var auth = firebase.auth();
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("signin");
 
+      // User signed in!
+      var userName = getUserName();
+      var userpic = getProfilePicUrl();
+      // Set the user's profile pic and name.
+      console.log(userpic);
+      userNameElement.textContent = userName;
+
+      // Show user's profile and sign-out button.
+      userNameElement.removeAttribute('hidden');
+      signOutButtonElement.removeAttribute('hidden');
+      userPicElement.removeAttribute('hidden');
+      userPicElement.style.backgroundImage = 'url(' + addSizeToGoogleProfilePic(userpic) + ')';
+      // Hide sign-in button.
+      signInButtonElement.setAttribute('hidden', 'true');
+      } else {
+        console.log("sign out");
+      // User logged out
+      // Hide user's profile and sign-out button.
+      userNameElement.setAttribute('hidden', 'true');
+      signOutButtonElement.setAttribute('hidden', 'true');
+      userPicElement.setAttribute('hidden', 'true');
+
+      // Show sign-in button.
+      signInButtonElement.removeAttribute('hidden');
+    }
+  });
 }
 
 // Returns the signed-in user's profile Pic URL.
@@ -39,7 +117,7 @@ function getUserName() {
 // Returns true if a user is signed-in.
 function isUserSignedIn() {
   // TODO 6: Return true if a user is signed-in.
-      return !!firebase.auth().currentUser;
+      return !firebase.auth().currentUser;
 
 }
 
@@ -64,7 +142,7 @@ function loadMessages() {
                   .collection('messages')
                   .orderBy('timestamp', 'desc')
                   .limit(12);
-  
+
   // Start listening to the query.
   query.onSnapshot(function(snapshot) {
     snapshot.docChanges().forEach(function(change) {
@@ -330,29 +408,26 @@ checkSetup();
 //var userPicElement = document.getElementById('user-pic');
 //var userNameElement = document.getElementById('user-name');
 var signInButtonElement = document.getElementById('google_login');
-//var signOutButtonElement = document.getElementById('sign-out');
-//var signInSnackbarElement = document.getElementById('must-signin-snackbar');
-//
-//// Saves message on form submit.
-//messageFormElement.addEventListener('submit', onMessageFormSubmit);
-//signOutButtonElement.addEventListener('click', signOut);
+
+var userSignUpEmail = document.getElementById('user-sign-up-email');
+var userSignUpPass = document.getElementById('user-sign-up-password');
+var userSignUpUsername = document.getElementById('user-sign-up-username');
+
+var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
+var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
+var signInSignUpJumborton = document.getElementById('sign-in-sign-up-jumbotron');
+var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
+var looutButton = document.getElementById('logout');
+var userNavItem = document.getElementById('navbar-user-item');
+var userNavName = document.getElementById('nav-user-name');
+
 signInButtonElement.addEventListener('click', signIn);
-
-//// Toggle for the button.
-//messageInputElement.addEventListener('keyup', toggleButton);
-//messageInputElement.addEventListener('change', toggleButton);
-
-//// Events for image upload.
-//imageButtonElement.addEventListener('click', function(e) {
-//  e.preventDefault();
-//  mediaCaptureElement.click();
-//});
-//mediaCaptureElement.addEventListener('change', onMediaFileSelected);
-
-// initialize Firebase
+signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
+signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
+logout.addEventListener('click',signOut);
 initFirebaseAuth();
 
-// Remove the warning about timstamps change. 
+// Remove the warning about timstamps change.
 var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);

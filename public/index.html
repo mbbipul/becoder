@@ -19,7 +19,7 @@
   <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
-    
+
 <!--  firebase config-->
     <script src="/__/firebase/5.6.0/firebase-app.js"></script>
     <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
@@ -183,14 +183,15 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Notifications</a>
               </li>
-              <li class="nav-item">
+
+              <li class="nav-item" id="navbar-login-signin-button" >
                 <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
               </li>
 
-              <!-- <li class="nav-item dropdown">
+              <li class="nav-item dropdown" id="navbar-user-item" hidden>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="?php echo $images_folder?>becoder_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                  becoder</a>
+                  <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                  <span id="nav-user-name">becoder</span></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Ranking</a>
                   <a class="dropdown-item" href="#">Profile</a>
@@ -198,10 +199,10 @@
                   <a class="dropdown-item" href="#">Note</a>
                   <a class="dropdown-item" href="#">Setting</a>
                   <a class="dropdown-item" href="#">Administration</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" id="logout" href="#">Logout</a>
 
                 </div>
-              </li> -->
+              </li>
             </ul>
           </div>
         </nav>
@@ -211,7 +212,7 @@
 
 
     <!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog cascading-modal" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -240,15 +241,15 @@
             <div class="modal-body mb-1">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput10" class="form-control form-control-sm validate">
+                <input type="email" placeholder="email or username" id="user-sign-in-email" class="form-control form-control-sm validate">
               </div>
 
               <div class="md-form form-sm mb-4">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput11" class="form-control form-control-sm validate">
+                <input type="password" placeholder="password" id="user-sign-in-password" class="form-control form-control-sm validate">
               </div>
               <div class="text-center mt-2">
-                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info"  id= "sign-in-with-email" >Log in <i class="fas fa-sign-in ml-1"></i></button>
               </div>
             </div>
             <!--Footer-->
@@ -280,14 +281,18 @@
             <div class="modal-body">
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput12" class="form-control form-control-sm validate">
-            
-              </div>
+                <input type="email" placeholder="email" id="user-sign-up-email" class="form-control form-control-sm validate">
 
+              </div>
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-user prefix"></i>
+                <input type="text" placeholder="username" id="user-sign-up-username" class="form-control form-control-sm validate">
+
+              </div>
               <div class="md-form form-sm mb-5">
                 <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput13" class="form-control form-control-sm validate">
-               
+                <input type="password" placeholder="password" id="user-sign-up-password" class="form-control form-control-sm validate">
+
               </div>
 
               <div class="md-form form-sm mb-4">
@@ -300,7 +305,7 @@
                               Terms and Conditions</a></label>
             </div>
               <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                <button class="btn btn-info" id="sign-up-with-email">Sign up <i class="fas fa-sign-in ml-1"></i></button>
               </div>
 
             </div>
@@ -332,7 +337,7 @@
 </div>
 <!--Modal: Login / Register Form-->
 <div >
-        
+
 
   <!--Grid row-->
   <!--Section: Post-->
@@ -340,7 +345,7 @@
 
   <main style="margin-top: 70px;">
         <!--Main Navigation-->
-  <div class="row wow fadeIn" data-wow-delay="0.2s">
+  <div hidden class="row wow fadeIn" id="sign-in-sign-up-jumbotron" data-wow-delay="0.2s">
     <div class="col-md-12">
       <div class="jumbotron">
         <h2 class="h2-responsive">Learn to be a Coder</h2>
@@ -511,7 +516,7 @@
 
           <!--Grid column-->
           <div class="col-md-4" style="padding-top:35px;">
-						
+
             <!--Card: Jumbotron-->
             <div class="mt-4">
 
