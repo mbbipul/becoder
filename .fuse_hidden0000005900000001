@@ -1,0 +1,110 @@
+[debug] [2019-05-18T07:21:41.604Z] ----------------------------------------------------------------------
+[debug] [2019-05-18T07:21:41.606Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2019-05-18T07:21:41.607Z] CLI Version:   6.10.0
+[debug] [2019-05-18T07:21:41.607Z] Platform:      linux
+[debug] [2019-05-18T07:21:41.607Z] Node Version:  v8.10.0
+[debug] [2019-05-18T07:21:41.607Z] Time:          Sat May 18 2019 13:21:41 GMT+0600 (+06)
+[debug] [2019-05-18T07:21:41.607Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-18T07:21:41.616Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-18T07:21:41.616Z] > authorizing via signed-in user
+[debug] [2019-05-18T07:21:41.617Z] [iam] checking project becoder-91007 for permissions ["firebase.projects.get"]
+[debug] [2019-05-18T07:21:41.618Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-18T07:21:41.619Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-18T07:21:41.982Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T07:21:42.033Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007:testIamPermissions  
+
+[debug] [2019-05-18T07:21:43.758Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T07:21:43.763Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007  
+ 
+[debug] [2019-05-18T07:21:45.323Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T07:21:45.326Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/547295661212/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-18T07:21:45.989Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-18T09:42:16.044Z] ----------------------------------------------------------------------
+[debug] [2019-05-18T09:42:16.048Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2019-05-18T09:42:16.048Z] CLI Version:   6.10.0
+[debug] [2019-05-18T09:42:16.048Z] Platform:      linux
+[debug] [2019-05-18T09:42:16.049Z] Node Version:  v8.10.0
+[debug] [2019-05-18T09:42:16.049Z] Time:          Sat May 18 2019 15:42:16 GMT+0600 (+06)
+[debug] [2019-05-18T09:42:16.049Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-18T09:42:16.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-18T09:42:16.140Z] > authorizing via signed-in user
+[debug] [2019-05-18T09:42:16.141Z] [iam] checking project becoder-91007 for permissions ["firebase.projects.get"]
+[debug] [2019-05-18T09:42:16.145Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-18T09:42:16.146Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-18T09:42:20.711Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T09:42:20.773Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007:testIamPermissions  
+
+[debug] [2019-05-18T09:42:26.440Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T09:42:26.444Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007  
+ 
+[debug] [2019-05-18T09:42:30.927Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-18T09:42:30.929Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/547295661212/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-18T09:42:46.443Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-20T19:31:52.348Z] ----------------------------------------------------------------------
+[debug] [2019-05-20T19:31:52.354Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2019-05-20T19:31:52.354Z] CLI Version:   6.10.0
+[debug] [2019-05-20T19:31:52.354Z] Platform:      linux
+[debug] [2019-05-20T19:31:52.355Z] Node Version:  v8.10.0
+[debug] [2019-05-20T19:31:52.355Z] Time:          Tue May 21 2019 01:31:52 GMT+0600 (+06)
+[debug] [2019-05-20T19:31:52.355Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-20T19:31:52.518Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-20T19:31:52.518Z] > authorizing via signed-in user
+[debug] [2019-05-20T19:31:52.518Z] [iam] checking project becoder-91007 for permissions ["firebase.projects.get"]
+[debug] [2019-05-20T19:31:52.520Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-20T19:31:52.520Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-20T19:31:52.876Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T19:31:52.934Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007:testIamPermissions  
+
+[debug] [2019-05-20T19:31:54.376Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T19:31:54.380Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007  
+ 
+[debug] [2019-05-20T19:31:55.720Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T19:31:55.722Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/547295661212/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-20T19:31:56.563Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2019-05-20T19:39:03.001Z] ----------------------------------------------------------------------
+[debug] [2019-05-20T19:39:03.005Z] Command:       /usr/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2019-05-20T19:39:03.005Z] CLI Version:   6.10.0
+[debug] [2019-05-20T19:39:03.005Z] Platform:      linux
+[debug] [2019-05-20T19:39:03.006Z] Node Version:  v8.10.0
+[debug] [2019-05-20T19:39:03.006Z] Time:          Tue May 21 2019 01:39:03 GMT+0600 (+06)
+[debug] [2019-05-20T19:39:03.006Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-20T19:39:03.017Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-20T19:39:03.017Z] > authorizing via signed-in user
+[debug] [2019-05-20T19:39:03.017Z] [iam] checking project becoder-91007 for permissions ["firebase.projects.get"]
+[debug] [2019-05-20T19:39:03.019Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007:testIamPermissions  
+
+[debug] [2019-05-20T19:39:08.142Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T19:39:08.144Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/becoder-91007  
+ 
+[debug] [2019-05-20T19:39:09.885Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T19:39:09.888Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/547295661212/clients/_:getWebAppConfig  
+ 
+[debug] [2019-05-20T19:39:12.962Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
+[debug] [2019-05-20T19:39:56.248Z] ----------------------------------------------------------------------
+[debug] [2019-05-20T19:39:56.251Z] Command:       /usr/bin/node /usr/local/bin/firebase login
+[debug] [2019-05-20T19:39:56.251Z] CLI Version:   6.10.0
+[debug] [2019-05-20T19:39:56.251Z] Platform:      linux
+[debug] [2019-05-20T19:39:56.252Z] Node Version:  v8.10.0
+[debug] [2019-05-20T19:39:56.252Z] Time:          Tue May 21 2019 01:39:56 GMT+0600 (+06)
+[debug] [2019-05-20T19:39:56.252Z] ----------------------------------------------------------------------
+[debug] 
+[info] Already logged in as becodercse3@gmail.com
