@@ -21,6 +21,13 @@
   <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+  <!--  firebase config-->
+<script src="/__/firebase/init.js"></script>
   <style>
   html, body {
     max-width: 100%;
@@ -1103,7 +1110,7 @@ label.required::after {
                             <label class="required">Contest Name</label>
                         </td>
                         <td>
-                            <input type="text" name="contestname" placeholder="Enter Contest Name..." class="form-control" />
+                            <input type="text" name="contest_name" placeholder="Enter Contest Name..." class="form-control" />
                         </td>
                     </tr>
 
@@ -1112,7 +1119,7 @@ label.required::after {
                                     <label class="required">Organization Type</label>
                                 </td>
                                 <td>
-                                    <select id="select" name="select" class="form-control">
+                                    <select id="select" name="organizatio_type" class="form-control">
                                         <option value="1">School</option>
                                         <option value="2">Company</option>
                                         <option value="3">Others</option>
@@ -1136,8 +1143,8 @@ label.required::after {
                             <label class="required">Start Time</label>
                         </td>
                         <td class="input-group">
-                          <input id="sdate" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                           <input style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                          <input id="sdate" name="start_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                           <input name="start_time" style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
                         </td>
                     </tr>
 
@@ -1146,8 +1153,8 @@ label.required::after {
                           <label class="required">End Time</label>
                       </td>
                       <td class="input-group">
-                        <input id="sdate" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                         <input style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                        <input id="sdate" name="end_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                        <input style="width:90px" name="end_time" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
                       </td>
                     </tr>
 
@@ -1156,13 +1163,13 @@ label.required::after {
                             <label class="required">Contest goal</label>
                         </td>
                         <td>
-                          <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                          <textarea name="contest_goal" class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
                         </td>
                   </tr>
 
                 </table>
                     </form>
-                    <input type="checkbox"  id="defaultUnchecked">
+                    <input type="checkbox"  id="contest_term_condition_check">
                     <label class="" for="defaultUnchecked">Accept the contest<a href="#" class="green-text font-weight-bold">
                                   Terms and Conditions</a></label>
                 </div>
@@ -1193,15 +1200,49 @@ var createContestModal = document.getElementById('create_contest_modal');
 var createContestMessageModal = document.getElementById('contest_confirm_message');
 var createContestButton = document.getElementById('create_contest_button');
 var createContestOkButton = document.getElementById('create_contest_ok_button');
+var contestname = document.getElementById('contest_name');
+var organization_type = $("#organizatio_type:selected").text();
+var organizationname = document.getElementById('organizationname');
+var start_date = document.getElementById('start_time');
+var start_time = document.getElementById('end_time');
+var end_date = document.getElementById('start_time');
+var end_time = document.getElementById('end_time');
+var contest_goal = document.getElementById('contest_goal');
+var contest_term = document.getElementById("contest_term_condition_check").checked;
+
 createContestButton.addEventListener('click',createContest);
 createContestOkButton.addEventListener('click',createContestOk);
 function createContest(){
   createContestModal.setAttribute('hidden', 'true');
-  createContestButton.setAttribute('hidden', 'true')
+  createContestButton.setAttribute('hidden', 'true');
+
+  var createcontestDb = {
+    contestName : contestname,
+    organizationType :organization_type,
+    organizationName :organizationname,
+    startDate : start_date,
+    startTime : start_time,
+    endDate : end_date,
+    endTime : end_time,
+    contestGoal : contest_goal
+  };
+  createContestFirestore(createcontestDb);
   createContestMessageModal.removeAttribute('hidden');
   createContestOkButton.removeAttribute('hidden');
 }
+function createContestFirestore(createcontestDb){
+  var firestore = firebase.firestore();
+  var settings = {timestampsInSnapshots: true};
+  firestore.settings(settings);
+  firestore.collection("contests").add(createcontestDb)
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
 
+}
 function createContestOk(){
   createContestMessageModal.setAttribute('hidden', 'true');
   createContestOkButton.setAttribute('hidden', 'true')
@@ -1326,6 +1367,7 @@ initializeClockd('clockdivup2', deadlined);
       });
     });
   </script>
+
 </body>
 
 </html>

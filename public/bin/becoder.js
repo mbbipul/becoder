@@ -117,6 +117,7 @@ function checkSetup() {
   }
 }
 
+
 // Checks that Firebase has been imported.
 checkSetup();
 var signInButtonElement = document.getElementById('google_login');
