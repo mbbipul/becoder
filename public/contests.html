@@ -1103,14 +1103,13 @@ label.required::after {
                   </button>
                 </div>
                 <div class="modal-body mx-3" id="create_contest_modal">
-                    <form action="" method="post" enctype="multipart/form-data">
                       <table class="form">
                   <tr>
                         <td class="td">
                             <label class="required">Contest Name</label>
                         </td>
                         <td>
-                            <input type="text" name="contest_name" placeholder="Enter Contest Name..." class="form-control" />
+                            <input type="text" id="contest_name" placeholder="Enter Contest Name..." class="form-control" />
                         </td>
                     </tr>
 
@@ -1119,7 +1118,7 @@ label.required::after {
                                     <label class="required">Organization Type</label>
                                 </td>
                                 <td>
-                                    <select id="select" name="organizatio_type" class="form-control">
+                                    <select id="organizatio_type" class="form-control">
                                         <option value="1">School</option>
                                         <option value="2">Company</option>
                                         <option value="3">Others</option>
@@ -1132,7 +1131,7 @@ label.required::after {
                             <label class="required">Organization Name</label>
                         </td>
                         <td>
-                            <input type="text" name="organizationname" placeholder="Enter Organization Name..." class="form-control" />
+                            <input type="text" id="organizationname" placeholder="Enter Organization Name..." class="form-control" />
                         </td>
                   </tr>
 
@@ -1143,8 +1142,8 @@ label.required::after {
                             <label class="required">Start Time</label>
                         </td>
                         <td class="input-group">
-                          <input id="sdate" name="start_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                           <input name="start_time" style="width:90px" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                          <input  id="start_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                           <input id="start_time" style="width:90px"  class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
                         </td>
                     </tr>
 
@@ -1153,8 +1152,8 @@ label.required::after {
                           <label class="required">End Time</label>
                       </td>
                       <td class="input-group">
-                        <input id="sdate" name="end_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                        <input style="width:90px" name="end_time" id="stime" class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
+                        <input id="end_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
+                        <input style="width:90px" id="end_time"  class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
                       </td>
                     </tr>
 
@@ -1163,12 +1162,11 @@ label.required::after {
                             <label class="required">Contest goal</label>
                         </td>
                         <td>
-                          <textarea name="contest_goal" class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                          <textarea id="contest_goal" class="form-control"  rows="3"></textarea>
                         </td>
                   </tr>
 
                 </table>
-                    </form>
                     <input type="checkbox"  id="contest_term_condition_check">
                     <label class="" for="defaultUnchecked">Accept the contest<a href="#" class="green-text font-weight-bold">
                                   Terms and Conditions</a></label>
@@ -1200,19 +1198,21 @@ var createContestModal = document.getElementById('create_contest_modal');
 var createContestMessageModal = document.getElementById('contest_confirm_message');
 var createContestButton = document.getElementById('create_contest_button');
 var createContestOkButton = document.getElementById('create_contest_ok_button');
-var contestname = document.getElementById('contest_name');
-var organization_type = $("#organizatio_type:selected").text();
-var organizationname = document.getElementById('organizationname');
-var start_date = document.getElementById('start_time');
-var start_time = document.getElementById('end_time');
-var end_date = document.getElementById('start_time');
-var end_time = document.getElementById('end_time');
-var contest_goal = document.getElementById('contest_goal');
-var contest_term = document.getElementById("contest_term_condition_check").checked;
+
 
 createContestButton.addEventListener('click',createContest);
 createContestOkButton.addEventListener('click',createContestOk);
 function createContest(){
+  var contestname = document.getElementById('contest_name').value;
+  var organization_type = $("#organizatio_type:selected").text();
+  var organizationname = document.getElementById('organizationname').value;
+  var start_date = document.getElementById('start_date').value;
+  var start_time = document.getElementById('start_time').value;
+  var end_date = document.getElementById('end_date').value;
+  var end_time = document.getElementById('end_time').value;
+  var contest_goal = document.getElementById('contest_goal').value;
+  var contest_term = document.getElementById("contest_term_condition_check").checked;
+console.log(contestname.value);
   createContestModal.setAttribute('hidden', 'true');
   createContestButton.setAttribute('hidden', 'true');
 

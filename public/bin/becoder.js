@@ -61,10 +61,14 @@ function getProfilePicUrl() {
   }
 }
 
+function getUserEmail(){
+  if(isUserSignedIn()){
+    return firebase.auth().currentUser.email;
+  }
+}
 // Returns the signed-in user's display name.
 function getUserName() {
   if(isUserSignedIn()){
-    console.log("bipul");
     return firebase.auth().currentUser.displayName;
   }
 }
@@ -116,32 +120,3 @@ function checkSetup() {
         'sure you are running the codelab using `firebase serve`');
   }
 }
-
-
-// Checks that Firebase has been imported.
-checkSetup();
-var signInButtonElement = document.getElementById('google_login');
-
-var userSignUpEmail = document.getElementById('user-sign-up-email');
-var userSignUpPass = document.getElementById('user-sign-up-password');
-var userSignUpUsername = document.getElementById('user-sign-up-username');
-
-var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
-var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
-var signInSignUpJumborton = document.getElementById('sign-in-sign-up-jumbotron');
-var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
-var footerSigninSignupButton = document.getElementById('footer-signin-signup-button');
-var logoutButton = document.getElementById('logout');
-var userNavItem = document.getElementById('navbar-user-item');
-var userNavName = document.getElementById('nav-user-name');
-var userNavPic = document.getElementById('nav-user-pic');
-
-signInButtonElement.addEventListener('click', signIn);
-signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
-signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
-logoutButton.addEventListener('click',signOut);
-
-var firestore = firebase.firestore();
-var settings = {timestampsInSnapshots: true};
-firestore.settings(settings);
-initFirebaseAuth();

@@ -11,6 +11,8 @@
   <link href="assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="assets/library/mdb/css/mdb.min.css" rel="stylesheet">
+  <link href="assets/css/becoder.css" rel="stylesheet">
+
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
@@ -29,120 +31,6 @@
     <!--  firebase config-->
 <script src="/__/firebase/init.js"></script>
 
-  <style>
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-      .card{
-          background-color: #fafafa ;
-      }
-    /*becoder style*/
-    .becoder_tutorial_header > h3{
-      filter:blur(1px);
-      font-size: 20px;
-    }
-    .navbar .navbar-brand{
-      margin-left:10% !important;
-    }
-    .navbar-nav > li{
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .ml-auto .dropdown-menu {
-      margin-top: 7px !important;
-     left: auto !important;
-     right: 0px;
-    }
-    /* TEMPLATE STYLES */
-
-     main {
-         padding-bottom: 2rem;
-     }
-
-     .extra-margins {
-         margin-top: 1rem;
-         margin-bottom: 2.5rem;
-     }
-
-     .jumbotron {
-         text-align: center;
-     }
-
-     .navbar {
-         background-color: #3b295a;
-     }
-
-     footer.page-footer {
-         background-color: #3b295a;
-         margin-top: 2rem;
-     }
-     .navbar .btn-group .dropdown-menu a:hover {
-         color: #000 !important;
-     }
-     .navbar .btn-group .dropdown-menu a:active {
-         color: #fff !important;
-     }
-
-  /*login/register*/
-    .social {
-        float: left;
-        margin: 0 auto 30px;
-        text-align: center;
-    }
-
-    .social .circle{
-           width: 50px;
-       height: 50px;
-       -moz-border-radius: 70px;
-       -webkit-border-radius: 70px;
-       border-radius: 70px;
-
-        background-color: #EEEEEE;
-        color: #FFFFFF;
-        display: inline-block;
-        margin: 5px 13px;
-        padding: 15px;
-    }
-     .social .circle .fab{
-        font-size: 20px;
-    }
-    .social .facebook{
-        background-color: #455CA8;
-        color: #FFFFFF;
-    }
-    .social .google{
-        background-color: #F74933;
-    }
-    .social .github{
-        background-color: #403A3A;
-    }
-    .facebook:hover{
-        background-color: #6E83CD;
-    }
-    .google:hover{
-        background-color: #FF7566;
-    }
-    .github:hover{
-        background-color: #4D4D4d;;
-    }
-    .login_connect_with{
-        text-align: center;
-    }
-    .contest_reg_button{
-        border: 1px solid black;
-        padding: 5px;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 5px;
-        font-size: 20px;
-        z-index: 0;
-      }
-.no_padding{
-  padding: 0;
-  margin: 0;
-}
-   </style>
 
 </head>
     <body class="grey lighten-3">
@@ -194,7 +82,7 @@
                   <span id="nav-user-name">becoder</span></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Ranking</a>
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="userProfile.html">Profile</a>
                   <a class="dropdown-item" href="#">Submission</a>
                   <a class="dropdown-item" href="#">Note</a>
                   <a class="dropdown-item" href="#">Setting</a>
@@ -820,6 +708,37 @@
   new WOW().init();
   </script>
 <script type="text/javascript" src="bin/becoder.js"></script>
+<script>
+// Checks that Firebase has been imported.
+checkSetup();
+console.log(firebase.auth().currentUser+"jfhjsh ");
+
+var signInButtonElement = document.getElementById('google_login');
+
+var userSignUpEmail = document.getElementById('user-sign-up-email');
+var userSignUpPass = document.getElementById('user-sign-up-password');
+var userSignUpUsername = document.getElementById('user-sign-up-username');
+
+var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
+var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
+var signInSignUpJumborton = document.getElementById('sign-in-sign-up-jumbotron');
+var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
+var footerSigninSignupButton = document.getElementById('footer-signin-signup-button');
+var logoutButton = document.getElementById('logout');
+var userNavItem = document.getElementById('navbar-user-item');
+var userNavName = document.getElementById('nav-user-name');
+var userNavPic = document.getElementById('nav-user-pic');
+
+signInButtonElement.addEventListener('click', signIn);
+signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
+signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
+logoutButton.addEventListener('click',signOut);
+
+var firestore = firebase.firestore();
+var settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+initFirebaseAuth();
+</script>
 </body>
 
 </html>

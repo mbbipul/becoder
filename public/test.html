@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Your Profile</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="assets/library/mdb/css/mdb.min.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
+
+<!--  firebase config-->
+    <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+    <!--  firebase config-->
+<script src="/__/firebase/init.js"></script>
+</head>
+<body>
+  <p id="name">
+    hello
+  </p>
+  <img id="pic"/>
+  <script>
+  var auth = firebase.auth();
+  auth.onAuthStateChanged(function(user) {
+  authStateObserver(user);
+    console.log(user);
+
+  });
+  function authStateObserver(user) {
+    if (user) { // User is signed in!
+      // Get the signed-in user's profile pic and name.
+    document.getElementById('name').innerText = user.displayName;
+
+
+    }
+  }
+  </script>
+</body>
+</html>

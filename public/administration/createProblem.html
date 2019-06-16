@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="assets/images/becoder.png" type="image/gif" sizes="16x16">
+  <title>becoder</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="../assets/library/mdb/css/mdb.min.css" rel="stylesheet">
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../assets/library/mdb/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../assets/library/mdb/js/mdb.min.js"></script>
+
+<link href="style.css" rel="stylesheet">
+<script src="ckeditor.js"></script>
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+
+
+<div class="maincontent">
+
+<div class="head">
+<h2>Create Challenge By Own</h2>
+<p>Get started by providing the initial details needed to create a challenge.</p>
+
+</div>
+<div class="landingPageForm">
+<form action="" method="post" enctype="multipart/form-data">
+<table>
+<tr class="trr">
+                <td class="td">
+                    <label>Challenge Name</label>
+                </td>
+                <td>
+              <input type="text" name="contestname" placeholder="Enter Challenge Name" class="medium" />
+          </td>
+           </tr>
+
+
+           <tr class="trr">
+          <td class="td">
+              <label class="required">Description</label>
+          </td>
+          <td>
+              <textarea name="content" id="editor">
+
+        </textarea>
+          </td>
+   </tr>
+
+   <tr class="trr">
+          <td class="td">
+              <label class="required">Problem Statement</label>
+          </td>
+          <td>
+              <textarea class="tarea"  id="editor1">
+
+        </textarea>
+          </td>
+   </tr>
+
+   <tr >
+          <td class="td">
+              <label class="required">Input Format</label>
+          </td>
+          <td>
+              <textarea class="trr" name="content" id="editor2">
+
+        </textarea>
+          </td>
+   </tr>
+
+   <tr class="trr">
+          <td class="td">
+              <label class="required">Constraints</label>
+          </td>
+          <td>
+              <textarea name="content" id="editor3">
+
+        </textarea>
+          </td>
+   </tr>
+
+   <tr class="trr">
+          <td class="td">
+              <label class="required">Output Format</label>
+          </td>
+          <td>
+              <textarea name="content" id="editor4">
+
+        </textarea>
+          </td>
+   </tr>
+
+   <tr class="trr">
+          <td class="td">
+              <label class="required">Tags</label>
+          </td>
+          <td>
+              <textarea>
+
+        </textarea>
+          </td>
+   </tr>
+
+</table>
+
+</form>
+
+<a href="" type="button" class="btn btn-success">Save</a>
+
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor1' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor2' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor3' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+
+<script>
+  ClassicEditor
+    .create( document.querySelector( '#editor4' ) )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
+
+
+
+</div>
+
+
+</div>
+
+</div>
+</body>
+
+</html>
