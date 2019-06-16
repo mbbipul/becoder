@@ -20,148 +20,182 @@
   <script type="text/javascript" src="../assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="../assets/library/mdb/js/mdb.min.js"></script>
+  <script src="ckeditor.js"></script>
+  <!-- <script src="../assets/library/ckeditor/samples/js/sample.js"></script>
+  <link rel="stylesheet" href="../assets/library/ckeditor/samples/css/samples.css"> -->
+<style>
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+  .create_challange_div label{
+    display: inline-block;
 
-<link href="style.css" rel="stylesheet">
-<script src="ckeditor.js"></script>
+  }
+  .create_challange_div textarea{
+    width: 400px;
+    height: 50px;
+  }
+  .create_challange_div label{
+    position: relative;
+    top: 40px;
+  }
+  .create_challange_div div{
+  }
+
+  label.required::after {
+    content: '*';
+    margin-left: 2px;
+    color: red;
+    font-size:20px;
+  }
+.grid-container{
+  margin-left: 250px!important;
+}
+.medium{
+  width: 500px;
+}
+.grid-container{
+  width: 750px;
+}
+.ck-editor__editable
+{
+    min-height: 200px !important;
+}
+.navbar-fixed-bottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+</style>
 </head>
 
 <body>
 
+  <div class="ml-5 container-fluid mt-3">
+    <h3><strong>Manage Problem </strong><span style="font-size:14px">create problem</span></h1>
 
-<div class="container-fluid">
-
-
-<div class="maincontent">
+  </div>
+  <hr />
+<div class="container-fluid ">
+<div class="maincontent ml-5 mr-5">
 
 <div class="head">
-<h2>Create Challenge By Own</h2>
+<h2>Create Problem By Own</h2>
 <p>Get started by providing the initial details needed to create a challenge.</p>
 
 </div>
+<hr />
+
 <div class="landingPageForm">
-<form action="" method="post" enctype="multipart/form-data">
-<table>
-<tr class="trr">
-                <td class="td">
-                    <label>Challenge Name</label>
-                </td>
-                <td>
-              <input type="text" name="contestname" placeholder="Enter Challenge Name" class="medium" />
-          </td>
-           </tr>
+          <div class="create_challange_div">
+              <label class="required">Problem Name</label>
+              <div class="ml-5">
+                <div class="grid-container ml-5">
+                  <input type="text" name="contestname" placeholder="Enter Challenge Name" class="medium" />
 
+                  </div>
+              </div>
+          </div>
 
-           <tr class="trr">
-          <td class="td">
-              <label class="required">Description</label>
-          </td>
-          <td>
-              <textarea name="content" id="editor">
-
-        </textarea>
-          </td>
-   </tr>
-
-   <tr class="trr">
-          <td class="td">
+          <div class="create_challange_div ">
               <label class="required">Problem Statement</label>
-          </td>
-          <td>
-              <textarea class="tarea"  id="editor1">
+              <div class="ml-5">
+                <div class="grid-container ml-5">
+            				<div id="editor">
 
-        </textarea>
-          </td>
-   </tr>
+            				</div>
+                  </div>
+              </div>
 
-   <tr >
-          <td class="td">
+          </div>
+
+          <div class="create_challange_div">
               <label class="required">Input Format</label>
-          </td>
-          <td>
-              <textarea class="trr" name="content" id="editor2">
+              <div class="ml-5">
+                <div class="grid-container ml-5">
+                    <div id="editor2">
 
-        </textarea>
-          </td>
-   </tr>
+                    </div>
+                  </div>
+              </div>
+          </div>
 
-   <tr class="trr">
-          <td class="td">
+          <div class="create_challange_div">
               <label class="required">Constraints</label>
-          </td>
-          <td>
-              <textarea name="content" id="editor3">
+              <div class="ml-5">
+                <div class="grid-container ml-5">
+                    <div id="editor3">
 
-        </textarea>
-          </td>
-   </tr>
+                    </div>
+                  </div>
+              </div>
+            </div>
 
-   <tr class="trr">
-          <td class="td">
+
+            <div class="create_challange_div">
               <label class="required">Output Format</label>
-          </td>
-          <td>
-              <textarea name="content" id="editor4">
+              <div class="ml-5">
+                <div class="grid-container ml-5">
+            				<div id="editor4">
 
-        </textarea>
-          </td>
-   </tr>
+            				</div>
+                  </div>
+              </div>
+              </div>
 
-   <tr class="trr">
-          <td class="td">
-              <label class="required">Tags</label>
-          </td>
-          <td>
-              <textarea>
 
-        </textarea>
-          </td>
-   </tr>
+              <div class="create_challange_div">
+                <label class="required">Tags</label>
+                <div class="ml-5">
+                  <div class="grid-container ml-5">
+              				<textarea>
+                      </textarea>
+                    </div>
+                </div>
+                </div>
+                <br style="margin-bottom:200px;"/>
+                <br style="margin-bottom:200px;"/>
+                <br style="margin-bottom:200px;"/>
+              <script>
+	        		ClassicEditor
+		            .create( document.querySelector( '#editor' ) )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+    			</script>
+    			<script>
+	        		ClassicEditor
+		            .create( document.querySelector( '#editor1' ) )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+    			</script>
 
-</table>
+    			<script>
+	        		ClassicEditor
+		            .create( document.querySelector( '#editor2' ) )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+    			</script>
 
-</form>
+    			<script>
+	        		ClassicEditor
+		            .create( document.querySelector( '#editor3' ) )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+    			</script>
 
-<a href="" type="button" class="btn btn-success">Save</a>
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor1' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor2' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor3' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
-
-<script>
-  ClassicEditor
-    .create( document.querySelector( '#editor4' ) )
-    .catch( error => {
-        console.error( error );
-    } );
-</script>
-
+    			<script>
+	        		ClassicEditor
+		            .create( document.querySelector( '#editor4' ) )
+		            .catch( error => {
+		                console.error( error );
+		            } );
+    			</script>
 
 
 </div>
@@ -169,6 +203,14 @@
 
 </div>
 
+</div>
+  <div class="page-footer footer navbar-fixed-bottom">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-right py-3 pr-5">
+    <a href="" type="button" class="btn btn-success" >Create Problem </a>
+  </div>
+  <!-- Copyright -->
 </div>
 </body>
 

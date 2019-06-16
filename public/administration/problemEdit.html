@@ -19,6 +19,7 @@
   <script type="text/javascript" src="../assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="../assets/library/mdb/js/mdb.min.js"></script>
+  <script src="ckeditor.js"></script>
 
 <!--  firebase config-->
     <script src="../__/firebase/5.6.0/firebase-app.js"></script>
@@ -150,7 +151,44 @@
 .contest_search{
   margin-left: 460px;
 }
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+  .create_challange_div label{
+    display: inline-block;
 
+  }
+  .create_challange_div textarea{
+    width: 400px;
+    height: 50px;
+  }
+  .create_challange_div label{
+    position: relative;
+    top: 40px;
+  }
+  .create_challange_div div{
+  }
+
+  label.required::after {
+    content: '*';
+    margin-left: 2px;
+    color: red;
+    font-size:20px;
+  }
+.grid-container{
+  margin-left: 250px!important;
+}
+.medium{
+  width: 500px;
+}
+.grid-container{
+  width: 750px;
+}
+.ck-editor__editable
+{
+    min-height: 200px !important;
+}
 
 </style>
 
@@ -219,68 +257,172 @@
     <!--/.Navbar-->
 
     </header>
-    <main class="container">
+    <main class="container-fluid m-4">
           <br />
-      <h1 class="mt-5">Administration</h1>
-      <hr />
+          <div class="ml-5 container-fluid mt-5">
+            <h3><strong>Manage Problem </strong><span style="font-size:14px">bee</span></h1>
+
+          </div>      <hr />
       <ul class="m-3 p-3 border nav nav-tabs  md-tabs  hoverable" id="myTabJust" role="tablist" >
         <li class="nav-item">
 
           <a class="nav-link active" id="home-tab-just" data-toggle="tab" href="#home-just" role="tab" aria-controls="home-just"
-            aria-selected="true"><strong>Manage Contests</strong></a>
+            aria-selected="true"><strong>Details</strong></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
-            aria-selected="false"><strong>Manage Problems</strong></a>
+            aria-selected="false"><strong>Moderators</strong></a>
         </li>
-        <li class="contest_search nav-item">
-          <input class="form-control"  type="text" placeholder="Search" aria-label="Search">
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
+            aria-selected="false"><strong>Test Case</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
+            aria-selected="false"><strong>Language</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab-just" data-toggle="tab" href="#profile-just" role="tab" aria-controls="profile-just"
+            aria-selected="false"><strong>Setting</strong></a>
         </li>
       </ul>
       <div class="container-fluid tab-content  " id="myTabContentJust" >
         <div class=" tab-pane fade show active card pt-4 pl-5 pr-5" id="home-just" role="tabpanel" aria-labelledby="home-tab-just">
 
-          <table class="table table-hover">
-            <div style="margin-top:-10px;background:#f5f5f5!important">
-                <p class="float-left pt-3">Contest list you created. You can edit here....</p>
-                <button class="btn btn-sm btn-secondary float-right mb-3">Create Contest</button>
+          <div class="container-fluid ">
+          <div class="maincontent ml-5 mr-5">
+
+          <div class="head">
+          <h2>Create Problem By Own</h2>
+          <p>Get started by providing the initial details needed to create a challenge.</p>
+
+          </div>
+          <hr />
+
+          <div class="landingPageForm">
+                    <div class="create_challange_div">
+                        <label class="required">Problem Name</label>
+                        <div class="ml-5">
+                          <div class="grid-container ml-5">
+                            <input type="text" name="contestname" placeholder="Enter Challenge Name" class="medium" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create_challange_div ">
+                        <label class="required">Problem Statement</label>
+                        <div class="ml-5">
+                          <div class="grid-container ml-5">
+                      				<div id="editor">
+
+                      				</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="create_challange_div">
+                        <label class="required">Input Format</label>
+                        <div class="ml-5">
+                          <div class="grid-container ml-5">
+                              <div id="editor2">
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="create_challange_div">
+                        <label class="required">Constraints</label>
+                        <div class="ml-5">
+                          <div class="grid-container ml-5">
+                              <div id="editor3">
+
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+
+
+                      <div class="create_challange_div">
+                        <label class="required">Output Format</label>
+                        <div class="ml-5">
+                          <div class="grid-container ml-5">
+                      				<div id="editor4">
+
+                      				</div>
+                            </div>
+                        </div>
+                        </div>
+
+
+                        <div class="create_challange_div">
+                          <label class="required">Tags</label>
+                          <div class="ml-5">
+                            <div class="grid-container ml-5">
+                        				<textarea>
+                                </textarea>
+                              </div>
+                          </div>
+                          </div>
+                          <br style="margin-bottom:200px;"/>
+                          <br style="margin-bottom:200px;"/>
+                          <br style="margin-bottom:200px;"/>
+                        <script>
+          	        		ClassicEditor
+          		            .create( document.querySelector( '#editor' ) )
+          		            .catch( error => {
+          		                console.error( error );
+          		            } );
+              			</script>
+              			<script>
+          	        		ClassicEditor
+          		            .create( document.querySelector( '#editor1' ) )
+          		            .catch( error => {
+          		                console.error( error );
+          		            } );
+              			</script>
+
+              			<script>
+          	        		ClassicEditor
+          		            .create( document.querySelector( '#editor2' ) )
+          		            .catch( error => {
+          		                console.error( error );
+          		            } );
+              			</script>
+
+              			<script>
+          	        		ClassicEditor
+          		            .create( document.querySelector( '#editor3' ) )
+          		            .catch( error => {
+          		                console.error( error );
+          		            } );
+              			</script>
+
+              			<script>
+          	        		ClassicEditor
+          		            .create( document.querySelector( '#editor4' ) )
+          		            .catch( error => {
+          		                console.error( error );
+          		            } );
+              			</script>
+
+
+          </div>
+
+
+          </div>
+
+          </div>
+            <div class="page-footer footer navbar-fixed-bottom">
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-right py-3 pr-5">
+              <a href="" type="button" class="btn btn-success" >Save Changes</a>
             </div>
-          <thead class="grey lighten-4">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Contest Name</th>
-              <th scope="col">Contest Owner</th>
-              <th scope="col">Start Date</th>
-              <th scope="col">Signups</th>
-              <th scope="col">Participants</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-          </tbody>
-        </table>
+            <!-- Copyright -->
+          </div>
         </div>
         <div class="tab-pane fade card pt-4 pl-5 pr-5" id="profile-just" role="tabpanel" aria-labelledby="profile-tab-just">
           <table class="table table-hover">
