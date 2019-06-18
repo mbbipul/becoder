@@ -86,7 +86,7 @@
                   <a class="dropdown-item" href="#">Submission</a>
                   <a class="dropdown-item" href="#">Note</a>
                   <a class="dropdown-item" href="#">Setting</a>
-                  <a class="dropdown-item" href="#">Administration</a>
+                  <a class="dropdown-item" href="administration/contests.html">Administration</a>
                   <a class="dropdown-item" id="logout" href="#">Logout</a>
 
                 </div>
@@ -601,7 +601,7 @@
 
 
   <!--End Footer Layout-->
-  <footer class="page-footer text-center text-md-left mt-4 pt-4" id="footer-signin-signup-button">
+  <footer class="page-footer text-center text-md-left mt-4 pt-4" >
     <!--Footer links-->
     <div class="container-fluid">
       <div class="row">
@@ -679,7 +679,7 @@
     <!--/.Footer links-->
     <hr>
     <!--Call to action-->
-    <div class="call-to-action text-center my-4">
+    <div class="call-to-action text-center my-4" id="footer-signin-signup-button">
       <h4 class="mb-4">Learn to code</h4>
       <h5 class="mb-4">Register and start coding</h5>
       <ul class="list-unstyled list-inline">
@@ -735,10 +735,7 @@ signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
 signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
 logoutButton.addEventListener('click',signOut);
 
-var firestore = firebase.firestore();
-var settings = {timestampsInSnapshots: true};
-firestore.settings(settings);
-initFirebaseAuth();
+initFirebaseAuth(true);
 </script>
 </body>
 

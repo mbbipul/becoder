@@ -312,7 +312,7 @@ label.required::after {
   <!--Main Navigation-->
   <header>
     <!--Navbar-->
-    <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-blue scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-blue scrolling-navbar">
       <a class="navbar-brand" href="index.html">
         <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
       </a>
@@ -345,25 +345,26 @@ label.required::after {
               <li class="nav-item">
                 <a class="nav-link" href="#">Notifications</a>
               </li>
-              <li class="nav-item">
+
+              <li class="nav-item" id="navbar-login-signin-button" hidden>
                 <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
               </li>
 
-              <!-- <li class="nav-item dropdown">
+              <li class="nav-item dropdown" id="navbar-user-item" hidden>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="?php echo $images_folder?>becoder_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                  becoder</a>
+                  <img id="nav-user-pic" width="30" height="30" class="d-inline-block align-top" alt="">
+                  <span id="nav-user-name">becoder</span></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Ranking</a>
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="userProfile.html">Profile</a>
                   <a class="dropdown-item" href="#">Submission</a>
                   <a class="dropdown-item" href="#">Note</a>
                   <a class="dropdown-item" href="#">Setting</a>
-                  <a class="dropdown-item" href="#">Administration</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" href="administration/contests.html">Administration</a>
+                  <a class="dropdown-item" id="logout" href="#">Logout</a>
 
                 </div>
-              </li> -->
+              </li>
             </ul>
           </div>
         </nav>
@@ -372,126 +373,133 @@ label.required::after {
     </header>
 
 
-    <!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
 
-      <!--Modal cascading tabs-->
-      <div class="modal-c-tabs">
 
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-              Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-              Register</a>
-          </li>
-        </ul>
 
-        <!-- Tab panels -->
-        <div class="tab-content">
-          <!--Panel 7-->
-          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+        <!--Modal: Login / Register Form-->
+      <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
 
-            <!--Body-->
-            <div class="modal-body mb-1">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput10" class="form-control form-control-sm validate">
+          <!--Modal cascading tabs-->
+          <div class="modal-c-tabs">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                  Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                  Register</a>
+              </li>
+            </ul>
+
+            <!-- Tab panels -->
+            <div class="tab-content">
+              <!--Panel 7-->
+              <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                <!--Body-->
+                <div class="modal-body mb-1">
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" placeholder="email or username" id="user-sign-in-email" class="form-control form-control-sm validate">
+                  </div>
+
+                  <div class="md-form form-sm mb-4">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="password" id="user-sign-in-password" class="form-control form-control-sm validate">
+                  </div>
+                  <div class="text-center mt-2">
+                    <button class="btn btn-info"  id= "sign-in-with-email" >Log in <i class="fas fa-sign-in ml-1"></i></button>
+                  </div>
+                </div>
+                <!--Footer-->
+                <div class="login_connect_with">
+                    Or Connect With
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                  <div class="social">
+                    <a class="circle github" href="#">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a id="google_login" class="circle google" href="#">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a id="facebook_login" class="circle facebook" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                </div>
+
               </div>
+              <!--/.Panel 7-->
 
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput11" class="form-control form-control-sm validate">
+              <!--Panel 8-->
+              <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" placeholder="email" id="user-sign-up-email" class="form-control form-control-sm validate">
+
+                  </div>
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" placeholder="username" id="user-sign-up-username" class="form-control form-control-sm validate">
+
+                  </div>
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="password" id="user-sign-up-password" class="form-control form-control-sm validate">
+
+                  </div>
+
+                  <div class="md-form form-sm mb-4">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
+                  </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                    <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
+                                  Terms and Conditions</a></label>
+                </div>
+                  <div class="text-center form-sm mt-2">
+                    <button class="btn btn-info" id="sign-up-with-email">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                  </div>
+
+                </div>
+                  <div class="login_connect_with">
+                    Or Connect With
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                  <div class="social">
+                    <a class="circle github" href="#">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a id="google_login" class="circle google" href="#">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a id="facebook_login" class="circle facebook" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                </div>
               </div>
-              <div class="text-center mt-2">
-                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-            </div>
-            <!--Footer-->
-            <div class="login_connect_with">
-                Or Connect With
-              </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="social">
-                <a class="circle github" href="#">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a id="google_login" class="circle google" href="#">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a id="facebook_login" class="circle facebook" href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
+              <!--/.Panel 8-->
             </div>
 
           </div>
-          <!--/.Panel 7-->
-
-          <!--Panel 8-->
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput12" class="form-control form-control-sm validate">
-
-              </div>
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput13" class="form-control form-control-sm validate">
-
-              </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
-              </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
-                              Terms and Conditions</a></label>
-            </div>
-              <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-
-            </div>
-              <div class="login_connect_with">
-                Or Connect With
-              </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="social">
-                <a class="circle github" href="#">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a id="google_login" class="circle google" href="#">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a id="facebook_login" class="circle facebook" href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
-            </div>
-          </div>
-          <!--/.Panel 8-->
         </div>
-
+        <!--/.Content-->
       </div>
     </div>
-    <!--/.Content-->
-  </div>
-</div>
 <!--Modal: Login / Register Form-->
 
 <main style="margin-top: 70px;">
@@ -985,7 +993,7 @@ label.required::after {
 
 
   <!--End Footer Layout-->
-  <footer class="page-footer text-center text-md-left mt-4 pt-4">
+  <footer class="page-footer text-center text-md-left mt-4 pt-4" >
     <!--Footer links-->
     <div class="container-fluid">
       <div class="row">
@@ -1063,7 +1071,7 @@ label.required::after {
     <!--/.Footer links-->
     <hr>
     <!--Call to action-->
-    <div class="call-to-action text-center my-4">
+    <div class="call-to-action text-center my-4" id="footer-signin-signup-button">
       <h4 class="mb-4">Learn to code</h4>
       <h5 class="mb-4">Register and start coding</h5>
       <ul class="list-unstyled list-inline">
@@ -1176,8 +1184,8 @@ label.required::after {
                     Please wait for a while to confirm you are eligible to create this contest.
                     We will notify you after confirm your contest request.
                     After cofirmation your contest page is <h3>
-                      <a href="#" class="green-text font-weight-bold">
-                                  http://localhost:5000/contests.html</a></h3>
+                      <a href="http://localhost:5000/administration/contests.html" class="green-text font-weight-bold">
+                                  clcik here</a></h3>
                   </p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
@@ -1190,9 +1198,42 @@ label.required::after {
         </div>
   <!-- /create contest -->
 
+
   <script>
   new WOW().init();
   </script>
+<script type="text/javascript" src="bin/becoder.js"></script>
+<script>
+"use strict";
+// Checks that Firebase has been imported.
+// Checks that Firebase has been imported.
+checkSetup();
+
+var signInButtonElement = document.getElementById('google_login');
+
+var userSignUpEmail = document.getElementById('user-sign-up-email');
+var userSignUpPass = document.getElementById('user-sign-up-password');
+var userSignUpUsername = document.getElementById('user-sign-up-username');
+
+var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
+var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
+var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
+var footerSigninSignupButton = document.getElementById('footer-signin-signup-button');
+var logoutButton = document.getElementById('logout');
+var userNavItem = document.getElementById('navbar-user-item');
+var userNavName = document.getElementById('nav-user-name');
+var userNavPic = document.getElementById('nav-user-pic');
+
+signInButtonElement.addEventListener('click', signIn);
+signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
+signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
+logoutButton.addEventListener('click',signOut);
+
+var firestore = firebase.firestore();
+var settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+initFirebaseAuth(false);
+</script>
 <script>
 var createContestModal = document.getElementById('create_contest_modal');
 var createContestMessageModal = document.getElementById('contest_confirm_message');
@@ -1203,6 +1244,7 @@ var createContestOkButton = document.getElementById('create_contest_ok_button');
 createContestButton.addEventListener('click',createContest);
 createContestOkButton.addEventListener('click',createContestOk);
 function createContest(){
+
   var contestname = document.getElementById('contest_name').value;
   var organization_type = $("#organizatio_type:selected").text();
   var organizationname = document.getElementById('organizationname').value;
@@ -1224,23 +1266,22 @@ console.log(contestname.value);
     startTime : start_time,
     endDate : end_date,
     endTime : end_time,
-    contestGoal : contest_goal
-  };
+    contestGoal : contest_goal,
+    contestAuthorId : getCurrentUserId()
+    };
   createContestFirestore(createcontestDb);
   createContestMessageModal.removeAttribute('hidden');
   createContestOkButton.removeAttribute('hidden');
 }
 function createContestFirestore(createcontestDb){
-  var firestore = firebase.firestore();
-  var settings = {timestampsInSnapshots: true};
-  firestore.settings(settings);
+
   firestore.collection("contests").add(createcontestDb)
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
 
 }
 function createContestOk(){
