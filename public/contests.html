@@ -1097,105 +1097,127 @@ label.required::after {
   </footer>
   <!--/.Footer-->
 
+
   <!-- create contest -->
 
 
-        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
-            <div class=" modal-dialog "  role="document">
-              <div class="modal-content" style="width:600px">
-                <div class="modal-header text-center">
-                  <h4 class="modal-title w-100 font-weight-bold">Create Contest</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body mx-3" id="create_contest_modal">
-                      <table class="form">
-                  <tr>
-                        <td class="td">
-                            <label class="required">Contest Name</label>
-                        </td>
-                        <td>
-                            <input type="text" id="contest_name" placeholder="Enter Contest Name..." class="form-control" />
-                        </td>
-                    </tr>
-
-                    <tr>
-                                <td class="td">
-                                    <label class="required">Organization Type</label>
-                                </td>
-                                <td>
-                                    <select id="organizatio_type" class="form-control">
-                                        <option value="1">School</option>
-                                        <option value="2">Company</option>
-                                        <option value="3">Others</option>
-                                    </select>
-                                </td>
-                            </tr>
-
-                            <tr>
-                        <td class="td">
-                            <label class="required">Organization Name</label>
-                        </td>
-                        <td>
-                            <input type="text" id="organizationname" placeholder="Enter Organization Name..." class="form-control" />
-                        </td>
-                  </tr>
-
-
-
-                            <tr>
-                        <td class="td">
-                            <label class="required">Start Time</label>
-                        </td>
-                        <td class="input-group">
-                          <input  id="start_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                           <input id="start_time" style="width:90px"  class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                      <td class="td" >
-                          <label class="required">End Time</label>
-                      </td>
-                      <td class="input-group">
-                        <input id="end_date" class="form-control mr-2"  type="date" style="width:180px"> <span class="mt-2">at</span>
-                        <input style="width:90px" id="end_time"  class="ml-2 form-control" type="time"> <span class="mt-2">BDT</span>
-                      </td>
-                    </tr>
-
-                    <tr>
-                        <td class="td mt-3">
-                            <label class="required">Contest goal</label>
-                        </td>
-                        <td>
-                          <textarea id="contest_goal" class="form-control"  rows="3"></textarea>
-                        </td>
-                  </tr>
-
-                </table>
-                    <input type="checkbox"  id="contest_term_condition_check">
-                    <label class="" for="defaultUnchecked">Accept the contest<a href="#" class="green-text font-weight-bold">
-                                  Terms and Conditions</a></label>
-                </div>
-                <div class="modal-body mx-3" id="contest_confirm_message" hidden>
-                  <p>
-                    Please wait for a while to confirm you are eligible to create this contest.
-                    We will notify you after confirm your contest request.
-                    After cofirmation your contest page is <h3>
-                      <a href="http://localhost:5000/administration/contests.html" class="green-text font-weight-bold">
-                                  clcik here</a></h3>
-                  </p>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                  <button id="create_contest_button" type="button" class="btn btn-success">Create Contest</button>
-                  <button id="create_contest_ok_button" hidden type="button" class="btn btn-success">Ok</button>
-
-                </div>
-              </div>
-            </div>
+    <div class=" modal-dialog " role="document">
+      <div class="modal-content" style="width:600px">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Create Contest</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body mx-3" id="create_contest_modal">
+          <table class="form">
+            <tr>
+              <td class="td">
+                <label class="required">Contest Name</label>
+              </td>
+              <td>
+                <input type="text" id="contest_name" placeholder="Enter Contest Name..." class="form-control" />
+                <span id="contest_name_error_msg" style="color: red"></span>
+              </td>
+
+            </tr>
+
+            <tr>
+              <td class="td">
+                <label class="required">Organization Type</label>
+              </td>
+              <td>
+                <select id="organizatio_type" class="form-control">
+                  <option value="School">School</option>
+                  <option value="Company">Company</option>
+                  <option value="Other">Others</option>
+                </select>
+                <span id="organizatio_type_error_msg" style="color: red"></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="td">
+                <label class="required">Organization Name</label>
+              </td>
+              <td>
+                <input type="text" id="organizationname" placeholder="Enter Organization Name..."
+                  class="form-control" />
+                <span id="organizationname_error_msg" style="color: red"></span>
+
+              </td>
+            </tr>
+
+
+
+            <tr>
+              <td class="td">
+                <label class="required">Start Time</label>
+              </td>
+              <td class="input-group">
+                <input id="start_date" class="form-control mr-2" type="date" style="width:180px"> <span
+                  class="mt-2">at</span>
+                <input id="start_time" style="width:90px" class="ml-2 form-control" type="time"> <span
+                  class="mt-2">BDT</span>
+                <span id="contest_start_time_error" style="color: red"></span>
+                <span id="current_time_error_msg" style="color: red"></span>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="td">
+                <label class="required">End Time</label>
+              </td>
+              <td class="input-group">
+                <input id="enddates" class="form-control mr-2" type="date" style="width:180px"> <span
+                  class="mt-2">at</span>
+                <input id="endtimes" style="width:90px" class="ml-2 form-control" type="time"> <span
+                  class="mt-2">BDT</span>
+                <span id="contest_end_time_error" style="color: red"></span>
+                <span id="end_time_error_msg" style="color: red"></span>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td class="td mt-3">
+                <label class="required">Contest goal</label>
+              </td>
+              <td>
+                <textarea id="contest_goal" class="form-control" rows="3"></textarea>
+                <span id="contest_goal_error_msg" style="color: red"></span>
+
+              </td>
+            </tr>
+
+          </table>
+          <input type="checkbox" id="contest_term_condition_check">
+          <label class="" for="defaultUnchecked">Accept the contest<a href="#" class="green-text font-weight-bold">
+              Terms and Conditions</a>
+            <br><span id="contest_term_error_msg" style="color: red"></span>
+          </label>
+
+        </div>
+        <div class="modal-body mx-3" id="contest_confirm_message" hidden>
+          <p>
+            Please wait for a while to confirm you are eligible to create this contest.
+            We will notify you after confirm your contest request.
+            After cofirmation your contest page is <h3>
+              <a href="#" class="green-text font-weight-bold">
+                http://localhost:5000/contests.html</a></h3>
+          </p>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button id="create_contest_button" type="button" class="btn btn-success">Create Contest</button>
+          <button id="create_contest_ok_button" hidden type="button" class="btn btn-success">Ok</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- /create contest -->
 
 
@@ -1243,36 +1265,114 @@ var createContestOkButton = document.getElementById('create_contest_ok_button');
 
 createContestButton.addEventListener('click',createContest);
 createContestOkButton.addEventListener('click',createContestOk);
-function createContest(){
 
+function createContest() {
   var contestname = document.getElementById('contest_name').value;
-  var organization_type = $("#organizatio_type:selected").text();
+
+  var organizatio_type = document.getElementById('organizatio_type');
+  var organizatio_type_value = organizatio_type[organizatio_type.selectedIndex].text;
+
+
+  //var organization_type = $("#organizatio_type:selected").text();
   var organizationname = document.getElementById('organizationname').value;
   var start_date = document.getElementById('start_date').value;
   var start_time = document.getElementById('start_time').value;
-  var end_date = document.getElementById('end_date').value;
-  var end_time = document.getElementById('end_time').value;
+  var enddatesd = document.getElementById('enddates').value;
+  console.log(enddatesd);
+  var endtimesd = document.getElementById('endtimes').value;
   var contest_goal = document.getElementById('contest_goal').value;
   var contest_term = document.getElementById("contest_term_condition_check").checked;
-console.log(contestname.value);
-  createContestModal.setAttribute('hidden', 'true');
-  createContestButton.setAttribute('hidden', 'true');
+  var contestStartTimeUnix = new Date(start_date + "T" + start_time);
+    var contestEndTimeUnix = new Date(enddatesd + "T" + endtimesd);
+    var currentTimeUnix = Date.parse(new Date());
 
-  var createcontestDb = {
-    contestName : contestname,
-    organizationType :organization_type,
-    organizationName :organizationname,
-    startDate : start_date,
-    startTime : start_time,
-    endDate : end_date,
-    endTime : end_time,
-    contestGoal : contest_goal,
-    contestAuthorId : getCurrentUserId()
-    };
-  createContestFirestore(createcontestDb);
-  createContestMessageModal.removeAttribute('hidden');
-  createContestOkButton.removeAttribute('hidden');
+  console.log(contestname.value);
+
+  if ((contestname == "") || (organizationname == "") || (contest_goal == "") || (start_date == "") || (start_time == "") || (enddatesd == "") || (endtimesd == "") ||(contestStartTimeUnix < currentTimeUnix)) {
+    if (contestname == "") {
+      document.getElementById('contest_name_error_msg').innerHTML = "contestname must be filled out";
+    }
+    else {
+      document.getElementById('contest_name_error_msg').innerHTML = "";
+    }
+
+    if (organizationname == "") {
+      document.getElementById('organizationname_error_msg').innerHTML = "organizationname must be filled out";
+    }
+    else {
+      document.getElementById('organizationname_error_msg').innerHTML = "";
+    }
+    if (contest_goal == "") {
+      document.getElementById('contest_goal_error_msg').innerHTML = "contest goal must be filled out";
+
+    }
+    else {
+      document.getElementById('contest_goal_error_msg').innerHTML = "";
+    }
+    if ((start_date == "") || (start_time == "")) {
+      document.getElementById('contest_start_time_error').innerHTML = "Contest start time must be filled";
+    }
+    else {
+      document.getElementById('contest_start_time_error').innerHTML = "";
+    }
+    if ((enddatesd == "") || (endtimesd == "")) {
+      document.getElementById('contest_end_time_error').innerHTML = "Contest end time must be filled";
+    }
+    else {
+      document.getElementById('contest_end_time_error').innerHTML = "";
+    }
+    // if (contest_term) {
+    //   document.getElementById('contest_term_error_msg').innerHTML = "";
+    // }
+    // else {
+    //   document.getElementById('contest_term_error_msg').innerHTML = "Please accept our terms and conditions !";
+
+    // }
+
+    if (contestStartTimeUnix < currentTimeUnix) {
+      var error = document.getElementById('current_time_error_msg').innerHTML = "Start time must be greater than current time";
+      console.log(error);
+    }
+    else{
+      document.getElementById('current_time_error_msg').innerHTML = "";
+    }
+    if(contestEndTimeUnix  > contestStartTimeUnix){
+      document.getElementById('end_time_error_msg').innerHTML = "";
+    }
+    else{
+      var error = document.getElementById('end_time_error_msg').innerHTML = "End time must be greater than start time";
+      console.log(error);
+    }
+
+  }
+  else {
+    createContestModal.setAttribute('hidden', 'true');
+    createContestButton.setAttribute('hidden', 'true');
+
+      var createcontestDb = {
+        contestName: contestname,
+        organizationName: organizationname,
+        organizationType: organizatio_type_value,
+        startTime: Date.parse(contestStartTimeUnix),
+        endTime: Date.parse(contestEndTimeUnix),
+        contestGoal: contest_goal
+      };
+      createContestFirestore(createcontestDb);
+
+      createContestMessageModal.removeAttribute('hidden');
+      createContestOkButton.removeAttribute('hidden');
+
+      document.getElementById('organizationname').value = "";
+      document.getElementById('contest_name').value = "";
+      document.getElementById('start_date').value = "";
+      document.getElementById('start_time').value = "";
+      document.getElementById('enddates').value = "";
+      document.getElementById('endtimes').value = "";
+      document.getElementById('contest_goal').value = "";
+      document.getElementById("contest_term_condition_check").checked = false;
+  }
 }
+
 function createContestFirestore(createcontestDb){
 
   firestore.collection("contests").add(createcontestDb)

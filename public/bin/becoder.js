@@ -10,6 +10,7 @@ firestore.settings(settings);
 function signIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
+    createNewUser
     console.log("sing in");
 }
 
@@ -64,6 +65,7 @@ function initFirebaseAuth(jm) {
 function initFirebaseAuthAdc() {
   auth.onAuthStateChanged(function(user) {
     getALlAdinistrationContest("manage_contest_lists");
+    getALlAdinistrationManageProblems("created_problem_lists");
   });
 }
 
@@ -100,7 +102,6 @@ function isUserSignedIn() {
 }
 
 function getALlAdinistrationContest(elementId){
-  var contests = firestore.collection('contests').where('contestAuthorId', '==', getCurrentUserId());
 
   firestore.collection("contests").where('contestAuthorId', '==', getCurrentUserId())
       .onSnapshot(function(snapshot) {
@@ -162,6 +163,58 @@ function getALlAdinistrationContest(elementId){
 
 }
 
+function getALlAdinistrationManageProblems(elementId){
+firestore.collection('problemsTest').where('problemCreatorAuthorId', '==', getCurrentUserId())
+      .onSnapshot(function(snapshot) {
+          var count = 1;
+          snapshot.docChanges().forEach(function(change) {
+              if (change.type === "added") {
+                console.log("Modified city: ", change.doc.data());
+
+                var data = change.doc.data();
+                var tableRow = document.createElement("tr");
+                var tableRowHeader = document.createElement("th");
+                var tableRowDataPN = document.createElement("td");
+                var tableRowDataPO = document.createElement("td");
+                var tableRowDataPC = document.createElement("td");
+                var tableRowDataSD = document.createElement("td");
+
+                tableRowHeader.setAttribute("scope","row");
+
+                var problemCount = document.createTextNode(count);
+                var problemNameText = document.createTextNode(data.problemName);
+                var problemOwnerText = document.createTextNode(data.problemAuthorName);
+                var problemSolved = document.createTextNode(data.problemSolved);
+                var ProblemPartiCipants = document.createTextNode(data.participants);
+
+
+                tableRowHeader.appendChild(problemCount);
+                tableRowDataPN.appendChild(problemNameText);
+                tableRowDataPO.appendChild(problemOwnerText);
+                tableRowDataPC.appendChild(ProblemPartiCipants);
+                tableRowDataSD.appendChild(problemSolved);
+
+                tableRow.appendChild(tableRowHeader);
+                tableRow.appendChild(tableRowDataPN);
+                tableRow.appendChild(tableRowDataPO);
+                tableRow.appendChild(tableRowDataPC);
+                tableRow.appendChild(tableRowDataSD);
+
+
+                document.getElementById(elementId).appendChild(tableRow);
+                }
+              if (change.type === "modified") {
+                  console.log("Modified city: ", change.doc.data());
+              }
+              if (change.type === "removed") {
+                  console.log("Removed city: ", change.doc.data());
+              }
+          });
+      });
+
+}
+
+
 function authStateObserver(user) {
   if (user) { // User is signed in!
     // Get the signed-in user's profile pic and name.
@@ -205,6 +258,7 @@ function authStateObserverCreateProblem(user) {
     userNavItem.setAttribute('hidden', 'true');
   }
 }
+
 
 
 function addSizeToGoogleProfilePic(url) {
