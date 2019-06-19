@@ -66,6 +66,12 @@ function initFirebaseAuthAdc() {
     getALlAdinistrationContest("manage_contest_lists");
   });
 }
+
+function initFirebaseAuthCreateProblem() {
+  auth.onAuthStateChanged(function(user) {
+    authStateObserverCreateProblem(user);
+  });
+}
 // Returns the signed-in user's profile Pic URL.
 function getProfilePicUrl() {
   if(isUserSignedIn()){
@@ -180,8 +186,23 @@ function authStateObserver(user) {
     // Hide user's profile and sign-out button.
     userNavItem.setAttribute('hidden', 'true');
     signInSignUpNavButton.removeAttribute('hidden');
-    signInSignUpJumborton.removeAttribute('hidden');
+    if(jumbotron){
+      signInSignUpJumborton.removeAttribute('hidden');
+    }
     footerSigninSignupButton.removeAttribute('hidden');
+  }
+}
+
+
+function authStateObserverCreateProblem(user) {
+  if (user) {
+    var profilePicUrl = getProfilePicUrl();
+    var userName = getUserName();
+    userNavItem.removeAttribute('hidden');
+    userNavPic.src = getProfilePicUrl();
+
+  } else {
+    userNavItem.setAttribute('hidden', 'true');
   }
 }
 

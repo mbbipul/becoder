@@ -244,11 +244,6 @@ html, body {
               <li class="nav-item">
                 <a class="nav-link" href="#">Notifications</a>
               </li>
-
-              <li class="nav-item" id="navbar-login-signin-button" hidden>
-                <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
-              </li>
-
               <li class="nav-item dropdown" id="navbar-user-item" hidden>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img id="nav-user-pic" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -422,29 +417,18 @@ html, body {
 checkSetup();
 console.log(firebase.auth().currentUser+"jfhjsh ");
 
-var signInButtonElement = document.getElementById('google_login');
 
-var userSignUpEmail = document.getElementById('user-sign-up-email');
-var userSignUpPass = document.getElementById('user-sign-up-password');
-var userSignUpUsername = document.getElementById('user-sign-up-username');
 
-var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
-var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
-var signInSignUpJumborton = document.getElementById('sign-in-sign-up-jumbotron');
-var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
-var footerSigninSignupButton = document.getElementById('footer-signin-signup-button');
 var logoutButton = document.getElementById('logout');
 var userNavItem = document.getElementById('navbar-user-item');
 var userNavName = document.getElementById('nav-user-name');
 var userNavPic = document.getElementById('nav-user-pic');
 
-signInButtonElement.addEventListener('click', signIn);
-signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
-signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
 logoutButton.addEventListener('click',signOut);
 
 
-initFirebaseAuth(false);
+initFirebaseAuthCreateProblem();
+</script>
 </body>
 
 </html>
