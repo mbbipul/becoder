@@ -20,7 +20,7 @@
   <script type="text/javascript" src="../assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="../assets/library/mdb/js/mdb.min.js"></script>
-  <script src="ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/12.2.0/classic/ckeditor.js"></script>
   <!-- <script src="../assets/library/ckeditor/samples/js/sample.js"></script>
   <link rel="stylesheet" href="../assets/library/ckeditor/samples/css/samples.css"> -->
 
@@ -289,7 +289,7 @@ html, body {
               <label class="required">Problem Name</label>
               <div class="ml-5">
                 <div class="grid-container ml-5">
-                  <input type="text" name="contestname" placeholder="Enter Challenge Name" class="medium" />
+                  <input type="text" id="problemname" placeholder="Enter Challenge Name" class="medium" />
 
                   </div>
               </div>
@@ -346,7 +346,7 @@ html, body {
                 <label class="required">Tags</label>
                 <div class="ml-5">
                   <div class="grid-container ml-5">
-              				<textarea>
+              				<textarea id="create_problem_tags">
                       </textarea>
                     </div>
                 </div>
@@ -356,44 +356,6 @@ html, body {
                 <br style="margin-bottom:200px;"/>
                 <br style="margin-bottom:200px;"/>
 
-              <script>
-	        		ClassicEditor
-		            .create( document.querySelector( '#editor' ) )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-    			</script>
-    			<script>
-	        		ClassicEditor
-		            .create( document.querySelector( '#editor1' ) )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-    			</script>
-
-    			<script>
-	        		ClassicEditor
-		            .create( document.querySelector( '#editor2' ) )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-    			</script>
-
-    			<script>
-	        		ClassicEditor
-		            .create( document.querySelector( '#editor3' ) )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-    			</script>
-
-    			<script>
-	        		ClassicEditor
-		            .create( document.querySelector( '#editor4' ) )
-		            .catch( error => {
-		                console.error( error );
-		            } );
-    			</script>
 
 
 </div>
@@ -402,32 +364,84 @@ html, body {
 </div>
 
 </div>
-  <div class="page-footer footer navbar-fixed-bottom">
+  <div class="page-footer footer navbar-fixed-bottom " >
 
   <!-- Copyright -->
   <div class="footer-copyright text-right py-3 pr-5">
-    <a href="" type="button" class="btn btn-success" >Create Problem </a>
+    <button id="create_problem_button" type="button" class="btn btn-success" >Create Problem </a>
   </div>
   <!-- Copyright -->
 </div>
 <script type="text/javascript" src="../bin/becoder.js"></script>
 <script>
 "use strict";
+
+const editors = {}; // You can also use new Map() if you use ES6.
+
+function createEditor( elementId ) {
+    return ClassicEditor
+        .create( document.getElementById( elementId ) )
+        .then( editor => {
+            editors[ elementId ] = editor;
+        } )
+        .catch( err => console.error( err.stack ) );
+}
+
+// In real life, you may also need to take care of the returned promises.
+createEditor( 'editor' );
+createEditor( 'editor2' );
+createEditor( 'editor3' );
+createEditor( 'editor4' );
+// Later on:
+
 // Checks that Firebase has been imported.
 checkSetup();
-console.log(firebase.auth().currentUser+"jfhjsh ");
 
+function createProblemFirestore(createProblemDb){
 
+  firestore.collection("problemsTest").add(createProblemDb)
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+
+}
+
+function creeateProblemOk(){
+  var problemName = document.getElementById('problemname').value;
+  var problemTags = document.getElementById('create_problem_tags').value;
+
+  var createProblemDb = {
+    problemName : problemName,
+    problemStatement : editors.editor.getData(),
+    inputFormate : editors.editor2.getData(),
+    problemConstraints : editors.editor3.getData(),
+    outputFormate : editors.editor3.getData(),
+    problemCreatorAuthorId : getCurrentUserId(),
+    problemCreateDate : new Date(),
+    problemTag : problemTags
+  };
+  createProblemFirestore(createProblemDb);
+
+}
 
 var logoutButton = document.getElementById('logout');
 var userNavItem = document.getElementById('navbar-user-item');
 var userNavName = document.getElementById('nav-user-name');
 var userNavPic = document.getElementById('nav-user-pic');
 
+var createProblemButton = document.getElementById('create_problem_button');
+
+
 logoutButton.addEventListener('click',signOut);
+createProblemButton.addEventListener('click',creeateProblemOk);
 
 
 initFirebaseAuthCreateProblem();
+
+
 </script>
 </body>
 
