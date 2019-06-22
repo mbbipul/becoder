@@ -1255,6 +1255,7 @@ var firestore = firebase.firestore();
 var settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 initFirebaseAuth(false);
+
 </script>
 <script>
 var createContestModal = document.getElementById('create_contest_modal');
@@ -1446,7 +1447,7 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date(Date.parse(new Date()) + 9000 * 1000);
+var deadline = new Date(Date.parse(new Date()) + 900 * 1000);
 var deadline1 = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
 
 initializeClock('clockdiv', deadline);

@@ -10,7 +10,7 @@ firestore.settings(settings);
 function signIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
-    createNewUser
+    createNewUserWithGoogle();
     console.log("sing in");
 }
 
@@ -74,6 +74,28 @@ function initFirebaseAuthCreateProblem() {
     authStateObserverCreateProblem(user);
   });
 }
+function createNewUserWithGoogle(){
+  auth.onAuthStateChanged(function(user) {
+    if(user){
+      var createUserProfile = {
+        userDisplayname: user.displayName,
+        userEmail: user.email,
+        userProfilePictureUrl: getProfilePicUrl(),
+        userId : user.uid,
+        username : user.email,
+        isAnonymous : user.isAnonymous,
+        emailVerified : user.emailVerified
+      };
+      firestore.collection("userTestsd").doc(user.uid).set(createUserProfile)
+      .then(function(docRef) {
+          console.log("Document written with ID bbj: ", "docRef.id");
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+    }
+  });
+}
 // Returns the signed-in user's profile Pic URL.
 function getProfilePicUrl() {
   if(isUserSignedIn()){
@@ -105,6 +127,7 @@ function getALlAdinistrationContest(elementId){
 
   firestore.collection("contests").where('contestAuthorId', '==', getCurrentUserId())
       .onSnapshot(function(snapshot) {
+          var count = 1;
           snapshot.docChanges().forEach(function(change) {
               if (change.type === "added") {
                 console.log("Modified city: ", change.doc.data());
@@ -121,7 +144,7 @@ function getALlAdinistrationContest(elementId){
 
                 tableRowHeader.setAttribute("scope","row");
 
-                var contestCount = document.createTextNode(1);
+                var contestCount = document.createTextNode(count);
                 var contestNameText = document.createTextNode(data.contestName);
                 var contestOwnerText = document.createTextNode(data.organizationName);
                 var contestSatrtDate = document.createTextNode(data.startDate);
@@ -144,6 +167,7 @@ function getALlAdinistrationContest(elementId){
 
 
                 document.getElementById(elementId).appendChild(tableRow);
+                count += 1;
                 }
               if (change.type === "modified") {
                   console.log("Modified city: ", change.doc.data());
@@ -200,8 +224,11 @@ firestore.collection('problemsTest').where('problemCreatorAuthorId', '==', getCu
                 tableRow.appendChild(tableRowDataPC);
                 tableRow.appendChild(tableRowDataSD);
 
-
+                tableRow.addEventListener('click',function(){
+                  openEditProblemPage(JSON.stringify(data),change.doc.id);
+                }, false);
                 document.getElementById(elementId).appendChild(tableRow);
+                count += 1;
                 }
               if (change.type === "modified") {
                   console.log("Modified city: ", change.doc.data());
@@ -214,7 +241,10 @@ firestore.collection('problemsTest').where('problemCreatorAuthorId', '==', getCu
 
 }
 
+function openEditProblemPage(problemDetails,id){
+  location.href = "problemEdit.html?"+problemDetails+"$data$"+id;
 
+}
 function authStateObserver(user) {
   if (user) { // User is signed in!
     // Get the signed-in user's profile pic and name.
@@ -251,6 +281,14 @@ function authStateObserverCreateProblem(user) {
   if (user) {
     var profilePicUrl = getProfilePicUrl();
     var userName = getUserName();
+
+    if(typeof(problemAuthorName) != 'undefined' && problemAuthorName!=null){
+      problemAuthorName.innerText = user.displayName;
+    }
+    if(typeof(problemAuthorProfilePicture) != 'undefined' && problemAuthorProfilePicture!=null){
+      problemAuthorProfilePicture.src = user.photoURL;
+    }
+
     userNavItem.removeAttribute('hidden');
     userNavPic.src = getProfilePicUrl();
 
@@ -259,7 +297,52 @@ function authStateObserverCreateProblem(user) {
   }
 }
 
+function searchUserFromDbByUsername(queryUsername,problemId){
+  queryUsername = queryUsername.toLowerCase();
+  var limitChar = String.fromCharCode(queryUsername.charCodeAt(0)+1);
 
+  firestore.collection('userTestsd').where('username', '>=', queryUsername).where('username','<=',limitChar)
+  .get()
+  .then(function(querySnapshot) {
+    $("#searchmoderatorsname").empty();
+    console.log("hello bb");
+      querySnapshot.forEach(function(doc) {
+        var data = doc.data();
+          // doc.data() is never undefined for query doc snapshots
+          var listItem = '<div class="list-group-item notopbottom z-depth-5 " id="'+data.userId+'"> \
+            <img class="float-left rounded-circle avatar mr-3 mt-1" src="'+data.userProfilePictureUrl+'" \
+                height="50px" width="50px" alt="Avatar"> \
+            <p class="mt-2" style="margin-left:10px!important;display:inline-block;"> <strong>'+data.username+'</strong>\
+            <button style="margin-left:15px;" id="addingProblemModerator'+data.userId+'" class="btn btn-default btn-sm">Add</button> </p> \
+          </div>' ;
+          console.log(doc.id, " => ", listItem);
+          $("#searchmoderatorsname").append(listItem);
+          $("#addingProblemModerator"+data.userId).click(function(){
+          var createProblemModerators = {
+               problemId : problemId,
+               userId: data.userId,
+               username : data.username,
+               userDisplayname : data.userDisplayname,
+               userProfilePictureUrl : data.userProfilePictureUrl
+            };
+            firestore.collection("problemModerators").add(createProblemModerators)
+            .then(function(docRef) {
+                console.log("Document written with ID bbj: ", "docRef.id");
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+
+
+
+          });
+
+      });
+  })
+  .catch(function(error) {
+      console.log("Error getting documents: ", error);
+  });
+}
 
 function addSizeToGoogleProfilePic(url) {
   if (url.indexOf('googleusercontent.com') !== -1 && url.indexOf('?') === -1) {

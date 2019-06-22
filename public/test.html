@@ -29,27 +29,41 @@
     <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
     <!--  firebase config-->
 <script src="/__/firebase/init.js"></script>
+<style>
+  .notopbottom{
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    font-size: 20px;
+
+  }
+</style>
 </head>
 <body>
-  <p id="name">
-    hello
-  </p>
-  <img id="pic"/>
+  <div class="list-group p-1 " id="bb" style="width:300px;z-index: 2147483647!important;position:relative">
+
+  </div>
   <script>
-  var auth = firebase.auth();
-  auth.onAuthStateChanged(function(user) {
-  authStateObserver(user);
-    console.log(user);
+  var f = "hi u"
+    var x = '<div class="list-group-item notopbottom  list-group-item-action">\
+<img class="float-left rounded-circle avatar mr-3 mt-1" src="https://mdbootstrap.com/img/Others/documentation/img (20)-mini.jpg"\
+          height="50px" width="50px" alt="Avatar">\
+      <p class="mt-2" style="margin-left:10px!important;"> <strong>'+f+'</strong></p>\
+    </div>\
+    <div class="list-group-item notopbottom  list-group-item-action">\
+      <img class="float-left rounded-circle avatar mr-3 mt-1" src="https://mdbootstrap.com/img/Others/documentation/img (20)-mini.jpg"\
+          height="50px" width="50px" alt="Avatar">\
+      <p class="mt-2" style="margin-left:10px!important;"> <strong>Bipul Mandol</strong></p>\
+    </div>  <div class="list-group-item notopbottom  list-group-item-action">\
+        <img class="float-left rounded-circle avatar mr-3 mt-1" src="https://mdbootstrap.com/img/Others/documentation/img (20)-mini.jpg"\
+            height="50px" width="50px" alt="Avatar">\
+        <p class="mt-2" style="margin-left:10px!important;"> <strong>Bipul Mandol</strong></p>\
+      </div>'
+      $(document).ready(function(){
+        $("#bb").append(x);
 
-  });
-  function authStateObserver(user) {
-    if (user) { // User is signed in!
-      // Get the signed-in user's profile pic and name.
-    document.getElementById('name').innerText = user.displayName;
-
-
-    }
-  }
+      });
   </script>
 </body>
 </html>
