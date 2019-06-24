@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="assets/images/becoder.png" type="image/gif" sizes="16x16">
+  <title>becoder</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="assets/library/mdb/css/mdb.min.css" rel="stylesheet">
+  <link href="assets/css/becoder.css" rel="stylesheet">
+
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
+
+<!--  firebase config-->
+    <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+    <!--  firebase config-->
+<script src="/__/firebase/init.js"></script>
+
+
+</head>
+    <body class="grey lighten-3">
+
+  <!--Main Navigation-->
+  <header>
+    <!--Navbar-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-blue scrolling-navbar">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#becoderNavbarToggle" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="becoderNavbarToggle">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Practice</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contests.html">Contests</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Resource</a>
+              </li>
+              <li class="nav-item" style="padding-right:20px;padding-left:20px">
+
+              </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Leaderboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Notifications</a>
+              </li>
+
+              <li class="nav-item" id="navbar-login-signin-button" hidden>
+                <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
+              </li>
+
+              <li class="nav-item dropdown" id="navbar-user-item" hidden>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img id="nav-user-pic" width="30" height="30" class="d-inline-block align-top" alt="">
+                  <span id="nav-user-name">becoder</span></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Ranking</a>
+                  <a class="dropdown-item" href="userProfile.html">Profile</a>
+                  <a class="dropdown-item" href="#">Submission</a>
+                  <a class="dropdown-item" href="#">Note</a>
+                  <a class="dropdown-item" href="#">Setting</a>
+                  <a class="dropdown-item" href="administration/contests.html">Administration</a>
+                  <a class="dropdown-item" id="logout" href="#">Logout</a>
+
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    <!--/.Navbar-->
+
+    </header>
+
+
+    <!--Modal: Login / Register Form-->
+  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+              Register</a>
+          </li>
+        </ul>
+
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body mb-1">
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" placeholder="email or username" id="user-sign-in-email" class="form-control form-control-sm validate">
+              </div>
+
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="password" id="user-sign-in-password" class="form-control form-control-sm validate">
+              </div>
+              <div class="text-center mt-2">
+                <button class="btn btn-info"  id= "sign-in-with-email" >Log in <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="login_connect_with">
+                Or Connect With
+              </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            </div>
+
+          </div>
+          <!--/.Panel 7-->
+
+          <!--Panel 8-->
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+            <!--Body-->
+            <div class="modal-body">
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" placeholder="email" id="user-sign-up-email" class="form-control form-control-sm validate">
+
+              </div>
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-user prefix"></i>
+                <input type="text" placeholder="username" id="user-sign-up-username" class="form-control form-control-sm validate">
+
+              </div>
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="password" id="user-sign-up-password" class="form-control form-control-sm validate">
+
+              </div>
+
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
+              </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
+                              Terms and Conditions</a></label>
+            </div>
+              <div class="text-center form-sm mt-2">
+                <button class="btn btn-info" id="sign-up-with-email">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+
+            </div>
+              <div class="login_connect_with">
+                Or Connect With
+              </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            </div>
+          </div>
+          <!--/.Panel 8-->
+        </div>
+
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login / Register Form-->
+<div >
+
+
+  <!--Grid row-->
+  <!--Section: Post-->
+  <!--Main layout-->
+
+  <main style="margin-top: 70px;">
+        <!--Main Navigation-->
+  <div hidden class="row wow fadeIn" id="sign-in-sign-up-jumbotron" data-wow-delay="0.2s">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2 class="h2-responsive">Learn to be a Coder</h2>
+        <br>
+        <p>In communications and information processing, code is a
+        system of rules to convert information—such as a letter, word, sound,
+        image, or gesture—into another form or representation, sometimes
+        shortened or secret, for communication through a communication channel
+         or storage in a storage medium.</p>
+        <hr>
+        <p>Register and get access to code</p>
+        <a  href="" data-toggle="modal" data-target="#modalLRForm"  class="btn btn-outline-unique" rel="nofollow">Register
+          <i class="fas fa-download right"></i>
+        </a>
+        <a href="" data-toggle="modal" data-target="#modalLRForm"  class="btn btn-unique btn-ptc"
+          rel="nofollow">Log in <i class="fas fa-book right"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+
+    <!--Section: Post-->
+    <section class="jumbotron">
+      <h1 class=""><strong id="headerProblemName"></strong>
+            <img class="rounded-circle z-depth-1-half mt-2"
+             src="assets/images/becoder.png"  id="problemHeaderUserProfilePicture" height="25px" width="25px"
+            alt="Avatar">
+        <span style="font-size:14px" id="problemHeaderProblemOwnerName"></span></h1>
+    <hr />
+        <div class="row wow fadeIn" data-wow-delay="0.2s">
+            <div class="col-md-12 ">
+              <div class="">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="problem-tab" data-toggle="tab" href="#problem" role="tab" aria-controls="problem"
+                  aria-selected="true">Problems</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="submit-tab" data-toggle="tab" href="#submit" role="tab" aria-controls="submit"
+                  aria-selected="false">Submit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="mySubmission-tab" data-toggle="tab" href="#mySubmission" role="tab" aria-controls="mySubmission"
+                  aria-selected="false">My Submission</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="allSubmission-tab" data-toggle="tab" href="#allSubmission" role="tab" aria-controls="allSubmission"
+                  aria-selected="false">All Submission</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="standing-tab" data-toggle="tab" href="#standing" role="tab" aria-controls="standing"
+                  aria-selected="false">Standing</a>
+              </li>
+          </ul>
+
+          <!-- Tab Contents -->
+          <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="problem" role="tabpanel" aria-labelledby="problem-tab">
+              <!-- gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg -->
+              <hr class="extra-margins">
+
+                <div class="container-fluid">
+                <div class="row mt-3 p-3">
+                      <div class="col-md-8 card grey lighten-4" style="height:1300px; text-align: left !important ">
+
+                          <blockquote class="blockquote bq-primary">
+                              <h3><strong>Problem Statement: </strong></h3>
+                              <div id="problemDescription">
+
+                              </div>
+                              <h3><strong>Input: </strong></h3>
+                              <div id="problemInputFormate">
+
+                              </div>
+                              <h3><strong>Input Constraints: </strong></h3>
+                              <div id="problemConstraints">
+
+                              </div>
+                              <h3><strong>Output: </strong></h3>
+                              <div id="problemOutputFormate">
+
+                              </div>
+                              <h3><strong>Sample: </strong></h3>
+                              <div id="problemInputOutputSample">
+
+                              </div>
+                           </blockquote>
+
+                      </div>
+                      <div class="col-md-4">
+                                  <!--Card-->
+                                  <div class="card card-cascade narrower">
+                                      <div class="card-block">
+
+                                          <table class="table table-borderless">
+
+                                              <tbody>
+                                                    <tr>
+                                                        <td>Problem Name</td>
+                                                        <td id="problemCardProblemName">Fucking Problem 01</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td>Problem Owner :</td>
+                                                      <td id="problemCardProblemOwner">Mr. Fucker</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td>Problem Participants </td>
+                                                      <td id="ProblemPartiCipantsText"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                      <td>Problem Solved</td>
+                                                      <td id="problemSolvedText"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Language</td>
+                                                        <td id="problemCardProblemLanguage">C, C++, Java, Python </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Added Date</td>
+                                                        <td id="problemCardProblemCreateDate">01-01-2019</td>
+                                                    </tr>
+
+                                              </tbody>
+                                            </table>
+                                          <a class="btn btn-primary" ripple-radius>Submit Solution</a>
+                                      </div>
+                                  </div>
+                                  <!--/.Card-->
+                      </div>
+
+
+                </div>
+              </div>
+              <!--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg -->
+
+              </div>
+
+              <div class="tab-pane fade " id="submit" role="tabpanel" aria-labelledby="submit-tab">
+              <!-- Horizontal material form -->
+  <form class="submit-form">
+  <!-- Grid row -->
+  <div class="form-group row">
+  <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">Problem Id:</label>
+  <div class="col-sm-10">
+    <div class="md-form mt-0">
+      <input type="number" class="form-control" id="problemId" placeholder="Problem Id">
+    </div>
+  </div>
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <div class="form-group row">
+  <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">Language:</label>
+  <select class="mdb-select md-form">
+    <option value="" disabled selected>Choose Language</option>
+    <option value="1">ANCI C</option>
+    <option value="2">ANCI C++</option>
+    <option value="3">JAVA</option>
+    <option value="3">Python</option>
+  </select>
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-group row">
+  <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">Code:</label>
+  <div class="form-group shadow-textarea">
+  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
+  </div>
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-group row">
+  <!-- Material input -->
+  <label for="problemId" class="col-sm-2 col-form-label">.. or file Upload:</label>
+  <div class="form-group shadow-textarea">
+  <input type="file">
+  </div>
+  </div>
+  <!-- Grid row -->
+  <a href="#"><button type="button" class="btn btn-primary">Submit Code</button></a>
+
+  </form>
+  <!-- Horizontal material form -->
+              </div>
+
+              <div class="tab-pane fade " id="mySubmission" role="tabpanel" aria-labelledby="mySubmission-tab">
+              <div class="table-responsive">
+              <!--Table-->
+                <table class="table table-striped">
+
+                  <!--Table head-->
+                  <thead>
+                    <tr>
+                      <th>Problem Id</th>
+                      <th>Problem Name</th>
+                      <th>Status</th>
+                      <th>Language</th>
+                      <th>Run Time</th>
+                      <th>Submission Date</th>
+                    </tr>
+                  </thead>
+                  <!--Table head-->
+
+
+               <!--Table body-->
+                  <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                      </tr>
+                     <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-danger">Wrong Answer</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
+                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
+                        <td>ANCI C++</td>
+                        <td>0.000</td>
+                        <td>2019-03-20 16:58:20</td>
+                    </tr>
+                  </tbody>
+                <!--Table body-->
+                </table>
+              <!--Table-->
+            </div>
+
+
+              </div>
+
+              <div class="tab-pane fade " id="allSubmission" role="tabpanel" aria-labelledby="allSubmission-tab">
+              <div class="table-responsive">
+              <!--Table-->
+                <table class="table table-striped">
+
+                  <!--Table head-->
+                  <thead>
+                    <tr>
+                      <th>Problem Id</th>
+                      <th>Ranking</th>
+                      <th>Total Submission</th>
+                      <th>Date</th>
+                      <th>Run Time</th>
+                    </tr>
+                  </thead>
+                  <!--Table head-->
+
+
+               <!--Table body-->
+                  <tbody>
+                      <tr>
+                        <th scope="row">134343</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+
+                      </tr>
+                     <tr>
+                        <th scope="row">13454</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1434</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1245</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1874534</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">13443</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">14434</th>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
+                        <td>2019-03-20 16:58:20</td>
+                        <td>0.000</td>
+                    </tr>
+                  </tbody>
+                <!--Table body-->
+                </table>
+              <!--Table-->
+            </div>
+              </div>
+
+              <div class="tab-pane fade " id="standing" role="tabpanel" aria-labelledby="standing-tab">
+              standing here
+              </div>
+          </div>
+          <!-- End tab Contents -->
+              </div>
+          </div>
+      </div>
+    </section>
+  </div>
+  </main>
+  <!--Main layout-->
+
+
+  <!--Footer layout-->
+
+
+  <!--End Footer Layout-->
+  <footer class="page-footer text-center text-md-left mt-4 pt-4" >
+    <!--Footer links-->
+    <div class="container-fluid">
+      <div class="row">
+        <!--First column-->
+        <div class="col-lg-3 col-md-6 ml-auto">
+          <h5 class="title mb-3"><strong>About becoder</strong></h5>
+          <p>In mathematics and computer science, an algorithm is an unambiguous
+             specification of how to solve a class of problems.</p>
+          <p>In mathematics and computer science, an algorithm is an unambiguous
+            specification of how to solve a class of problems.</p>
+        </div>
+        <!--/.First column-->
+        <hr class="w-100 clearfix d-sm-none">
+        <!--Second column-->
+        <div class="col-lg-2 col-md-6 ml-auto mb-4">
+          <h5 class="title mb-3"><strong>First column</strong></h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.Second column-->
+        <hr class="w-100 clearfix d-sm-none">
+        <!--Third column-->
+        <div class="col-lg-2 col-md-6 ml-auto mb-4">
+          <h5 class="title mb-3"><strong>Second column</strong></h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.Third column-->
+        <hr class="w-100 clearfix d-sm-none">
+        <!--Fourth column-->
+        <div class="col-lg-2 col-md-6 ml-auto mb-4">
+          <h5 class="title mb-3"><strong>Third column</strong></h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.Fourth column-->
+      </div>
+    </div>
+    <!--/.Footer links-->
+    <hr>
+    <!--Call to action-->
+    <div class="call-to-action text-center my-4" id="footer-signin-signup-button">
+      <h4 class="mb-4">Learn to code</h4>
+      <h5 class="mb-4">Register and start coding</h5>
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item">
+          <a href="#" class="btn btn-primary waves-effect waves-light"
+            rel="nofollow">Register</a>
+        </li>
+        <li class="list-inline-item">
+          <a  href="#" class="btn btn-info waves-effect waves-light"
+            rel="nofollow">Log in</a>
+        </li>
+      </ul>
+    </div>
+    <!--/.Call to action-->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3 text-center">
+      <div class="containter-fluid">
+        © 2019 Copyright: <a href="index.html"> becoder.com </a>
+      </div>
+    </div>
+    <!--/.Copyright-->
+  </footer>
+  <!--/.Footer-->
+  <script>
+  new WOW().init();
+  </script>
+<script type="text/javascript" src="bin/becoder.js"></script>
+<script>
+"use strict";
+// Checks that Firebase has been imported.
+checkSetup();
+console.log(firebase.auth().currentUser+"jfhjsh ");
+
+var signInButtonElement = document.getElementById('google_login');
+
+var userSignUpEmail = document.getElementById('user-sign-up-email');
+var userSignUpPass = document.getElementById('user-sign-up-password');
+var userSignUpUsername = document.getElementById('user-sign-up-username');
+
+var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
+var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
+var signInSignUpJumborton = document.getElementById('sign-in-sign-up-jumbotron');
+var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
+var footerSigninSignupButton = document.getElementById('footer-signin-signup-button');
+var logoutButton = document.getElementById('logout');
+var userNavItem = document.getElementById('navbar-user-item');
+var userNavName = document.getElementById('nav-user-name');
+var userNavPic = document.getElementById('nav-user-pic');
+
+signInButtonElement.addEventListener('click', signIn);
+signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
+signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
+logoutButton.addEventListener('click',signOut);
+
+initFirebaseAuth(true);
+$(document).ready(function(){
+  var queryString = decodeURIComponent(window.location.search);
+  var problemIdRef = queryString.substring(1);
+  getProblemDetailsForCompete(problemIdRef);
+
+});
+function getProblemDetailsForCompete(problemIdRef){
+  var docRef = firestore.collection("problemsTest").doc(problemIdRef);
+
+  docRef.get().then(function(doc) {
+      if (doc.exists) {
+        var data = doc.data();
+        var pName = data.problemName;
+        var pDet = data.problemStatement;
+        var pOwnerName =data.problemAuthorName;
+        var pConstraints = data.problemConstraints;
+        var pInputFormat = data.inputFormate;
+        var pOutPutFormat = data.outputFormate
+        var pParticipants = data.participants;
+        var pSolved =  data.problemSolved;
+        var pCreateDate = data.problemCreateDate;
+        var pAuthorProfilePic = data.problemAuthorProfilePicture;
+
+        $("#headerProblemName").text(pName);
+        $("#problemHeaderUserProfilePicture").attr('src',pAuthorProfilePic);
+        $("#problemHeaderProblemOwnerName").text(pOwnerName);
+        $("#problemDescription").html(pDet);
+        $("#problemInputFormate").html(pInputFormat);
+        $("#problemConstraints").html(pConstraints);
+        $("#problemOutputFormate").html(pOutPutFormat);
+        $("#problemInputOutputSample").html();
+
+        $("#problemCardProblemName").text(pName);
+        $("#problemCardProblemOwner").text(pOwnerName);
+        $("#ProblemPartiCipantsText").text(pParticipants);
+        $("#problemSolvedText").text(pSolved);
+        $("#problemCardProblemLanguage").text();
+        $("#problemCardProblemCreateDate").text(pCreateDate);
+
+          console.log("Document data:", doc.data());
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+  }).catch(function(error) {
+        console.log("Error getting document:", error);
+  });
+
+
+}
+</script>
+</body>
+
+</html>

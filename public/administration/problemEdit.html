@@ -284,9 +284,17 @@ html, body {
     <main class="container-fluid m-4">
           <br />
           <div class="ml-5 container-fluid mt-5">
-            <h3><strong>Manage Problem </strong><span style="font-size:14px">bee</span></h1>
-
-          </div>      <hr />
+            <!--
+              <button type="button" id="saveProblemLanguageSetting"class="btn btn-primary">Save Changes</button> -->
+              <div class="d-flex justify-content-end">
+                <div class="mr-auto"><h1><strong>Manage Problem </strong><span id="mangaeProblemHeaderProblemName" style="font-size:14px"></span></h1></div>
+                <div class="mr-5">
+                  <button type="button" id="previewProblemButton"
+                   class="btn btn-success">Preview Problem</button>
+                 </div>
+              </div>
+          </div>
+           <hr />
       <ul class="m-3 p-3 border nav nav-tabs  md-tabs  hoverable" id="myTabJust" role="tablist" >
         <li class="nav-item">
 
@@ -518,55 +526,45 @@ html, body {
                   </div>
 
                   <div class="row d-flex justify-content-center modalWrapper">
-                    <div class="modal fade addNewInputs" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAdd"
-                      aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header text-center">
-                            <h4 class="modal-title w-100 font-weight-bold text-primary ml-5">Add new Test Case</h4>
-                            <button type="button" class="close text-primary" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body mx-3">
-                            <div class="md-form mb-5">
-                              <input type="text" id="inputName" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="inputName">Tag</label>
+
+
+                      <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Add Problem Tese Case</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
                             </div>
-
-                            <div class="md-form mb-5">
-                              <input type="text" id="inputPosition" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="inputPosition">Input</label>
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <label  class="col-form-label">Tag: </label>
+                                  <input type="text" id="testCaseInputTag">
+                                  <input type="checkbox" id="autoTagCheckbox">
+                                  <span class="mr-5">Auto</span>
+                                  <input type="checkbox" id="inputAsSamplecheckbox">
+                                  <span>Sample</span>
+                                </div>
+                                <div class="form-group">
+                                  <label  class="col-form-label">Input</label>
+                                  <textarea class="form-control" id="testCaseInput"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <label  class="col-form-label">Output</label>
+                                  <textarea class="form-control" id="testCaseOutput"></textarea>
+                                </div>
+                              </form>
                             </div>
-
-                            <div class="md-form mb-5">
-                              <input type="text" id="inputOfficeInput" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="inputOfficeInput">Output</label>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" id="addTextCaseButton">Add Test Case</button>
                             </div>
-
-                            <div class="md-form mb-5">
-                              <input type="text" id="inputAge" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="inputAge">Strength</label>
-                            </div>
-
-
-
-                            <div class="md-form mb-5">
-                              <input type="text" id="inputSalary" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="inputSalary">Sample</label>
-                            </div>
-
-                          </div>
-                          <div class="modal-footer d-flex justify-content-center buttonAddFormWrapper">
-                            <button class="btn btn-outline-primary btn-block buttonAdd" data-dismiss="modal">Add Test Case
-                              <i class="fas fa-paper-plane-o ml-1"></i>
-                            </button>
                           </div>
                         </div>
                       </div>
-                    </div>
-
                     <div class="text-center">
+
                       <a href="" class="btn btn-info btn-rounded btn-sm" data-toggle="modal" data-target="#modalAdd">Add<i
                           class="fas fa-plus-square ml-1"></i></a>
                     </div>
@@ -587,24 +585,24 @@ html, body {
                             </div>
 
                             <div class="md-form mb-5">
-                              <input type="text" id="formPositionEdit" class="form-control validate">
+                              <textarea  id="formPositionEdit" class="form-control validate"> </textarea>
                               <label data-error="wrong" data-success="right" for="formPositionEdit">Input</label>
                             </div>
 
                             <div class="md-form mb-5">
-                              <input type="text" id="formOfficeEdit" class="form-control validate">
+                              <textarea  class="form-control validate"> </textarea>
                               <label data-error="wrong" data-success="right" for="formOfficeEdit">Output</label>
                             </div>
 
                             <div class="md-form mb-5">
                               <input type="text" id="formAgeEdit" class="form-control validate">
-                              <label data-error="wrong" data-success="right" for="formAgeEdit">Strength</label>
+                              <textarea  class="form-control validate"> </textarea>
                             </div>
 
 
 
                             <div class="md-form mb-5">
-                              <input type="text" id="formSalaryEdit" class="form-control validate">
+                              <textarea  class="form-control validate"> </textarea>
                               <label data-error="wrong" data-success="right" for="formSalaryEdit">Sample</label>
                             </div>
 
@@ -656,47 +654,16 @@ html, body {
                   <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                       <tr>
-                        <th class="th-sm">Tag
-
-                        </th>
-                        <th class="th-sm">Input
-
-                        </th>
-                        <th class="th-sm">Output
-
-                        </th>
-                        <th class="th-sm">Strength
-
-                        </th>
-                        <th class="th-sm">Sample
-
-
+                        <th class="th-sm">#</th>
+                        <th class="th-sm">Tag</th>
+                        <th class="th-sm">Input</th>
+                        <th class="th-sm">Output</th>
+                        <th class="th-sm">Sample</th>
+                        <th></th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>$320,800</td>
-                      </tr>
-                      <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
+                    <tbody id="problemTestCasesTableBody">
 
-                        <td>$170,750</td>
-                      </tr>
-                      <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-
-                        <td>$86,000</td>
-                      </tr>
 
                     </tbody>
 
@@ -715,35 +682,16 @@ html, body {
               <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th scope="col"></th>
+                          <th scope="col">Language Id</th>
                           <th scope="col">Language</th>
                           <th scope="col">Time Limit(S)</th>
                           <th scope="col">Memory Limit(MB)</th>
                           <th scope="col">Edit</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td><input type="checkbox" name="name1" />&nbsp;</td>
-                          <td>C</td>
-                          <td>10 S</td>
-                          <td>512 MB</td>
-                          <td><i class="fas fa-pencil-alt"></i></td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" name="name1" />&nbsp;</td>
-                          <td>C++</td>
-                          <td>5 S</td>
-                          <td>512 MB</td>
-                          <td><i class="fas fa-pencil-alt"></i></td>
-                        </tr>
-                        <tr>
-                          <td><input type="checkbox" name="name1" />&nbsp;</td>
-                          <td >Java</td>
-                          <td>2 S</td>
-                          <td>1024 MB</td>
-                          <td><i class="fas fa-pencil-alt"></i></td>
-                        </tr>
+                      <tbody id="problemLanguageDetailsTableBody">
+
+
                       </tbody>
                     </table>
 
@@ -756,6 +704,45 @@ html, body {
 
       </div>
     </main>
+
+<!-- modal -->
+<div class="modal fade" id="problemLanguageSettingModalButton" tabindex="-1" role="dialog" aria-labelledby="problemLanguageSettingModalButton" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="languageSettingFortext"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <input type="text" hidden id="probleLangId"  />
+          <input type="text" hidden id="problemIdLangSetting"  />
+          <input type="text" hidden id="modalSettingLanguageName">
+
+          <div class="form-group">
+            <label  class="col-form-label">Add this Language</label>
+            <input type="checkbox" id="addLanguageToProblem">
+
+          </div>
+          <div class="form-group">
+            <label  class="col-form-label">Time Limit (seconds)</label>
+            <input id="problemLanguageTimeLimitModal" class="form-control time-limits" type="text">
+          </div>
+          <div class="form-group">
+            <label  class="col-form-label">Memory Limit (MB)</label>
+            <input id="problemLanguageMemoryLimitModal" class="form-control" type="text">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveProblemLanguageSetting"class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       <!--End Footer Layout-->
       <footer class="page-footer text-center text-md-left mt-4 pt-4">
@@ -879,18 +866,16 @@ html, body {
         initFirebaseAuthCreateProblem();
 
       function updateProblemFirestore(updateProblemDb,docId){
-
         firestore.collection("problemsTest").doc(docId).set(updateProblemDb)
-      .then(function() {
-          console.log("Document successfully written!");
-          window.location.href = "contests.html";
+        .then(function() {
+            console.log("Document successfully written!");
+            window.location.href = "contests.html";
 
-      })
-      .catch(function(error) {
-          console.error("Error writing document: ", error);
-      });
-
-    }
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+      }
 
     var problemNameText = document.getElementById('problem_name_text');
     var problemTags = document.getElementById('problem_tags');
@@ -909,9 +894,10 @@ html, body {
     var queryString = decodeURIComponent(window.location.search);
     queryString = queryString.substring(1);
     var queries = queryString.split("$data$");
-
+    var problemIdReference = queries[1];
     var problemDetails = JSON.parse(queries[0]);
     problemNameText.value = problemDetails.problemName;
+    document.getElementById('mangaeProblemHeaderProblemName').innerText = problemDetails.problemName;
     problemTags.value = problemDetails.problemTag;
     createEditor( 'editor' ,problemDetails.problemStatement);
     createEditor( 'editor2' ,problemDetails.inputFormate);
@@ -927,6 +913,19 @@ html, body {
       $("body").click(function(){
         $("#searchmoderatorsname").attr("hidden",true);
       });
+
+      $("#autoTagCheckbox").change(function() {
+          if(this.checked) {
+              $("#testCaseInputTag").attr("disabled",true);
+              console.log("disable");
+          }
+          else{
+            $("#testCaseInputTag").removeAttr("disabled",false);
+            console.log("disabled");
+
+          }
+      });
+
       $("#inputIconEx2").keyup(function(){
         $("#searchmoderatorsname").removeAttr("hidden");
         $("#searchmoderatorsname").show();
@@ -934,78 +933,194 @@ html, body {
         searchUserFromDbByUsername(searchUsernameQuery,queries[1]);
 
       });
+
+
+
       listenForProblemModerators(queries[1]);
+      listenForProblemTeseCases(queries[1]);
+      listenForProblemLanguageDet(queries[1]);
 
+      $("#addTextCaseButton").click(function(){
+        var problemTestCase;
+        if ($('#autoTagCheckbox').is(":checked"))
+        {
+           var testCaseTagVal =getCurrentUserId()+Date.parse(new Date());
+           var sampleVal = $("#inputAsSamplecheckbox").is(':checked');
+           var testCaseInputVal = $("#testCaseInput").val();
+           var testCaseOutputVal = $("#testCaseOutput").val();
+           problemTestCase = {
+             testCaseTag: testCaseTagVal,
+             sample: sampleVal,
+             testCaseInput: testCaseInputVal,
+             testCaseOutput: testCaseOutputVal
+           };
+
+        }
+        else{
+          var testCaseTagVal = $("#testCaseInputTag").val();
+          var sampleVal = $("#inputAsSamplecheckbox").is(':checked');
+          var testCaseInputVal = $("#testCaseInput").val();
+          var testCaseOutputVal = $("#testCaseOutput").val();
+          problemTestCase = {
+            testCaseTag: testCaseTagVal,
+            sample: sampleVal,
+            testCaseInput: testCaseInputVal,
+            testCaseOutput: testCaseOutputVal
+          };
+        }
+        addProblemTestCase(problemTestCase,queries[1]);
+
+      });
+      $("#previewProblemButton").click(function(){
+        location.href = "../specificProblem.html?"+problemIdReference;
+      });
     });
 
-    function listenForProblemModerators(problemIds){
-      firestore.collection("problemModerators").where("problemId", "==", problemIds)
-      .onSnapshot(function(snapshot) {
-        snapshot.docChanges().forEach(function(change) {
-            if (change.type === "added") {
-              var data = change.doc.data();
-              var problemModeratorTableRow = '<tr id="problemModeratorTableRow'+data.userId+'"> \
-                  <td class="pt-3-half" ><img src="'+data.userProfilePictureUrl+'" class=" rounded-circle avatar z-depth-1-half " \
-                   height="40px" width="40px" \
-                  alt="Avatar"><strong class="mt-3 ml-3">'+data.userDisplayname+'</strong></td> \
-                  <td class="pt-3-half" >'+data.username+'</td> \
-                  <td> \
-                    <span class="table-remove"> \
-                        <i id="problemModeratorDeleteIcon'+data.userId+'" class="fas fa-trash"></i> \
-                    </span> \
-                  </td> \
-                </tr>';
-                $("#problemModeratorTableBody").append(problemModeratorTableRow);
+    function listenForProblemLanguageDet(problemId){
+      firestore.collection("problemsTest").doc(problemId).collection("problemLanguages").orderBy("languageId")
+      .onSnapshot(function(querySnapshot) {
+        $("#problemLanguageDetailsTableBody").empty();
+        querySnapshot.forEach(function(doc) {
+          var data = doc.data();
+          console.log("sfjjhfs hgub jk"+doc.id);
+          var problemLanguageDetailsTableRow;
+          if(data.languageCheck){
+            problemLanguageDetailsTableRow = '<tr> \
+              <td><input type="checkbox" disabled checked name="name1" />&nbsp;<span class="ml-5">'+data.languageId+'</span></td>\
+              <td>'+data.languageName+'</td>\
+              <td>'+data.languageTimelimit+'</td>\
+              <td>'+data.languageMemoryLimit+'</td>\
+              <td><i id="'+doc.id+'" class="fas fa-pencil-alt" data-toggle="modal" data-target="#problemLanguageSettingModalButton"></i></td>\
+            </tr>';
+          }
+          else{
+            problemLanguageDetailsTableRow = '<tr> \
+              <td><input type="checkbox"  disabled name="name1" />&nbsp;<span class="ml-5">'+data.languageId+'</span></td>\
+              <td>'+data.languageName+'</td>\
+              <td>'+data.languageTimelimit+'</td>\
+              <td>'+data.languageMemoryLimit+'</td>\
+              <td><i id="'+doc.id+'" class="fas fa-pencil-alt" data-toggle="modal" data-target="#problemLanguageSettingModalButton"></i></td>\
+            </tr>';
+          }
+            $("#problemLanguageDetailsTableBody").append(problemLanguageDetailsTableRow);
 
-                $("#problemModeratorDeleteIcon"+data.userId).click(function(){
-                  $("#problemModeratorTableRow"+data.userId).remove();
-                });
-            }
-            if (change.type === "modified") {
-              var data = change.doc.data();
-              var problemModeratorTableRow = '<tr id="problemModeratorTableRow'+data.userId+'"> \
-                  <td class="pt-3-half" ><img src="'+data.userProfilePictureUrl+'" class=" rounded-circle avatar z-depth-1-half " \
-                   height="40px" width="40px" \
-                  alt="Avatar"><strong class="mt-3 ml-3">'+data.userDisplayname+'</strong></td> \
-                  <td class="pt-3-half" >'+data.username+'</td> \
-                  <td> \
-                    <span class="table-remove"> \
-                        <i id="problemModeratorDeleteIcon'+data.userId+'" class="fas fa-trash"></i> \
-                    </span> \
-                  </td> \
-                </tr>';
-                $("#problemModeratorTableBody").append(problemModeratorTableRow);
+            $("#"+doc.id).click(function(){
+              if (data.languageCheck){
+                $("#addLanguageToProblem").prop('checked', true);
 
-                $("#problemModeratorDeleteIcon"+data.userId).click(function(){
-                  $("#problemModeratorTableRow"+data.userId).remove();
-                });            }
-            if (change.type === "removed") {
-              var data = change.doc.data();
-              var problemModeratorTableRow = '<tr id="problemModeratorTableRow'+data.userId+'"> \
-                  <td class="pt-3-half" ><img src="'+data.userProfilePictureUrl+'" class=" rounded-circle avatar z-depth-1-half " \
-                   height="40px" width="40px" \
-                  alt="Avatar"><strong class="mt-3 ml-3">'+data.userDisplayname+'</strong></td> \
-                  <td class="pt-3-half" >'+data.username+'</td> \
-                  <td> \
-                    <span class="table-remove"> \
-                        <i id="problemModeratorDeleteIcon'+data.userId+'" class="fas fa-trash"></i> \
-                    </span> \
-                  </td> \
-                </tr>';
-                $("#problemModeratorTableBody").append(problemModeratorTableRow);
+              }
+              $("#probleLangId").val(data.languageId);
+              $("#problemIdLangSetting").val(problemId);
+              $("#modalSettingLanguageName").val(data.languageName);
+              $("#problemLanguageTimeLimitModal").val(data.languageTimelimit);
+              $("#problemLanguageMemoryLimitModal").val(data.languageMemoryLimit);
+              $("#languageSettingFortext").text("Language Setting For "+data.languageName);
+            });
+       });
 
-                $("#problemModeratorDeleteIcon"+data.userId).click(function(){
-                  firestore.collection("cities").doc(change.doc.id).delete().then(function() {
-                      console.log("Document successfully deleted!");
-                  }).catch(function(error) {
-                      console.error("Error removing document: ", error);
+    });
+    $("#saveProblemLanguageSetting").click(function(){
+      var ckLang ;
+
+
+      if ($('#addLanguageToProblem').is(":checked"))
+      {
+        ckLang = true;
+      }
+      else{
+        ckLang = false;
+      }
+      var langDetails = {
+        languageCheck : ckLang,
+        languageId :   parseInt($("#probleLangId").val()),
+        languageName :  $("#modalSettingLanguageName").val(),
+        languageTimelimit : $("#problemLanguageTimeLimitModal").val(),
+        languageMemoryLimit : $("#problemLanguageMemoryLimitModal").val()
+
+      }
+      firestore.collection("problemsTest").doc($("#problemIdLangSetting").val()).collection("problemLanguages").doc("languagecode"+$("#probleLangId").val()).set(langDetails)
+      .then(function(docRef) {
+          console.log("Document written with ID bbj fucks: ", "docRef.id");
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+    });
+  }
+
+    function listenForProblemTeseCases(problemIds){
+
+            firestore.collection("problemsTest").doc(problemIds).collection("problemTestCases")
+            .onSnapshot(function(querySnapshot) {
+              $("#problemTestCasesTableBody").empty();
+              var count = 1;
+              querySnapshot.forEach(function(doc) {
+                var data = doc.data();
+                console.log("sfjjhfs hgub"+doc.id);
+                var problemTestCasesTableRow = '<tr> \
+                                        <td class="th-sm"><input class="mr-5" type="checkbox"><span>'+count+'</span></td>\
+                                        <td class="th-sm">'+data.testCaseTag+'</td>\
+                                        <td class="th-sm">'+data.testCaseInput+'</td>\
+                                        <td class="th-sm">'+data.testCaseOutput+'</td>\
+                                        <td class="th-sm">\
+                                        <input class="ml-5" checked type="checkbox">\
+                                        </td>\
+                                        <td>\
+                                        <i id="problemTestCaseEditIcon'+data.testCaseTag+'" class="fas fa-edit"></i> \
+                                        <i id="problemTestCaseDeleteIcon'+data.testCaseTag+'" class="fas fa-trash"></i> \
+                                        </td>\
+                                      </tr>';
+                  $("#problemTestCasesTableBody").append(problemTestCasesTableRow);
+
+                  $("#problemTestCaseDeleteIcon"+data.testCaseTag).click(function(){
+
+                    firestore.collection("problemsTest").doc(problemIds).collection("problemTestCases").doc(doc.id).delete().then(function() {
+                        console.log("Document testcase deleted! ");
+                        $(this).remove();
+                    }).catch(function(error) {
+                        console.error("Error removing document: ", error);
+                    });
                   });
-                });
-               }
-        });
-    });
+                  count += 1;
+             });
+
+          });
     }
-    function updateProblem(){
+    function listenForProblemModerators(problemIds){
+
+      firestore.collection("problemsTest").doc(problemIds).collection("problemModerators")
+      .onSnapshot(function(querySnapshot) {
+        $("#problemModeratorTableBody").empty();
+        querySnapshot.forEach(function(doc) {
+          var data = doc.data();
+          var problemModeratorTableRow = '<tr id="problemModeratorTableRow'+data.userId+'"> \
+              <td class="pt-3-half" ><img src="'+data.userProfilePictureUrl+'" class=" rounded-circle avatar z-depth-1-half " \
+               height="40px" width="40px" \
+              alt="Avatar"><strong class="mt-3 ml-3">'+data.userDisplayname+'</strong></td> \
+              <td class="pt-3-half" >'+data.username+'</td> \
+              <td> \
+                <span class="table-remove"> \
+                    <i id="problemModeratorDeleteIcon'+data.userId+'" class="fas fa-trash"></i> \
+                </span> \
+              </td> \
+            </tr>';
+            $("#problemModeratorTableBody").append(problemModeratorTableRow);
+
+            $("#problemModeratorDeleteIcon"+data.userId).click(function(){
+              firestore.collection("problemsTest").doc(problemIds).collection("problemModerators").where("problemId", "==", problemIds)
+
+              firestore.collection("problemsTest").doc(problemIds).collection("problemModerators").doc(data.userId).delete().then(function() {
+                  console.log("Document successfully deleted!");
+              }).catch(function(error) {
+                  console.error("Error removing document: ", error);
+              });
+              $(this).remove();
+            });
+       });
+
+    });
+  }
+  function updateProblem(){
 
       var updateProblemDb = {
         problemName : problemNameText.value,
@@ -1014,6 +1129,7 @@ html, body {
         problemConstraints : editors.editor3.getData(),
         outputFormate : editors.editor3.getData(),
         problemAuthorName : problemDetails.problemAuthorName,
+        problemAuthorProfilePicture: problemDetails.problemAuthorProfilePicture,
         problemCreatorAuthorId : problemDetails.problemCreatorAuthorId,
         participants : problemDetails.participants,
         problemSolved : problemDetails.problemSolved,

@@ -96,6 +96,45 @@ function createNewUserWithGoogle(){
     }
   });
 }
+
+function getProblemLanguageFromApiAndUpdate(problemId){
+  var request = new XMLHttpRequest()
+
+  request.open('GET', 'https://api.judge0.com/languages', true)
+  request.onload = function() {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response)
+
+    if (request.status >= 200 && request.status < 400) {
+      data.forEach(language => {
+        console.log(language.id+" "+language.name)
+        var langDetails = {
+          languageCheck : true,
+          languageId : language.id,
+          languageName : language.name,
+          languageTimelimit : 20,
+          languageMemoryLimit : 2028
+
+        }
+        firestore.collection("problemsTest").doc(problemId).collection("problemLanguages").doc("languagecode"+language.id).set(langDetails)
+        .then(function(docRef) {
+            console.log("Document written with ID bbj fucks: ", "docRef.id");
+
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+        });
+      });
+
+    } else {
+      console.log('error')
+    }
+  }
+
+  request.send()
+
+}
+
 // Returns the signed-in user's profile Pic URL.
 function getProfilePicUrl() {
   if(isUserSignedIn()){
@@ -325,9 +364,9 @@ function searchUserFromDbByUsername(queryUsername,problemId){
                userDisplayname : data.userDisplayname,
                userProfilePictureUrl : data.userProfilePictureUrl
             };
-            firestore.collection("problemModerators").add(createProblemModerators)
+            firestore.collection("problemsTest").doc(problemId).collection("problemModerators").doc(data.userId).set(createProblemModerators)
             .then(function(docRef) {
-                console.log("Document written with ID bbj: ", "docRef.id");
+                console.log("Document written with ID bbj fuck: ", "docRef.id");
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
@@ -341,6 +380,16 @@ function searchUserFromDbByUsername(queryUsername,problemId){
   })
   .catch(function(error) {
       console.log("Error getting documents: ", error);
+  });
+}
+
+function addProblemTestCase(problemTestCase,problemId) {
+  firestore.collection("problemsTest").doc(problemId).collection("problemTestCases").add(problemTestCase)
+  .then(function(docRef) {
+      console.log("Document written with ID bbj fucks: ", "docRef.id");
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
   });
 }
 
