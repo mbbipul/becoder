@@ -62,6 +62,17 @@ function initFirebaseAuth(jm) {
   });
 }
 
+function initFirebaseAuthWithSpecificProblemDetails(jm,problemIdRef) {
+  jumbotron = jm;
+  auth.onAuthStateChanged(function(user) {
+    authStateObserver(user);
+    getProblemDetailsForCompete(problemIdRef);
+    getAllProblemLanguagesForSubmitOption(problemIdRef);
+    getMySubmissionAll(problemIdRef);
+    getAllSubmission(problemIdRef);
+  });
+}
+
 function initFirebaseAuthAdc() {
   auth.onAuthStateChanged(function(user) {
     getALlAdinistrationContest("manage_contest_lists");

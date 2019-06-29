@@ -11,6 +11,8 @@
   <link href="assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="assets/library/mdb/css/mdb.min.css" rel="stylesheet">
+  <link href="assets/css/becoder.css" rel="stylesheet">
+
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
@@ -19,139 +21,25 @@
   <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
-  <style>
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-      .card{
-          background-color: #fafafa ;
-      }
-    /*becoder style*/
-    .becoder_tutorial_header > h3{
-      filter:blur(1px);
-      font-size: 20px;
-    }
-    .navbar .navbar-brand{
-      margin-left:10% !important;
-    }
-    .navbar-nav > li{
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .ml-auto .dropdown-menu {
-      margin-top: 7px !important;
-     left: auto !important;
-     right: 0px;
-    }
-    /* TEMPLATE STYLES */
 
-     main {
-         padding-bottom: 2rem;
-     }
+<!--  firebase config-->
+    <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+    <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+    <!--  firebase config-->
+<script src="/__/firebase/init.js"></script>
+<script type="text/javascript" src="bin/becoder.js"></script>
 
-     .extra-margins {
-         margin-top: 1rem;
-         margin-bottom: 2.5rem;
-     }
 
-     .jumbotron {
-         text-align: center;
-     }
-
-     .navbar {
-         background-color: #3b295a;
-     }
-
-     footer.page-footer {
-         background-color: #3b295a;
-         margin-top: 2rem;
-     }
-     .navbar .btn-group .dropdown-menu a:hover {
-         color: #000 !important;
-     }
-     .navbar .btn-group .dropdown-menu a:active {
-         color: #fff !important;
-     }
-
-  /*login/register*/
-    .social {
-        float: left;
-        margin: 0 auto 30px;
-        text-align: center;
-    }
-
-    .social .circle{
-           width: 50px;
-       height: 50px;
-       -moz-border-radius: 70px;
-       -webkit-border-radius: 70px;
-       border-radius: 70px;
-
-        background-color: #EEEEEE;
-        color: #FFFFFF;
-        display: inline-block;
-        margin: 5px 13px;
-        padding: 15px;
-    }
-     .social .circle .fab{
-        font-size: 20px;
-    }
-    .social .facebook{
-        background-color: #455CA8;
-        color: #FFFFFF;
-    }
-    .social .google{
-        background-color: #F74933;
-    }
-    .social .github{
-        background-color: #403A3A;
-    }
-    .facebook:hover{
-        background-color: #6E83CD;
-    }
-    .google:hover{
-        background-color: #FF7566;
-    }
-    .github:hover{
-        background-color: #4D4D4d;;
-    }
-    .login_connect_with{
-        text-align: center;
-    }
-    .contest_reg_button{
-        border: 1px solid black;
-        padding: 5px;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 5px;
-        font-size: 20px;
-        z-index: 0;
-      }
-.no_padding{
-  padding: 0;
-  margin: 0;
-}
-   </style>
-<script>
-	// Material Select Initialization
-$(document).ready(function() {
-$('.mdb-select').materialSelect();
-});
-</script>
-
-<style>
-	.submit-form{
-    margin-top: 20px;
-}
-</style>
 </head>
     <body class="grey lighten-3">
 
   <!--Main Navigation-->
   <header>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-blue scrolling-navbar">
       <a class="navbar-brand" href="index.html">
         <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
       </a>
@@ -184,25 +72,26 @@ $('.mdb-select').materialSelect();
               <li class="nav-item">
                 <a class="nav-link" href="#">Notifications</a>
               </li>
-              <li class="nav-item">
+
+              <li class="nav-item" id="navbar-login-signin-button" hidden>
                 <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
               </li>
 
-              <!-- <li class="nav-item dropdown">
+              <li class="nav-item dropdown" id="navbar-user-item" hidden>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="?php echo $images_folder?>becoder_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                  becoder</a>
+                  <img id="nav-user-pic" width="30" height="30" class="d-inline-block align-top" alt="">
+                  <span id="nav-user-name">becoder</span></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Ranking</a>
-                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="userProfile.html">Profile</a>
                   <a class="dropdown-item" href="#">Submission</a>
                   <a class="dropdown-item" href="#">Note</a>
                   <a class="dropdown-item" href="#">Setting</a>
-                  <a class="dropdown-item" href="#">Administration</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <a class="dropdown-item" href="administration/contests.html">Administration</a>
+                  <a class="dropdown-item" id="logout" href="#">Logout</a>
 
                 </div>
-              </li> -->
+              </li>
             </ul>
           </div>
         </nav>
@@ -211,514 +100,339 @@ $('.mdb-select').materialSelect();
     </header>
 
 
+    <!--Modal: Login / Register Form-->
+  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
 
-<main>
-    <div class="container-fluid">
+      <!--Modal cascading tabs-->
+      <div class="modal-c-tabs">
 
-      <!--Section: Post-->
-    	<section class="jumbotron">
-        <h1 class=""><strong> Fucking Problem 01</strong>
-              <img class="rounded-circle z-depth-1-half mt-2"
-               src="assets/images/becoder.png"  id="userProfilePicture" height="25px" width="25px"
-              alt="Avatar">
-          <span style="font-size:14px">Bipul Mandol</span></h1>
-      <hr />
-        	<div class="row wow fadeIn" data-wow-delay="0.2s">
-          		<div class="col-md-12 ">
-            		<div class="">
-            			<ul class="nav nav-tabs" id="myTab" role="tablist">
-  							<li class="nav-item">
-    							<a class="nav-link active" id="problem-tab" data-toggle="tab" href="#problem" role="tab" aria-controls="problem"
-      							aria-selected="true">Problems</a>
-  							</li>
-  							<li class="nav-item">
-    							<a class="nav-link" id="submit-tab" data-toggle="tab" href="#submit" role="tab" aria-controls="submit"
-      							aria-selected="false">Submit</a>
-  							</li>
-  							<li class="nav-item">
-    							<a class="nav-link" id="mySubmission-tab" data-toggle="tab" href="#mySubmission" role="tab" aria-controls="mySubmission"
-      							aria-selected="false">My Submission</a>
-  							</li>
-  							<li class="nav-item">
-    							<a class="nav-link" id="allSubmission-tab" data-toggle="tab" href="#allSubmission" role="tab" aria-controls="allSubmission"
-      							aria-selected="false">All Submission</a>
-  							</li>
-  							<li class="nav-item">
-    							<a class="nav-link" id="standing-tab" data-toggle="tab" href="#standing" role="tab" aria-controls="standing"
-      							aria-selected="false">Standing</a>
-  							</li>
-						</ul>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+              Register</a>
+          </li>
+        </ul>
 
-						<!-- Tab Contents -->
-						<div class="tab-content" id="myTabContent">
-  							<div class="tab-pane fade show active" id="problem" role="tabpanel" aria-labelledby="problem-tab">
-                <!-- gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg -->
-                <hr class="extra-margins">
+        <!-- Tab panels -->
+        <div class="tab-content">
+          <!--Panel 7-->
+          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-                  <div class="container-fluid">
-                  <div class="row mt-3 p-3">
-                        <div class="col-md-8 card grey lighten-4" style="height:1300px; text-align: left !important ">
+            <!--Body-->
+            <div class="modal-body mb-1">
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" placeholder="email or username" id="user-sign-in-email" class="form-control form-control-sm validate">
+              </div>
 
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="password" id="user-sign-in-password" class="form-control form-control-sm validate">
+              </div>
+              <div class="text-center mt-2">
+                <button class="btn btn-info"  id= "sign-in-with-email" >Log in <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
+            </div>
+            <!--Footer-->
+            <div class="login_connect_with">
+                Or Connect With
+              </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            </div>
 
-                            <blockquote class="blockquote bq-primary">
-                                <p style="text-align:justify; padding-top:10px; padding-bottom: 0px!important">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quibusdam dignissimos itaque harum illo!
-                                Quidem, corporis at quae tempore nisi impedit cupiditate perferendis nesciunt, ex dolores doloremque!
-                                Sit, rem, in?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quibusdam dignissimos itaque harum illo!
-                                Quidem, corporis at quae tempore nisi impedit cupiditate perferendis nesciunt, ex dolores doloremque!
-                                Sit, rem, in?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quibusdam dignissimos itaque harum illo!
-                                Quidem,
-                                 corporis at quae tempore nisi impedit cupiditate perferendis nesciunt, ex dolores doloremque!
-                                Sit, rem, in?
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores quibusdam dignissimos itaque harum illo!
-                                Quidem, corporis at quae tempore nisi impedit cupiditate perferendis nesciunt, ex dolores doloremque!
-                                Sit, rem, in?
-                                </p>
+          </div>
+          <!--/.Panel 7-->
 
+          <!--Panel 8-->
+          <div class="tab-pane fade" id="panel8" role="tabpanel">
 
-                                <p style="text-align:justify; padding-top:10px; font-family: cursive ; padding-bottom: 0px!important">Input</p>
-                                <p style="text-align:justify; padding-top:0px; padding-bottom: 0px!important">The first line contains two integers h and w
-                                  (1≤h, w≤500) — the height and width of the picture.The i-th of the next h lines contains string si of length w consisting
-                                   "." and "*" where "." denotes the empty space and "*" denotes the non-empty space.
-                                </p>
+            <!--Body-->
+            <div class="modal-body">
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-envelope prefix"></i>
+                <input type="email" placeholder="email" id="user-sign-up-email" class="form-control form-control-sm validate">
 
+              </div>
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-user prefix"></i>
+                <input type="text" placeholder="username" id="user-sign-up-username" class="form-control form-control-sm validate">
 
-                                <p style="text-align:justify; padding-top:10px;font-family: cursive ;padding-bottom: 0px!important">Output</p>
-                                <p style="text-align:justify; padding-top:0px; padding-bottom: 0px!important">If the given picture satisfies all conditions, print "YES".
-                                   Otherwise, print "NO".You can output each letter in any case (upper or lower).
-                                </p>
+              </div>
+              <div class="md-form form-sm mb-5">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="password" id="user-sign-up-password" class="form-control form-control-sm validate">
 
+              </div>
 
-                                <p style="text-align:justify; padding-top:10px;font-family: cursive ;padding-bottom: 0px!important">Example</p>
-                                <div style="box-sizing: content-box; width: 100%; padding: 10px; font-style: oblique; font-size: .7em; border: 1px solid black;">
-                                      <strong>Input:</strong><br>
-                                      4<br>
-                                      2<br>
-                                      3<br>
-                                      4<br>
-                                      5<br><br>
-                                      <strong>Output: </strong><br>
-                                      34<br>
-                                      3455<br>
-                                      23<br>
-                                      3455<br>
+              <div class="md-form form-sm mb-4">
+                <i class="fas fa-lock prefix"></i>
+                <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
+              </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
+                              Terms and Conditions</a></label>
+            </div>
+              <div class="text-center form-sm mt-2">
+                <button class="btn btn-info" id="sign-up-with-email">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+              </div>
 
-                                </div>
+            </div>
+              <div class="login_connect_with">
+                Or Connect With
+              </div>
+            <!--Footer-->
+            <div class="modal-footer">
+              <div class="social">
+                <a class="circle github" href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="google_login" class="circle google" href="#">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a id="facebook_login" class="circle facebook" href="#">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            </div>
+          </div>
+          <!--/.Panel 8-->
+        </div>
 
-                                <br><div style="box-sizing: content-box; width: 100%; padding: 10px; font-style: oblique; font-size: .7em; border: 1px solid black;">
-                                      <strong>Input:</strong><br>
-                                      4<br>
-                                      2<br>
-                                      3<br>
-                                      4<br>
-                                      5<br><br>
-                                      <strong>Output: </strong><br>
-                                      34<br>
-                                      3455<br>
-                                      23<br>
-                                      3455<br>
-
-                                </div>
-
-
-                             </blockquote>
-
-
-
-
-
-
-                        </div>
-                        <div class="col-md-4">
-                                    <!--Card-->
-                                    <div class="card card-cascade narrower">
-                                        <div class="card-block">
-
-                                            <table class="table table-borderless">
-
-                                                <tbody>
-                                                      <tr>
-                                                          <td>Name</td>
-                                                          <td >Fucking Problem 01</td>
-                                                      </tr>
-
-                                                      <tr>
-                                                        <td>Problem Owner :</td>
-                                                        <td>Mr. Fucker</td>
-                                                      </tr>
-
-                                                      <tr>
-                                                        <td>Timelimit </td>
-                                                        <td>1s</td>
-                                                      </tr>
-
-                                                      <tr>
-                                                        <td>Memory Limit</td>
-                                                        <td>200MB</td>
-                                                      </tr>
-
-                                                      <tr>
-                                                          <td>Language</td>
-                                                          <td >C, C++, Java, Python </td>
-                                                      </tr>
-
-                                                      <tr>
-                                                          <td>Added Date</td>
-                                                          <td >01-01-2019</td>
-                                                      </tr>
-
-                                                </tbody>
-                                              </table>
-                                            <a class="btn btn-primary" ripple-radius>Submit Solution</a>
-                                        </div>
-                                    </div>
-                                    <!--/.Card-->
-                        </div>
-
-
-                  </div>
-                </div>
-                <!--gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg -->
-
-  							</div>
-
-  							<div class="tab-pane fade " id="submit" role="tabpanel" aria-labelledby="submit-tab">
-  							<!-- Horizontal material form -->
-<form class="submit-form">
-  <!-- Grid row -->
-  <div class="form-group row">
-    <!-- Material input -->
-    <label for="problemId" class="col-sm-2 col-form-label">Problem Id:</label>
-    <div class="col-sm-10">
-      <div class="md-form mt-0">
-        <input type="number" class="form-control" id="problemId" placeholder="Problem Id">
       </div>
     </div>
+    <!--/.Content-->
   </div>
-  <!-- Grid row -->
-
-  <!-- Grid row -->
-  <div class="form-group row">
-    <!-- Material input -->
-    <label for="problemId" class="col-sm-2 col-form-label">Language:</label>
-		<select class="mdb-select md-form">
-		  <option value="" disabled selected>Choose Language</option>
-		  <option value="1">ANCI C</option>
-		  <option value="2">ANCI C++</option>
-		  <option value="3">JAVA</option>
-		  <option value="3">Python</option>
-		</select>
-	</div>
-
-  <!-- Grid row -->
-<div class="form-group row">
-    <!-- Material input -->
-  <label for="problemId" class="col-sm-2 col-form-label">Code:</label>
-  <div class="form-group shadow-textarea">
-  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
 </div>
-</div>
-
-  <!-- Grid row -->
- <div class="form-group row">
-    <!-- Material input -->
-  <label for="problemId" class="col-sm-2 col-form-label">.. or file Upload:</label>
-  <div class="form-group shadow-textarea">
-  <input type="file">
-</div>
-</div>
-  <!-- Grid row -->
-<a href="#"><button type="button" class="btn btn-primary">Submit Code</button></a>
-
-</form>
-<!-- Horizontal material form -->
-  							</div>
-
-  							<div class="tab-pane fade " id="mySubmission" role="tabpanel" aria-labelledby="mySubmission-tab">
-  							<div class="table-responsive">
-  							<!--Table-->
-  								<table class="table table-striped">
-
-  									<!--Table head-->
-								    <thead>
-								      <tr>
-								        <th>Problem Id</th>
-								        <th>Problem Name</th>
-								        <th>Status</th>
-								        <th>Language</th>
-								        <th>Run Time</th>
-								        <th>Submission Date</th>
-								      </tr>
-								    </thead>
-								    <!--Table head-->
+<!--Modal: Login / Register Form-->
+<div >
 
 
-   							 <!--Table body-->
-    								<tbody>
-      									<tr>
-        									<th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-      									</tr>
-									     <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-danger">Wrong Answer</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-    								</tbody>
-    							<!--Table body-->
-  								</table>
-  							<!--Table-->
-							</div>
+
+  <strong>API URL</strong>&nbsp
+  <input type="url" name="apiUrl" value=" https://api.judge0.com" size="31" placeholder="https://api.judge0.com"><br><br>
+
+  <strong>Source Code</strong>
+  <textarea name="sourceCode" rows="10" cols="50">
+#include <stdio.h>
+
+int main(void) {
+  char name[10];
+  scanf("%s", name);
+  printf("hello, %s\n", name);
+  return 0;
+}</textarea><br><br>
+  <strong>Language ID</strong>&nbsp
+  <input type="text" name="languageId" value="4">
+  <input type="checkbox" name="languageIdIsNull"><code>null</code><br><br>
+
+  <strong>Stdin</strong>
+  <input type="checkbox" name="stdinIsNull"><code>null</code><br>
+  <textarea name="stdin" rows="5" cols="25">Judge0</textarea><br><br>
+
+  <strong>Expected Output</strong>
+  <input type="checkbox" name="expectedOutputIsNull"><code>null</code><br>
+  <textarea name="expectedOutput" rows="5" cols="25">hello, Judge0</textarea><br><br>
 
 
-  							</div>
 
-  							<div class="tab-pane fade " id="allSubmission" role="tabpanel" aria-labelledby="allSubmission-tab">
-  							<div class="table-responsive">
-  							<!--Table-->
-  								<table class="table table-striped">
+  <div id="panel" style="position: fixed; bottom: 0px; padding: 20px; background-color: #00F20D; bottom: 20px; right: 20px; border: 1px solid #777">
+    <button type="button" id="run">Run</button>
+    <button type="button" id="stop" disabled>Stop</button>
+    <button type="button" id="clearLog">Clear Log</button>
+    <button type="button" id="backToTop">Back To Top</button>
+  </div>
 
-  									<!--Table head-->
-								    <thead>
-								      <tr>
-								        <th>Problem Id</th>
-								        <th>Ranking</th>
-								        <th>Total Submission</th>
-								        <th>Date</th>
-								        <th>Run Time</th>
-								      </tr>
-								    </thead>
-								    <!--Table head-->
+  <hr>
 
+  <h2>Request/Response Log</h2><br>
+  <pre id="log"></pre>
 
-   							 <!--Table body-->
-    								<tbody>
-      									<tr>
-        									<th scope="row">134343</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-
-      									</tr>
-									     <tr>
-									        <th scope="row">13454</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1434</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1245</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1874534</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">13443</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">14434</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-    								</tbody>
-    							<!--Table body-->
-  								</table>
-  							<!--Table-->
-							</div>
-  							</div>
-
-  							<div class="tab-pane fade " id="standing" role="tabpanel" aria-labelledby="standing-tab">
-  							standing here
-  							</div>
-						</div>
-						<!-- End tab Contents -->
-            		</div>
-        		</div>
-    		</div>
-    	</section>
-	</div>
-</main>
-
-
-  <!--Footer layout-->
-
-
-  <!--End Footer Layout-->
-  <footer class="page-footer text-center text-md-left mt-4 pt-4">
-    <!--Footer links-->
-    <div class="container-fluid">
-      <div class="row">
-        <!--First column-->
-        <div class="col-lg-3 col-md-6 ml-auto">
-          <h5 class="title mb-3"><strong>About becoder</strong></h5>
-          <p>In mathematics and computer science, an algorithm is an unambiguous
-             specification of how to solve a class of problems.</p>
-          <p>In mathematics and computer science, an algorithm is an unambiguous
-            specification of how to solve a class of problems.</p>
-        </div>
-        <!--/.First column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Second column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>First column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Second column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Third column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>Second column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Third column-->
-        <hr class="w-100 clearfix d-sm-none">
-        <!--Fourth column-->
-        <div class="col-lg-2 col-md-6 ml-auto mb-4">
-          <h5 class="title mb-3"><strong>Third column</strong></h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--/.Fourth column-->
-      </div>
-    </div>
-    <!--/.Footer links-->
-    <hr>
-    <!--Call to action-->
-    <div class="call-to-action text-center my-4">
-      <h4 class="mb-4">Learn to code</h4>
-      <h5 class="mb-4">Register and start coding</h5>
-      <ul class="list-unstyled list-inline">
-        <li class="list-inline-item">
-          <a href="#" class="btn btn-primary waves-effect waves-light"
-            rel="nofollow">Register</a>
-        </li>
-        <li class="list-inline-item">
-          <a  href="#" class="btn btn-info waves-effect waves-light"
-            rel="nofollow">Log in</a>
-        </li>
-      </ul>
-    </div>
-    <!--/.Call to action-->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3 text-center">
-      <div class="containter-fluid">
-        © 2019 Copyright: <a href="index.html"> becoder.com </a>
-      </div>
-    </div>
-    <!--/.Copyright-->
-  </footer>
-  <!--/.Footer-->
   <script>
-  new WOW().init();
+  var datas;
+    var stopFetch = false;
+
+    if (window.location.protocol !== "file:") {
+      $("input[name=apiUrl]").attr('value', window.location.origin);
+    }
+
+    function createQueryParameters(type = "Request") {
+      var parameters = [];
+      parameters.push("base64_encoded=true");
+
+      parameters.push("wait=false");
+
+      if (parameters.length == 0) {
+        return "";
+      }
+
+      var queryParameters = "?";
+      for (var i = 0; i < parameters.length - 1; i++) {
+        queryParameters += parameters[i] + "&";
+      }
+
+      return queryParameters + parameters[parameters.length - 1];
+    }
+
+    function resetButtons() {
+      stopFetch = false;
+      $("#run").removeAttr("disabled");
+      $("#stop").prop("disabled", true);
+      $("#panel").css('background-color', '#00F20D');
+    }
+
+
+
+    function handleError(jqXHR, textStatus, errorThrown) {
+      resetButtons();
+    }
+
+    function fetchSubmission(apiUrl, token) {
+      var queryParameters = createQueryParameters("Response");
+      $.ajax({
+        url: apiUrl + "/submissions/" + token + queryParameters,
+        type: "GET",
+        async: true,
+        success: function(data, textStatus, jqXHR) {
+          console.log(textStatus);
+
+          if ((data.status === undefined || data.status.id <= 2) && (data.status_id === undefined || data.status_id <= 2) && !stopFetch) {
+            setTimeout(fetchSubmission.bind(null, apiUrl, token), 1500);
+          } else if (!stopFetch) {
+            datas = data;
+            data.testCaseNumber = 2;
+            console.log(data);
+              firestore.collection("submission").add(data)
+              .then(function(docRef) {
+                  console.log("Document written with ID: ", docRef.id);
+              })
+              .catch(function(error) {
+                  console.error("Error adding document: ", error);
+              });
+
+            resetButtons();
+          } else {
+            resetButtons();
+          }
+        },
+        error: handleError
+      });
+    }
+
+    $("#run").click(function() {
+      $(this).prop("disabled", true);
+      $("#stop").removeAttr("disabled");
+      $("#panel").css('background-color', '#F2000D');
+
+      var apiUrl = " https://api.judge0.com";
+      var sourceCode = $("textarea[name=sourceCode]").val();
+      // var languageId = $("input[name=languageId]").val();
+      var languageId = 4;
+      var numberOfRuns;
+      var stdin = $("textarea[name=stdin]").val();
+      var expectedOutput = $("textarea[name=expectedOutput]").val();
+      var cpuTimeLimit ;
+      var cpuExtraTime ;
+      var wallTimeLimit ;
+      var memoryLimit ;
+      var stackLimit ;
+      var maxProcessesAndOrThreads ;
+      var enablePerProcessAndThreadTimeLimit ;
+      var enablePerProcessAndThreadMemoryLimit ;
+      var maxFileSize =null;
+      var wait = false;
+
+      var queryParameters = createQueryParameters();
+        sourceCode = btoa(sourceCode);
+        stdin = btoa(stdin);
+        expectedOutput = btoa(expectedOutput);
+
+
+      numberOfRuns = null;
+      cpuTimeLimit = null;
+      cpuExtraTime = null;
+      wallTimeLimit = null;
+      memoryLimit = null;
+      stackLimit = null;
+
+      maxProcessesAndOrThreads = null;
+      enablePerProcessAndThreadTimeLimit = null;
+      enablePerProcessAndThreadMemoryLimit = null;
+
+      if ($("input[name=maxFileSizeIsNull]").is(":checked")) {
+        maxFileSize = null;
+      }
+
+      var data = {
+        source_code: sourceCode,
+        language_id: languageId,
+        number_of_runs: numberOfRuns,
+        stdin: stdin,
+        expected_output: expectedOutput,
+        cpu_time_limit: cpuTimeLimit,
+        cpu_extra_time: cpuExtraTime,
+        wall_time_limit: wallTimeLimit,
+        memory_limit: memoryLimit,
+        stack_limit: stackLimit,
+        max_processes_and_or_threads: maxProcessesAndOrThreads,
+        enable_per_process_and_thread_time_limit: enablePerProcessAndThreadTimeLimit,
+        enable_per_process_and_thread_memory_limit: enablePerProcessAndThreadMemoryLimit,
+        max_file_size: maxFileSize
+      };
+
+
+      $.ajax({
+        url: apiUrl + "/submissions" + queryParameters,
+        type: "POST",
+        async: true,
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function(data, textStatus, jqXHR) {
+
+          if (!wait) {
+            setTimeout(fetchSubmission.bind(null, apiUrl, data.token), 1500);
+          } else {
+
+            resetButtons();
+          }
+        },
+        error: handleError
+      });
+    });
+
+    $("#stop").click(function() {
+      stopFetch = true;
+    });
+
+    $("#clearLog").click(function() {
+      $("#log").html("");
+    });
+
+    $("#backToTop").click(function() {
+      $('html, body').animate({
+		      scrollTop: 0
+	    }, 50);
+    });
   </script>
 </body>
-
 </html>

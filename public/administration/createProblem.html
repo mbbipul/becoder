@@ -427,7 +427,7 @@ function creeateProblemOk(){
     problemCreatorAuthorId : getCurrentUserId(),
     participants : 100,
     problemSolved : 100,
-    problemCreateDate : new Date(),
+    problemCreateDate : Date.parse(new Date()),
     problemTag : problemTags
   };
   createProblemFirestore(createProblemDb);

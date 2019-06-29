@@ -297,7 +297,7 @@
 
                 <div class="container-fluid">
                 <div class="row mt-3 p-3">
-                      <div class="col-md-8 card grey lighten-4" style="height:1300px; text-align: left !important ">
+                      <div class="col-md-8 card grey lighten-4" style=" text-align: left !important ">
 
                           <blockquote class="blockquote bq-primary">
                               <h3><strong>Problem Statement: </strong></h3>
@@ -316,29 +316,32 @@
                               <div id="problemOutputFormate">
 
                               </div>
-                              <h3><strong>Sample: </strong></h3>
+                              <h3 class="mb-3"><strong>Sample: </strong></h3>
                               <div id="problemInputOutputSample">
+                                <h4 class="mb-3 ml-3"><strong>Input: </strong></h4>
+                                <div class="ml-5" id="problemInputSample">
 
+                                </div>
+                                <h4 class="ml-3"> <strong>Output: </strong></h4>
+                                <div class="ml-5" id="problemOutputSample">
+
+                                </div>
                               </div>
                            </blockquote>
 
                       </div>
                       <div class="col-md-4">
-                                  <!--Card-->
                                   <div class="card card-cascade narrower">
                                       <div class="card-block">
-
                                           <table class="table table-borderless">
-
                                               <tbody>
                                                     <tr>
                                                         <td>Problem Name</td>
-                                                        <td id="problemCardProblemName">Fucking Problem 01</td>
+                                                        <td id="problemCardProblemName"></td>
                                                     </tr>
-
                                                     <tr>
                                                       <td>Problem Owner :</td>
-                                                      <td id="problemCardProblemOwner">Mr. Fucker</td>
+                                                      <td id="problemCardProblemOwner"></td>
                                                     </tr>
 
                                                     <tr>
@@ -380,27 +383,16 @@
               <!-- Horizontal material form -->
   <form class="submit-form">
   <!-- Grid row -->
-  <div class="form-group row">
-  <!-- Material input -->
-  <label for="problemId" class="col-sm-2 col-form-label">Problem Id:</label>
-  <div class="col-sm-10">
-    <div class="md-form mt-0">
-      <input type="number" class="form-control" id="problemId" placeholder="Problem Id">
-    </div>
-  </div>
-  </div>
+
   <!-- Grid row -->
 
   <!-- Grid row -->
   <div class="form-group row">
   <!-- Material input -->
-  <label for="problemId" class="col-sm-2 col-form-label">Language:</label>
-  <select class="mdb-select md-form">
+  <label for="problemId" class="col-sm-2 col-form-label mt-3">Language:</label>
+  <select class="mdb-select md-form" id="allProblemLanguagesSubmitOption">
     <option value="" disabled selected>Choose Language</option>
-    <option value="1">ANCI C</option>
-    <option value="2">ANCI C++</option>
-    <option value="3">JAVA</option>
-    <option value="3">Python</option>
+
   </select>
   </div>
 
@@ -409,7 +401,7 @@
   <!-- Material input -->
   <label for="problemId" class="col-sm-2 col-form-label">Code:</label>
   <div class="form-group shadow-textarea">
-  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
+  <textarea class="form-control z-depth-1" name="sourceCode" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
   </div>
   </div>
 
@@ -422,7 +414,7 @@
   </div>
   </div>
   <!-- Grid row -->
-  <a href="#"><button type="button" class="btn btn-primary">Submit Code</button></a>
+  <a href="#"><button id="submitProblemCode" type="button" class="btn btn-primary">Submit Code</button></a>
 
   </form>
   <!-- Horizontal material form -->
@@ -436,8 +428,7 @@
                   <!--Table head-->
                   <thead>
                     <tr>
-                      <th>Problem Id</th>
-                      <th>Problem Name</th>
+                      <th>#</th>
                       <th>Status</th>
                       <th>Language</th>
                       <th>Run Time</th>
@@ -448,63 +439,8 @@
 
 
                <!--Table body-->
-                  <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                      </tr>
-                     <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-danger">Wrong Answer</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-                        <td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-                        <td>ANCI C++</td>
-                        <td>0.000</td>
-                        <td>2019-03-20 16:58:20</td>
-                    </tr>
+                  <tbody id="mySubmissionTableBody">
+
                   </tbody>
                 <!--Table body-->
                 </table>
@@ -522,68 +458,20 @@
                   <!--Table head-->
                   <thead>
                     <tr>
-                      <th>Problem Id</th>
-                      <th>Ranking</th>
-                      <th>Total Submission</th>
-                      <th>Date</th>
+                      <th>#</th>
+                      <th>Status</th>
+                      <th>Language</th>
                       <th>Run Time</th>
+                      <th>Submission Date</th>
+                      <th>Submit by</th>
                     </tr>
                   </thead>
                   <!--Table head-->
 
 
                <!--Table body-->
-                  <tbody>
-                      <tr>
-                        <th scope="row">134343</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
+                  <tbody id="allSubmissionTableBody">
 
-                      </tr>
-                     <tr>
-                        <th scope="row">13454</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1434</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1245</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">1874534</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">13443</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">14434</th>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-                        <td>2019-03-20 16:58:20</td>
-                        <td>0.000</td>
-                    </tr>
                   </tbody>
                 <!--Table body-->
                 </table>
@@ -721,7 +609,7 @@
 // Checks that Firebase has been imported.
 checkSetup();
 console.log(firebase.auth().currentUser+"jfhjsh ");
-
+var problemIdRef ;
 var signInButtonElement = document.getElementById('google_login');
 
 var userSignUpEmail = document.getElementById('user-sign-up-email');
@@ -743,16 +631,151 @@ signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
 signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
 logoutButton.addEventListener('click',signOut);
 
-initFirebaseAuth(true);
 $(document).ready(function(){
   var queryString = decodeURIComponent(window.location.search);
-  var problemIdRef = queryString.substring(1);
-  getProblemDetailsForCompete(problemIdRef);
-
+  problemIdRef = queryString.substring(1);
+  initFirebaseAuthWithSpecificProblemDetails(true,problemIdRef);
 });
+
+function getAllProblemLanguagesForSubmitOption(problemIdRef){
+  firestore.collection('problemsTest').doc(problemIdRef)
+  .collection("problemLanguages")
+  .where('languageCheck', '==', true)
+  .orderBy("languageId")
+  .onSnapshot(function(snapshot) {
+    $("#allProblemLanguagesSubmitOption").empty();
+    snapshot.forEach(function(doc) {
+      var data = doc.data();
+      var optionLang = '<option value="'+data.languageId+'">\
+      '+data.languageName+'</option>';
+      console.log(optionLang);
+      $("#allProblemLanguagesSubmitOption").append(optionLang);
+    });
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function getMySubmissionAll(problemIdRef){
+    firestore.collection('problemsTest').doc(problemIdRef)
+    .collection("submissions")
+    .where('submitBy', '==', "1Net7kamxVSHeaT4SVKsWo6mB233")
+    .orderBy("submissionTime","desc")
+    .onSnapshot(function(snapshot) {
+      $("#mySubmissionTableBody").empty();
+      var count = 1;
+      snapshot.forEach(function(doc) {
+        console.log(doc.data());
+        var data = doc.data();
+        var submissionStatus = data.status;
+        var submissionStatusID = submissionStatus.id;
+        var submissionBadegeClass ;
+        var runTime ;
+        if (submissionStatusID==3) {
+          submissionBadegeClass = "badge-default";
+          runTime = data.time;
+        }
+        else if (submissionStatusID==4) {
+          submissionBadegeClass = "badge-danger";
+          runTime = data.time;
+        }
+        else  {
+          submissionBadegeClass =  "badge-warning";
+          runTime ='<span class="badge badge-warning">\
+          <i class="fas fa-times"></i></span>';
+
+        }
+          console.log(data.status.id);
+          // doc.data() is never undefined for query doc snapshots
+          var mySubmissionRow = '<tr>\
+             <th scope="row">'+count+'</th>\
+             <td>\
+              <h5>\
+              <span class="badge badge-pill '+submissionBadegeClass+'">'+submissionStatus.description+'</span>\
+              </h5>\
+              </td>\
+             <td>'+data.languageName+'</td>\
+             <td>'+runTime+'</td>\
+             <td>'+timeConverterUnixTOString(data.submissionTime)+'</td>\
+         </tr>';
+
+          $("#mySubmissionTableBody").append(mySubmissionRow);
+          count++;
+      });
+       }, function(error) {
+         console.log("Error getting documents: ", error);
+       });
+
+
+}
+
+function getAllSubmission(problemIdRef){
+    firestore.collection('problemsTest').doc(problemIdRef)
+    .collection("submissions").orderBy("submissionTime","desc")
+    .onSnapshot(function(snapshot) {
+      $("#allSubmissionTableBody").empty();
+      var count = 1;
+      snapshot.forEach(function(doc) {
+        console.log(doc.data());
+        var data = doc.data();
+        var submissionStatus = data.status;
+        var submissionStatusID = submissionStatus.id;
+        var submissionBadegeClass ;
+        var runTime ;
+        if (submissionStatusID==3) {
+          submissionBadegeClass = "badge-default";
+          runTime = data.time;
+        }
+        else if (submissionStatusID==4) {
+          submissionBadegeClass = "badge-danger";
+          runTime = data.time;
+        }
+        else  {
+          submissionBadegeClass =  "badge-warning";
+          runTime ='<span class="badge badge-warning">\
+          <i class="fas fa-times"></i></span>';
+
+        }
+          console.log(data.status.id);
+          // doc.data() is never undefined for query doc snapshots
+          var mySubmissionRow = '<tr>\
+             <th scope="row">'+count+'</th>\
+             <td>\
+              <h5>\
+              <span class="badge badge-pill '+submissionBadegeClass+'">'+submissionStatus.description+'</span>\
+              </h5>\
+              </td>\
+             <td>'+data.languageName+'</td>\
+             <td>'+runTime+'</td>\
+             <td>'+timeConverterUnixTOString(data.submissionTime)+'</td>\
+             <td>'+data.submitAuthorName+'</td>\
+         </tr>';
+
+          $("#allSubmissionTableBody").append(mySubmissionRow);
+          count++;
+      });
+
+       }, function(error) {
+         console.log("Error getting documents: ", error);
+       });
+
+}
+
+
+function timeConverterUnixTOString(UNIX_timestamp){
+  var a = new Date(UNIX_timestamp);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+  return time;
+}
 function getProblemDetailsForCompete(problemIdRef){
   var docRef = firestore.collection("problemsTest").doc(problemIdRef);
-
   docRef.get().then(function(doc) {
       if (doc.exists) {
         var data = doc.data();
@@ -774,14 +797,13 @@ function getProblemDetailsForCompete(problemIdRef){
         $("#problemInputFormate").html(pInputFormat);
         $("#problemConstraints").html(pConstraints);
         $("#problemOutputFormate").html(pOutPutFormat);
-        $("#problemInputOutputSample").html();
 
         $("#problemCardProblemName").text(pName);
         $("#problemCardProblemOwner").text(pOwnerName);
         $("#ProblemPartiCipantsText").text(pParticipants);
         $("#problemSolvedText").text(pSolved);
         $("#problemCardProblemLanguage").text();
-        $("#problemCardProblemCreateDate").text(pCreateDate);
+        $("#problemCardProblemCreateDate").text(timeConverterUnixTOString(pCreateDate));
 
           console.log("Document data:", doc.data());
       } else {
@@ -792,8 +814,242 @@ function getProblemDetailsForCompete(problemIdRef){
         console.log("Error getting document:", error);
   });
 
+      firestore.collection("problemsTest").doc(problemIdRef).collection("problemTestCases").where('sample', '==', true).get()
+      .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            var data = doc.data();
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+              $("#problemInputSample").text(data.testCaseInput);
+              $("#problemOutputSample").text(data.testCaseOutput);
+
+          });
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      });
+
 
 }
+</script>
+<script>
+  var stopFetch = false;
+  var counterForJudge = 1;
+  var isFinishedAllTestCaseJudge = false;
+  var stopUpdateToFirestore = false;
+  var snapSize;
+  if (window.location.protocol !== "file:") {
+    $("input[name=apiUrl]").attr('value', window.location.origin);
+  }
+
+  function createQueryParameters(type = "Request") {
+    var parameters = [];
+    parameters.push("base64_encoded=true");
+
+    parameters.push("wait=false");
+
+    if (parameters.length == 0) {
+      return "";
+    }
+
+    var queryParameters = "?";
+    for (var i = 0; i < parameters.length - 1; i++) {
+      queryParameters += parameters[i] + "&";
+    }
+
+    return queryParameters + parameters[parameters.length - 1];
+  }
+
+  function resetButtons() {
+    stopFetch = false;
+    $("#submitProblemCode").removeAttr("disabled");
+    // $("#stop").prop("disabled", true);
+    // $("#panel").css('background-color', '#00F20D');
+  }
+
+
+
+  function handleError(jqXHR, textStatus, errorThrown) {
+    resetButtons();
+  }
+
+  function fetchSubmission(apiUrl, token,testtags,languageId,languageName) {
+    var queryParameters = createQueryParameters("Response");
+    console.log("token "+token);
+
+    $.ajax({
+      url: apiUrl + "/submissions/" + token + queryParameters,
+      type: "GET",
+      async: true,
+      success: function(data, textStatus, jqXHR) {
+        console.log(textStatus);
+
+        if ((data.status === undefined || data.status.id <= 2) && (data.status_id === undefined || data.status_id <= 2) && !stopFetch) {
+          setTimeout(fetchSubmission.bind(null, apiUrl, token,testtags,languageId,languageName), 1500);
+        } else if (!stopFetch) {
+          console.log(data);
+          if(stopUpdateToFirestore==false){
+            data.testCaseId = testtags;
+            data.languageId = languageId;
+            data.languageName = languageName;
+            data.submitBy = getCurrentUserId();
+            data.submitAuthorName = getUserName();
+
+            if ((data.status.description != "Accepted")){
+              console.log(data+"bipul d");
+              data.submissionTime = Date.parse(new Date());
+              console.log(testtags);;
+                firestore.collection("problemsTest").doc(problemIdRef).collection("submissions").add(data)
+                .then(function(docRef) {
+                    console.log("Document written with ID bipulsd: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+             stopUpdateToFirestore = true;
+             resetButtons();
+           }
+           console.log(counterForJudge + " " +snapSize);
+            if(counterForJudge == snapSize){
+
+              console.log(data+"bipul d");
+              data.submissionTime = Date.parse(new Date());
+                console.log(testtags);;
+
+                firestore.collection("problemsTest").doc(problemIdRef).collection("submissions").add(data)
+                .then(function(docRef) {
+                    console.log("Document written with ID bipulsd: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+             stopUpdateToFirestore = true;
+             resetButtons();
+           }
+          }
+         counterForJudge += 1;
+        } else {
+          resetButtons();
+        }
+      },
+      error: handleError
+    });
+  }
+
+  $("#submitProblemCode").click(function() {
+    $(this).prop("disabled", true);
+    // $("#stop").removeAttr("disabled");
+    $("#panel").css('background-color', '#F2000D');
+
+    var apiUrl = " https://api.judge0.com";
+    var sourceCode = $("textarea[name=sourceCode]").val();
+    // var languageId = $("input[name=languageId]").val();
+    counterForJudge = 1;
+    stopUpdateToFirestore = false;
+
+
+    firestore.collection("problemsTest").doc(problemIdRef).collection("problemTestCases")
+    .get()
+    .then(function(querySnapshot) {
+        snapSize = querySnapshot.size;
+        console.log(snapSize);
+        var languageId = $('#allProblemLanguagesSubmitOption').find(":selected").val();
+        var languageName = $('#allProblemLanguagesSubmitOption').find(":selected").text();
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            if (stopUpdateToFirestore!=true) {
+              var srcC = sourceCode;
+              var numberOfRuns;
+              var stdin ;
+              var expectedOutput ;
+              var cpuTimeLimit ;
+              var cpuExtraTime ;
+              var wallTimeLimit ;
+              var memoryLimit ;
+              var stackLimit ;
+              var maxProcessesAndOrThreads ;
+              var enablePerProcessAndThreadTimeLimit ;
+              var enablePerProcessAndThreadMemoryLimit ;
+              var maxFileSize =null;
+              var wait = false;
+
+              numberOfRuns = null;
+              cpuTimeLimit = null;
+              cpuExtraTime = null;
+              wallTimeLimit = null;
+              memoryLimit = null;
+              stackLimit = null;
+
+              maxProcessesAndOrThreads = null;
+              enablePerProcessAndThreadTimeLimit = null;
+              enablePerProcessAndThreadMemoryLimit = null;
+              maxFileSize = null;
+
+              var queryParameters = createQueryParameters();
+              var firestoreData = doc.data();
+              console.log(firestoreData);
+              var testtags = firestoreData.testCaseTag;
+              console.log(testtags+"hey bipul");
+              console.log(firestoreData.testCaseInput+" "+firestoreData.testCaseOutput);
+              stdin = btoa(firestoreData.testCaseInput);
+              expectedOutput = btoa(firestoreData.testCaseOutput);
+
+
+              var data = {
+                source_code: btoa(srcC),
+                language_id: languageId,
+                number_of_runs: numberOfRuns,
+                stdin: stdin,
+                expected_output: expectedOutput,
+                cpu_time_limit: cpuTimeLimit,
+                cpu_extra_time: cpuExtraTime,
+                wall_time_limit: wallTimeLimit,
+                memory_limit: memoryLimit,
+                stack_limit: stackLimit,
+                max_processes_and_or_threads: maxProcessesAndOrThreads,
+                enable_per_process_and_thread_time_limit: enablePerProcessAndThreadTimeLimit,
+                enable_per_process_and_thread_memory_limit: enablePerProcessAndThreadMemoryLimit,
+                max_file_size: maxFileSize
+              };
+
+
+              $.ajax({
+                url: apiUrl + "/submissions" + queryParameters,
+                type: "POST",
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function(data, textStatus, jqXHR) {
+
+                  if (!wait) {
+                    console.log("token "+data.token);
+
+                    setTimeout(fetchSubmission.bind(null, apiUrl, data.token,testtags,languageId,languageName), 1500);
+                  } else {
+
+                    resetButtons();
+                  }
+                },
+                error: handleError
+              });
+
+            console.log(doc.id, " => ", doc.data());
+
+            }
+
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+
+
+  });
+
+  // $("#stop").click(function() {
+  //   stopFetch = true;
+  // });
+
 </script>
 </body>
 
