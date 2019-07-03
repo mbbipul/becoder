@@ -227,7 +227,7 @@
 <!--Modal: Login / Register Form-->
 <div >
 
-
+<img src="https://firebasestorage.googleapis.com/v0/b/becoder-91007.appspot.com/o/contestLandingPageBackground%2FrnOSnXYskiw3R75VG3y7?alt=media&token=52db2c50-2281-4b85-8a09-dffd789fd1d9" />
 
   <strong>API URL</strong>&nbsp
   <input type="url" name="apiUrl" value=" https://api.judge0.com" size="31" placeholder="https://api.judge0.com"><br><br>
@@ -320,8 +320,9 @@ int main(void) {
             setTimeout(fetchSubmission.bind(null, apiUrl, token), 1500);
           } else if (!stopFetch) {
             datas = data;
-            data.testCaseNumber = 2;
+            data.testCaseNumber = 2
             console.log(data);
+            if (data.status.description != "Accepted") {
               firestore.collection("submission").add(data)
               .then(function(docRef) {
                   console.log("Document written with ID: ", docRef.id);
@@ -329,7 +330,7 @@ int main(void) {
               .catch(function(error) {
                   console.error("Error adding document: ", error);
               });
-
+            }
             resetButtons();
           } else {
             resetButtons();
@@ -433,6 +434,106 @@ int main(void) {
 		      scrollTop: 0
 	    }, 50);
     });
+
+
+
+
+
+
+
+
+
+
+
+    $("#addProblemToContestInput").keypress(function(){
+      console.log("hello");
+
+      $("#addProblmProblemList").removeAttr("hidden");
+      $("#addProblmProblemList").show();
+    });
+    $("body").click(function(){
+      $("#addProblmProblemList").attr("hidden",true);
+    });
+
+
+    $("#addProblemToContestInput").keyup(function(){
+      $("#searchmoderatorsname").removeAttr("hidden");
+      $("#addProblmProblemList").show();
+      console.log("hello b");
+      var searchUsernameQuery =  $("#addProblemToContestInput").val();
+      searchUserFromDbByUsername(searchUsernameQuery,"queries[1]");
+
+    });
+
+
+    function searchProblemByName(queryProblemname,contestIdRef){
+      queryProblemname = queryProblemname.toLowerCase();
+      var limitChar = String.fromCharCode(queryProblemname.charCodeAt(0)+1);
+
+      firestore.collection('problemsTest').where('problemName', '>=', queryProblemname).where('problemName','<=',limitChar)
+      .get()
+      .then(function(querySnapshot) {
+        $("#addProblmProblemList").empty();
+        console.log("hello bb");
+          querySnapshot.forEach(function(doc) {
+            var data = doc.data();
+              // doc.data() is never undefined for query doc snapshots
+              var listItem = '<div class="list-group-item notopbottom z-depth-5 " id="'+doc.id+'"> \
+                <p class="mt-2" style="margin-left:10px!important;display:inline-block;"> <strong>'+data.problemName+'</strong>\
+                <button style="margin-left:15px;" id="addingProblemToContest'+doc.id+'" class="btn btn-default btn-sm">Add</button> </p> \
+              </div>' ;
+              console.log(doc.id, " => ", listItem);
+              $("#searchmoderatorsname").append(listItem);
+              $("#addingProblemToContest"+doc.id).click(function(){
+              var addProblemToConOBJ = {
+                   contestProblemId : doc.id,
+                   problemCreatorAuthorId: data.problemCreatorAuthorId,
+                   problemName : data.problemName,
+                   problemAuthorName : data.problemAuthorName
+                };
+                firestore.collection("contests").doc(contestIdRef).collection("contestProblems").doc(doc.id).set(addProblemToConOBJ)
+                .then(function(docRef) {
+                    console.log("Document written with ID bbj fuck: ", "docRef.id");
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+
+
+
+              });
+
+          });
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      });
+    }
+
+
+    function listenForNewProblemAddToContest(mcontestIdref){
+
+      firestore.collection("contests").doc(mcontestIdref).collection("contestProblems")
+      .onSnapshot(function(querySnapshot) {
+        $("#contestProblemListTableBody").empty();
+        var count = 1;
+        querySnapshot.forEach(function(doc) {
+          var data = doc.data();
+          var problemTableRow = '<tr>\
+            <td>'+count+'</td>\
+            <td>'+data.problemName+'</td>\
+            <td id="problemAu'+data.problemCreatorAuthorId+'">'+data.problemAuthorName+'</td>\
+          </tr>';
+            $("#contestProblemListTableBody").append(problemTableRow);
+
+            $("#problemAu"+data.problemCreatorAuthorId).click(function(){
+              location.href = "../userProfile.html?"+data.problemCreatorAuthorId;
+            });
+       });
+
+    });
+  }
+
   </script>
 </body>
 </html>

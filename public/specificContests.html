@@ -19,6 +19,15 @@
   <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
+  <!--  firebase config-->
+      <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+      <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+      <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+      <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+      <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+      <!--  firebase config-->
+  <script src="/__/firebase/init.js"></script>
+
   <style>
   html, body {
     max-width: 100%;
@@ -133,205 +142,271 @@
   margin: 0;
 }
    </style>
-<script>
-	// Material Select Initialization
-$(document).ready(function() {
-$('.mdb-select').materialSelect();
-});
-</script>
 
 <style>
 	.submit-form{
     margin-top: 20px;
 }
+
+.bar_container {
+  width: 200px;
+  overflow: hidden;
+}
+
+.bar_horizontal .progress-barc {
+  height: 27px;
+  width: 100%;
+}
+
+.bar_horizontal .progress-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #ebebeb;
+}
+
+.bar_horizontal .progress-fill {
+  position: relative;
+  background: #007E33;
+  height: 20px;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.bar_horizontal .progress-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #ebebeb;
+}
+
+.bar_horizontal2 .progress-fill2 {
+  position: relative;
+  background: #CC0000;
+  height: 20px;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.bar_horizontal3 .progress-fill3 {
+  position: relative;
+  background: #2E2E2E;
+  height: 20px;
+  width: 50%;
+  color: #fff;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.rounded_bar .progress-track,
+.rounded_bar .progress-fill {
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+
 </style>
 </head>
     <body class="grey lighten-3">
 
-  <!--Main Navigation-->
-  <header>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-blue">
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#becoderNavbarToggle" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="becoderNavbarToggle">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Practice</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contests.html">Contests</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Resource</a>
-              </li>
-              <li class="nav-item" style="padding-right:20px;padding-left:20px">
+      <!--Main Navigation-->
+      <header>
+        <!--Navbar-->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-blue scrolling-navbar">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#becoderNavbarToggle" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="becoderNavbarToggle">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Practice</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contests.html">Contests</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Resource</a>
+                  </li>
+                  <li class="nav-item" style="padding-right:20px;padding-left:20px">
 
-              </li>
+                  </li>
 
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Leaderboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Notifications</a>
+                  </li>
+
+                  <li class="nav-item" id="navbar-login-signin-button" hidden>
+                    <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
+                  </li>
+
+                  <li class="nav-item dropdown" id="navbar-user-item" hidden>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img id="nav-user-pic" width="30" height="30" class="d-inline-block align-top" alt="">
+                      <span id="nav-user-name">becoder</span></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Ranking</a>
+                      <a class="dropdown-item" href="userProfile.html">Profile</a>
+                      <a class="dropdown-item" href="#">Submission</a>
+                      <a class="dropdown-item" href="#">Note</a>
+                      <a class="dropdown-item" href="#">Setting</a>
+                      <a class="dropdown-item" href="administration/contests.html">Administration</a>
+                      <a class="dropdown-item" id="logout" href="#">Logout</a>
+
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+        <!--/.Navbar-->
+
+        </header>
+
+
+        <!--Modal: Login / Register Form-->
+      <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog cascading-modal" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+          <!--Modal cascading tabs-->
+          <div class="modal-c-tabs">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
+                  Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
+                  Register</a>
+              </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Leaderboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Notifications</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#modalLRForm" href="#">Login/Register</a>
-              </li>
 
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="?php echo $images_folder?>becoder_logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-                  becoder</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Ranking</a>
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Submission</a>
-                  <a class="dropdown-item" href="#">Note</a>
-                  <a class="dropdown-item" href="#">Setting</a>
-                  <a class="dropdown-item" href="#">Administration</a>
-                  <a class="dropdown-item" href="#">Logout</a>
+            <!-- Tab panels -->
+            <div class="tab-content">
+              <!--Panel 7-->
+              <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                <!--Body-->
+                <div class="modal-body mb-1">
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" placeholder="email or username" id="user-sign-in-email" class="form-control form-control-sm validate">
+                  </div>
+
+                  <div class="md-form form-sm mb-4">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="password" id="user-sign-in-password" class="form-control form-control-sm validate">
+                  </div>
+                  <div class="text-center mt-2">
+                    <button class="btn btn-info"  id= "sign-in-with-email" >Log in <i class="fas fa-sign-in ml-1"></i></button>
+                  </div>
+                </div>
+                <!--Footer-->
+                <div class="login_connect_with">
+                    Or Connect With
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                  <div class="social">
+                    <a class="circle github" href="#">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a id="google_login" class="circle google" href="#">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a id="facebook_login" class="circle facebook" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                </div>
+
+              </div>
+              <!--/.Panel 7-->
+
+              <!--Panel 8-->
+              <div class="tab-pane fade" id="panel8" role="tabpanel">
+
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" placeholder="email" id="user-sign-up-email" class="form-control form-control-sm validate">
+
+                  </div>
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-user prefix"></i>
+                    <input type="text" placeholder="username" id="user-sign-up-username" class="form-control form-control-sm validate">
+
+                  </div>
+                  <div class="md-form form-sm mb-5">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="password" id="user-sign-up-password" class="form-control form-control-sm validate">
+
+                  </div>
+
+                  <div class="md-form form-sm mb-4">
+                    <i class="fas fa-lock prefix"></i>
+                    <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
+                  </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                    <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
+                                  Terms and Conditions</a></label>
+                </div>
+                  <div class="text-center form-sm mt-2">
+                    <button class="btn btn-info" id="sign-up-with-email">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                  </div>
 
                 </div>
-              </li> -->
-            </ul>
-          </div>
-        </nav>
-    <!--/.Navbar-->
-
-    </header>
-
-
-    <!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Modal cascading tabs-->
-      <div class="modal-c-tabs">
-
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-              Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-              Register</a>
-          </li>
-        </ul>
-
-        <!-- Tab panels -->
-        <div class="tab-content">
-          <!--Panel 7-->
-          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body mb-1">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput10" class="form-control form-control-sm validate">
+                  <div class="login_connect_with">
+                    Or Connect With
+                  </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                  <div class="social">
+                    <a class="circle github" href="#">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a id="google_login" class="circle google" href="#">
+                        <i class="fab fa-google"></i>
+                    </a>
+                    <a id="facebook_login" class="circle facebook" href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                </div>
               </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput11" class="form-control form-control-sm validate">
-              </div>
-              <div class="text-center mt-2">
-                <button class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-            </div>
-            <!--Footer-->
-            <div class="login_connect_with">
-                Or Connect With
-              </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="social">
-                <a class="circle github" href="#">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a id="google_login" class="circle google" href="#">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a id="facebook_login" class="circle facebook" href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
+              <!--/.Panel 8-->
             </div>
 
           </div>
-          <!--/.Panel 7-->
-
-          <!--Panel 8-->
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
-
-            <!--Body-->
-            <div class="modal-body">
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-envelope prefix"></i>
-                <input type="email" placeholder="email" id="modalLRInput12" class="form-control form-control-sm validate">
-            
-              </div>
-
-              <div class="md-form form-sm mb-5">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="password" id="modalLRInput13" class="form-control form-control-sm validate">
-               
-              </div>
-
-              <div class="md-form form-sm mb-4">
-                <i class="fas fa-lock prefix"></i>
-                <input type="password" placeholder="Repeat password" id="modalLRInput14" class="form-control form-control-sm validate">
-              </div>
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                <label class="custom-control-label" for="defaultUnchecked">Accept the<a href="#" class="green-text font-weight-bold">
-                              Terms and Conditions</a></label>
-            </div>
-              <div class="text-center form-sm mt-2">
-                <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
-              </div>
-
-            </div>
-              <div class="login_connect_with">
-                Or Connect With
-              </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="social">
-                <a class="circle github" href="#">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a id="google_login" class="circle google" href="#">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a id="facebook_login" class="circle facebook" href="#">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-            </div>
-            </div>
-          </div>
-          <!--/.Panel 8-->
         </div>
-
+        <!--/.Content-->
       </div>
     </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: Login / Register Form-->
 
 
 <main>
@@ -375,43 +450,9 @@ $('.mdb-select').materialSelect();
 
 
    							 <!--Table body-->
-    								<tbody>
-      									<tr>
-        									<th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">9382</span></h5></td>
-        									<td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-      									</tr>
-									     <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									        <td><h5><span class="badge badge-pill badge-default">2322</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									       <td><h5><span class="badge badge-pill badge-default">1212</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									        <td><h5><span class="badge badge-pill badge-default">6767</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									        <td><h5><span class="badge badge-pill badge-default">2323</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									        <td><h5><span class="badge badge-pill badge-default">4545</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-									        <td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-									        <td><h5><span class="badge badge-pill badge-default">233</span></h5></td><td><a href="#"><button type="button" class="btn btn-secondary">Submit</button></a></td>
-									    </tr>
+    								<tbody id="contestProblemListTableM">
+
+
     								</tbody>
     							<!--Table body-->
   								</table>
@@ -426,11 +467,11 @@ $('.mdb-select').materialSelect();
   <!-- Grid row -->
   <div class="form-group row">
     <!-- Material input -->
-    <label for="problemId" class="col-sm-2 col-form-label">Problem Id:</label>
-    <div class="col-sm-10">
-      <div class="md-form mt-0">
-        <input type="number" class="form-control" id="problemId" placeholder="Problem Id">
-      </div>
+    <label for="problemId" class="col-sm-2 col-form-label">Problem Id</label>
+    <div class="col-sm-8">
+      <select class="browser-default custom-select custom-select-lg mb-3" id="contestProblemIdSelcetOpForSubmit">
+
+      </select>
     </div>
   </div>
   <!-- Grid row -->
@@ -438,23 +479,22 @@ $('.mdb-select').materialSelect();
   <!-- Grid row -->
   <div class="form-group row">
     <!-- Material input -->
-    <label for="problemId" class="col-sm-2 col-form-label">Language:</label>
-		<select class="mdb-select md-form">
-		  <option value="" disabled selected>Choose Language</option>
-		  <option value="1">ANCI C</option>
-		  <option value="2">ANCI C++</option>
-		  <option value="3">JAVA</option>
-		  <option value="3">Python</option>
-		</select>
-	</div>
+    <label for="problemId" class="col-sm-2 col-form-label">Language</label>
+    <div class="col-sm-8">
+      <select class="custom-select custom-select-sm" id="allProblemLanguagesSubmitOption">
+        <option value="0" disabled selected>Choose Language</option>
+
+      </select>
+    </div>
+  </div>
 
   <!-- Grid row -->
 <div class="form-group row">
     <!-- Material input -->
   <label for="problemId" class="col-sm-2 col-form-label">Code:</label>
-  <div class="form-group shadow-textarea">
-  <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
-</div>
+  <div class="form-group col-sm-8 shadow-textarea">
+  <textarea class="form-control z-depth-1" name="sourceCode" rows="10"  cols="100" placeholder="Place your Code here..."></textarea>
+  </div>
 </div>
 
   <!-- Grid row -->
@@ -466,7 +506,7 @@ $('.mdb-select').materialSelect();
 </div>
 </div>
   <!-- Grid row -->
-<a href="#"><button type="button" class="btn btn-primary">Submit Code</button></a>
+<a href="#"><button id="submitProblemCode" type="button" class="btn btn-primary">Submit Code</button></a>
 
 </form>
 <!-- Horizontal material form -->
@@ -480,7 +520,7 @@ $('.mdb-select').materialSelect();
   									<!--Table head-->
 								    <thead>
 								      <tr>
-								        <th>Problem Id</th>
+								        <th>#</th>
 								        <th>Problem Name</th>
 								        <th>Status</th>
 								        <th>Language</th>
@@ -492,63 +532,8 @@ $('.mdb-select').materialSelect();
 
 
    							 <!--Table body-->
-    								<tbody>
-      									<tr>
-        									<th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-      									</tr>
-									     <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-danger">Wrong Answer</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-warning">Compile Error</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1</th>
-        									<td><a href="#!" class=""> Problem name Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</a></td>
-        									<td><h5><span class="badge badge-pill badge-default">accepted</span></h5></td>
-        									<td>ANCI C++</td>
-        									<td>0.000</td>
-        									<td>2019-03-20 16:58:20</td>
-									    </tr>
+    								<tbody id="mySubmissionTableBody">
+
     								</tbody>
     							<!--Table body-->
   								</table>
@@ -563,72 +548,22 @@ $('.mdb-select').materialSelect();
   							<!--Table-->
   								<table class="table table-striped">
 
-  									<!--Table head-->
-								    <thead>
-								      <tr>
-								        <th>Problem Id</th>
-								        <th>Ranking</th>
-								        <th>Total Submission</th>
-								        <th>Date</th>
-								        <th>Run Time</th>
-								      </tr>
-								    </thead>
-								    <!--Table head-->
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Problem Name</th>
+                        <th>Status</th>
+                        <th>Language</th>
+                        <th>Run Time</th>
+                        <th>Submission Date</th>
+                        <th>Submit by</th>
+                      </tr>
+                    </thead>
+                    <!--Table head-->
+                 <!--Table body-->
+                    <tbody id="allSubmissionTableBody">
 
-
-   							 <!--Table body-->
-    								<tbody>
-      									<tr>
-        									<th scope="row">134343</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-
-      									</tr>
-									     <tr>
-									        <th scope="row">13454</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1434</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1245</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">1874534</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">13443</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-									    <tr>
-									        <th scope="row">14434</th>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td><h5><span class="badge badge-pill badge-default">535353</span></h5></td>
-        									<td>2019-03-20 16:58:20</td>
-        									<td>0.000</td>
-									    </tr>
-    								</tbody>
+                    </tbody>
     							<!--Table body-->
   								</table>
   							<!--Table-->
@@ -729,22 +664,6 @@ $('.mdb-select').materialSelect();
     </div>
     <!--/.Footer links-->
     <hr>
-    <!--Call to action-->
-    <div class="call-to-action text-center my-4">
-      <h4 class="mb-4">Learn to code</h4>
-      <h5 class="mb-4">Register and start coding</h5>
-      <ul class="list-unstyled list-inline">
-        <li class="list-inline-item">
-          <a href="#" class="btn btn-primary waves-effect waves-light"
-            rel="nofollow">Register</a>
-        </li>
-        <li class="list-inline-item">
-          <a  href="#" class="btn btn-info waves-effect waves-light"
-            rel="nofollow">Log in</a>
-        </li>
-      </ul>
-    </div>
-    <!--/.Call to action-->
 
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center">
@@ -755,9 +674,511 @@ $('.mdb-select').materialSelect();
     <!--/.Copyright-->
   </footer>
   <!--/.Footer-->
+  <script type="text/javascript" src="bin/becoder.js"></script>
+
   <script>
   new WOW().init();
   </script>
+  <script>
+  "use strict";
+  var queryString = decodeURIComponent(window.location.search);
+  const contestIdRef = queryString.substring(1);
+  // Checks that Firebase has been imported.
+  checkSetup();
+  var signInButtonElement = document.getElementById('google_login');
+
+  var userSignUpEmail = document.getElementById('user-sign-up-email');
+  var userSignUpPass = document.getElementById('user-sign-up-password');
+  var userSignUpUsername = document.getElementById('user-sign-up-username');
+
+  var signUpWithEmailPasswordButton = document.getElementById('sign-up-with-email');
+  var signInWithEmailPasswordButton = document.getElementById('sign-in-with-email');
+  var signInSignUpNavButton = document.getElementById('navbar-login-signin-button');
+  var logoutButton = document.getElementById('logout');
+  var userNavItem = document.getElementById('navbar-user-item');
+  var userNavName = document.getElementById('nav-user-name');
+  var userNavPic = document.getElementById('nav-user-pic');
+
+  signInButtonElement.addEventListener('click', signIn);
+  signUpWithEmailPasswordButton.addEventListener('click',signUpWithEmailPassword);
+  signInWithEmailPasswordButton.addEventListener('click',signInWithEmailPassword);
+  logoutButton.addEventListener('click',signOut);
+
+  $(document).ready(function(){
+    initFirebaseAuthShowContest();
+  });
+
+
+  function initFirebaseAuthShowContest(){
+    auth.onAuthStateChanged(function(user) {
+      authStateObserverShowContest(user);
+    });
+  }
+
+  function authStateObserverShowContest(user) {
+    if (user) { // User is signed in!
+      // Get the signed-in user's profile pic and name.
+      var profilePicUrl = getProfilePicUrl();
+      var userName = getUserName();
+      userNavItem.removeAttribute('hidden');
+      userNavName.textContent = userName;
+      userNavPic.src = getProfilePicUrl();
+      signInSignUpNavButton.setAttribute('hidden', 'true');
+      getAllContestProblem(contestIdRef);
+      getMySubmissionAll(contestIdRef);
+      getAllSubmission(contestIdRef);
+    } else { // User is signed out!
+      // Hide user's profile and sign-out button.
+      userNavItem.setAttribute('hidden', 'true');
+      signInSignUpNavButton.removeAttribute('hidden');
+    }
+  }
+
+  function getAllContestProblem(mContestId){
+    firestore.collection("contests").doc(mContestId).collection("contestProblems")
+    .onSnapshot(function(snapshot) {
+      $("#contestProblemListTableM").empty();
+      var count = 65;
+      snapshot.forEach(function(doc) {
+        var data = doc.data();
+        var formChar = String.fromCharCode(count);
+        var tableRowConProb = '<tr style="padding:0!important;margin:0!important">\
+          <th scope="row" style="padding-top:50px!important">'+formChar+' .</th>\
+          <td style="padding-top:45px!important;font-size:25px;">\
+            <a href="specificProblem.html?'+data.contestProblemId+'" class="">\
+            <strong>'+data.problemName+'</strong></a>\
+          </td>\
+          <td style="padding-top:28px!important"><!-- Horizontal, rounded -->\
+            <div class="bar_container bar_horizontal rounded_bar">\
+            <div class="progress-barc horizontal">\
+            <div class="progress-track">\
+              <div class="progress-fill">\
+                <span>70%</span>\
+              </div>\
+            </div>\
+            </div>\
+            <div class="progress-barc bar_horizontal2">\
+            <div class="progress-track">\
+              <div class="progress-fill2">\
+                <span>20%</span>\
+              </div>\
+            </div>\
+            </div>\
+            <div class="progress-barc bar_horizontal3">\
+            <div class="progress-track">\
+              <div class="progress-fill3">\
+                <span>10%</span>\
+              </div>\
+            </div>\
+            </div>\
+            </div>\
+          </td>\
+          <td style="padding-top:20px!important">\
+            <h5><span class="badge badge-pill success-color-dark">9382</span></h5>\
+            <h5><span class="badge badge-pill badge-danger">145</span></h5>\
+            <h5><span class="badge badge-pill elegant-color">145</span></h5>\
+          </td>\
+          <td style="padding-top:45px!important">\
+            <a href="#">\
+            <button type="button" class="btn btn-secondary btn-sm">Submit</button>\
+            </a>\
+          </td>\
+        </tr>'
+        $("#contestProblemListTableM").append(tableRowConProb);
+
+        // progress bar
+        $('.bar_horizontal .progress-fill span').each(function(){
+        var percent = $(this).html();
+          $(this).parent().css('width', percent);
+        });
+        $('.bar_horizontal2 .progress-fill2 span').each(function(){
+          var percent = $(this).html();
+          $(this).parent().css('width', percent);
+        });
+        $('.bar_horizontal3 .progress-fill3 span').each(function(){
+          var percent = $(this).html();
+          $(this).parent().css('width', percent);
+        });
+
+        var conPIdOp = '<option value="'+doc.id+'">'+formChar+". "+data.problemName+'</option>'
+        $("#contestProblemIdSelcetOpForSubmit").append(conPIdOp);
+        console.log(doc.id);
+        count++;
+      });
+      $('#contestProblemIdSelcetOpForSubmit').on('change', function() {
+        getAllProblemLanguagesForSubmitOption(this.value);
+      });
+      getAllProblemLanguagesForSubmitOption($('#contestProblemIdSelcetOpForSubmit').val());
+      }, function(error) {
+         console.log("Error getting documents: ", error);
+      });
+  }
+  function getAllProblemLanguagesForSubmitOption(problemIdRefs){
+    firestore.collection('problemsTest').doc(problemIdRefs)
+    .collection("problemLanguages")
+    .where('languageCheck', '==', true)
+    .orderBy("languageId")
+    .onSnapshot(function(snapshot) {
+      $("#allProblemLanguagesSubmitOption").empty();
+      snapshot.forEach(function(doc) {
+        var data = doc.data();
+        var optionLang = '<option value="'+data.languageId+'">\
+        '+data.languageName+'</option>';
+        console.log(optionLang);
+        $("#allProblemLanguagesSubmitOption").append(optionLang);
+      });
+      }, function(error) {
+          console.log(error);
+      });
+  }
+  function getMySubmissionAll(contestIdRef){
+      firestore.collection('contests').doc(contestIdRef)
+      .collection("submissions")
+      .where('submitBy', '==', getCurrentUserId())
+      .orderBy("submissionTime","desc")
+      .onSnapshot(function(snapshot) {
+        $("#mySubmissionTableBody").empty();
+        var count = 1;
+        snapshot.forEach(function(doc) {
+          console.log(doc.data());
+          var data = doc.data();
+          var submissionStatus = data.status;
+          var submissionStatusID = submissionStatus.id;
+          var submissionBadegeClass ;
+          var runTime ;
+          if (submissionStatusID==3) {
+            submissionBadegeClass = "badge-default";
+            runTime = data.time;
+          }
+          else if (submissionStatusID==4) {
+            submissionBadegeClass = "badge-danger";
+            runTime = data.time;
+          }
+          else  {
+            submissionBadegeClass =  "badge-warning";
+            runTime ='<span class="badge badge-warning">\
+            <i class="fas fa-times"></i></span>';
+
+          }
+            console.log(data.status.id);
+            // doc.data() is never undefined for query doc snapshots
+            var mySubmissionRow = '<tr>\
+               <th scope="row">'+count+'</th>\
+               <td>\
+               <strong>'+data.problemName+'</strong>\
+               </td>\
+               <td>\
+                <h5>\
+                <span class="badge badge-pill '+submissionBadegeClass+'">'+submissionStatus.description+'</span>\
+                </h5>\
+                </td>\
+               <td>'+data.languageName+'</td>\
+               <td>'+runTime+'</td>\
+               <td>'+timeConverterUnixTOString(data.submissionTime)+'</td>\
+           </tr>';
+
+            $("#mySubmissionTableBody").append(mySubmissionRow);
+            count++;
+        });
+         }, function(error) {
+           console.log("Error getting documents: ", error);
+         });
+
+  }
+
+  function getAllSubmission(contestIdRef){
+      firestore.collection('contests').doc(contestIdRef)
+      .collection("submissions").orderBy("submissionTime","desc")
+      .onSnapshot(function(snapshot) {
+        $("#allSubmissionTableBody").empty();
+        var count = 1;
+        snapshot.forEach(function(doc) {
+          console.log(doc.data());
+          var data = doc.data();
+          var submissionStatus = data.status;
+          var submissionStatusID = submissionStatus.id;
+          var submissionBadegeClass ;
+          var runTime ;
+          if (submissionStatusID==3) {
+            submissionBadegeClass = "badge-default";
+            runTime = data.time;
+          }
+          else if (submissionStatusID==4) {
+            submissionBadegeClass = "badge-danger";
+            runTime = data.time;
+          }
+          else  {
+            submissionBadegeClass =  "badge-warning";
+            runTime ='<span class="badge badge-warning">\
+            <i class="fas fa-times"></i></span>';
+
+          }
+            console.log(data.status.id);
+            // doc.data() is never undefined for query doc snapshots
+            var mySubmissionRow = '<tr>\
+               <th scope="row">'+count+'</th>\
+               <td>\
+                <strong>'+data.problemName+'</strong>\
+               </td>\
+               <td>\
+                <h5>\
+                <span class="badge badge-pill '+submissionBadegeClass+'">'+submissionStatus.description+'</span>\
+                </h5>\
+                </td>\
+               <td>'+data.languageName+'</td>\
+               <td>'+runTime+'</td>\
+               <td>'+timeConverterUnixTOString(data.submissionTime)+'</td>\
+               <td>'+data.submitAuthorName+'</td>\
+           </tr>';
+
+            $("#allSubmissionTableBody").append(mySubmissionRow);
+            count++;
+        });
+
+         }, function(error) {
+           console.log("Error getting documents: ", error);
+         });
+
+  }
+
+  function timeConverterUnixTOString(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
+</script>
+<script>
+  var stopFetch = false;
+  var counterForJudge = 1;
+  var isFinishedAllTestCaseJudge = false;
+  var stopUpdateToFirestore = false;
+  var problemIdRef = $('#contestProblemIdSelcetOpForSubmit').val();
+  var snapSize;
+  if (window.location.protocol !== "file:") {
+    $("input[name=apiUrl]").attr('value', window.location.origin);
+  }
+
+  function createQueryParameters(type = "Request") {
+    var parameters = [];
+    parameters.push("base64_encoded=true");
+
+    parameters.push("wait=false");
+
+    if (parameters.length == 0) {
+      return "";
+    }
+
+    var queryParameters = "?";
+    for (var i = 0; i < parameters.length - 1; i++) {
+      queryParameters += parameters[i] + "&";
+    }
+
+    return queryParameters + parameters[parameters.length - 1];
+  }
+
+  function resetButtons() {
+    stopFetch = false;
+    $("#submitProblemCode").removeAttr("disabled");
+    // $("#stop").prop("disabled", true);
+    // $("#panel").css('background-color', '#00F20D');
+  }
+
+
+
+  function handleError(jqXHR, textStatus, errorThrown) {
+    resetButtons();
+  }
+
+  function fetchSubmission(apiUrl, token,testtags,languageId,languageName,problemIdRefs,problemName) {
+    var queryParameters = createQueryParameters("Response");
+    console.log("token "+token);
+
+    $.ajax({
+      url: apiUrl + "/submissions/" + token + queryParameters,
+      type: "GET",
+      async: true,
+      success: function(data, textStatus, jqXHR) {
+        console.log(textStatus);
+
+        if ((data.status === undefined || data.status.id <= 2) && (data.status_id === undefined || data.status_id <= 2) && !stopFetch) {
+          setTimeout(fetchSubmission.bind(null, apiUrl, token,testtags,languageId,languageName,problemIdRefs,problemName), 1500);
+        } else if (!stopFetch) {
+          console.log(data);
+          if(stopUpdateToFirestore==false){
+            data.testCaseId = testtags;
+            data.languageId = languageId;
+            data.languageName = languageName;
+            data.submitBy = getCurrentUserId();
+            data.submitAuthorName = getUserName();
+            data.problemId = problemIdRefs;
+            data.problemName = problemName;
+
+            if ((data.status.description != "Accepted")){
+              console.log(data+"bipul d");
+              data.submissionTime = Date.parse(new Date());
+              console.log(testtags);;
+                firestore.collection("contests").doc(contestIdRef).collection("submissions").add(data)
+                .then(function(docRef) {
+                    console.log("Document written with ID bipulsd: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+             stopUpdateToFirestore = true;
+             resetButtons();
+           }
+           console.log(counterForJudge + " " +snapSize);
+            if(counterForJudge == snapSize){
+
+              console.log(data+"bipul d");
+              data.submissionTime = Date.parse(new Date());
+                console.log(testtags);;
+
+                firestore.collection("contests").doc(contestIdRef).collection("submissions").add(data)
+                .then(function(docRef) {
+                    console.log("Document written with ID bipulsd: ", docRef.id);
+                })
+                .catch(function(error) {
+                    console.error("Error adding document: ", error);
+                });
+             stopUpdateToFirestore = true;
+             resetButtons();
+           }
+          }
+         counterForJudge += 1;
+        } else {
+          resetButtons();
+        }
+      },
+      error: handleError
+    });
+  }
+
+  $("#submitProblemCode").click(function() {
+    $(this).prop("disabled", true);
+    // $("#stop").removeAttr("disabled");
+    $("#panel").css('background-color', '#F2000D');
+
+    var apiUrl = " https://api.judge0.com";
+    var sourceCode = $("textarea[name=sourceCode]").val();
+    // var languageId = $("input[name=languageId]").val();
+    counterForJudge = 1;
+    stopUpdateToFirestore = false;
+
+    var problemIdRefs = $('#contestProblemIdSelcetOpForSubmit').val();
+    var problemName = $('#contestProblemIdSelcetOpForSubmit').find(":selected").text();
+
+    console.log("bb id"+problemIdRefs);
+    firestore.collection("problemsTest").doc(problemIdRefs).collection("problemTestCases")
+    .get()
+    .then(function(querySnapshot) {
+        snapSize = querySnapshot.size;
+        console.log(snapSize);
+        var languageId = $('#allProblemLanguagesSubmitOption').find(":selected").val();
+        var languageName = $('#allProblemLanguagesSubmitOption').find(":selected").text();
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            if (stopUpdateToFirestore!=true) {
+              var srcC = sourceCode;
+              var numberOfRuns;
+              var stdin ;
+              var expectedOutput ;
+              var cpuTimeLimit ;
+              var cpuExtraTime ;
+              var wallTimeLimit ;
+              var memoryLimit ;
+              var stackLimit ;
+              var maxProcessesAndOrThreads ;
+              var enablePerProcessAndThreadTimeLimit ;
+              var enablePerProcessAndThreadMemoryLimit ;
+              var maxFileSize =null;
+              var wait = false;
+
+              numberOfRuns = null;
+              cpuTimeLimit = null;
+              cpuExtraTime = null;
+              wallTimeLimit = null;
+              memoryLimit = null;
+              stackLimit = null;
+
+              maxProcessesAndOrThreads = null;
+              enablePerProcessAndThreadTimeLimit = null;
+              enablePerProcessAndThreadMemoryLimit = null;
+              maxFileSize = null;
+
+              var queryParameters = createQueryParameters();
+              var firestoreData = doc.data();
+              console.log(firestoreData);
+              var testtags = firestoreData.testCaseTag;
+              console.log(testtags+"hey bipul");
+              console.log(firestoreData.testCaseInput+" "+firestoreData.testCaseOutput);
+              stdin = btoa(firestoreData.testCaseInput);
+              expectedOutput = btoa(firestoreData.testCaseOutput);
+
+
+              var data = {
+                source_code: btoa(srcC),
+                language_id: languageId,
+                number_of_runs: numberOfRuns,
+                stdin: stdin,
+                expected_output: expectedOutput,
+                cpu_time_limit: cpuTimeLimit,
+                cpu_extra_time: cpuExtraTime,
+                wall_time_limit: wallTimeLimit,
+                memory_limit: memoryLimit,
+                stack_limit: stackLimit,
+                max_processes_and_or_threads: maxProcessesAndOrThreads,
+                enable_per_process_and_thread_time_limit: enablePerProcessAndThreadTimeLimit,
+                enable_per_process_and_thread_memory_limit: enablePerProcessAndThreadMemoryLimit,
+                max_file_size: maxFileSize
+              };
+
+
+              $.ajax({
+                url: apiUrl + "/submissions" + queryParameters,
+                type: "POST",
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function(data, textStatus, jqXHR) {
+
+                  if (!wait) {
+                    console.log("token "+data.token);
+
+                    setTimeout(fetchSubmission.bind(null, apiUrl, data.token,testtags,languageId,languageName,problemIdRefs,problemName), 1500);
+                  } else {
+
+                    resetButtons();
+                  }
+                },
+                error: handleError
+              });
+
+            console.log(doc.id, " => ", doc.data());
+
+            }
+
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+
+
+  });
+
+  // $("#stop").click(function() {
+  //   stopFetch = true;
+  // });
+
+</script>
 </body>
 
 </html>

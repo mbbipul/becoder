@@ -659,7 +659,7 @@ function getAllProblemLanguagesForSubmitOption(problemIdRef){
 function getMySubmissionAll(problemIdRef){
     firestore.collection('problemsTest').doc(problemIdRef)
     .collection("submissions")
-    .where('submitBy', '==', "1Net7kamxVSHeaT4SVKsWo6mB233")
+    .where('submitBy', '==', getCurrentUserId())
     .orderBy("submissionTime","desc")
     .onSnapshot(function(snapshot) {
       $("#mySubmissionTableBody").empty();

@@ -62,6 +62,7 @@ function initFirebaseAuth(jm) {
   });
 }
 
+
 function initFirebaseAuthWithSpecificProblemDetails(jm,problemIdRef) {
   jumbotron = jm;
   auth.onAuthStateChanged(function(user) {
@@ -85,6 +86,13 @@ function initFirebaseAuthCreateProblem() {
     authStateObserverCreateProblem(user);
   });
 }
+
+function initFirebaseAuthManageContest() {
+  auth.onAuthStateChanged(function(user) {
+    authStateObserverManageContest(user);
+  });
+}
+
 function createNewUserWithGoogle(){
   auth.onAuthStateChanged(function(user) {
     if(user){
@@ -178,11 +186,10 @@ function getALlAdinistrationContest(elementId){
   firestore.collection("contests").where('contestAuthorId', '==', getCurrentUserId())
       .onSnapshot(function(snapshot) {
           var count = 1;
-          snapshot.docChanges().forEach(function(change) {
-              if (change.type === "added") {
-                console.log("Modified city: ", change.doc.data());
+          snapshot.forEach(function(doc) {
+                console.log("Modified city: ", doc.data());
 
-                var data = change.doc.data();
+                var data = doc.data();
 
                 var tableRow = document.createElement("tr");
                 var tableRowHeader = document.createElement("th");
@@ -217,14 +224,11 @@ function getALlAdinistrationContest(elementId){
 
 
                 document.getElementById(elementId).appendChild(tableRow);
+                tableRow.addEventListener("click", function(){
+                  location.href = "manageContest.html?"+doc.id;
+                });
                 count += 1;
-                }
-              if (change.type === "modified") {
-                  console.log("Modified city: ", change.doc.data());
-              }
-              if (change.type === "removed") {
-                  console.log("Removed city: ", change.doc.data());
-              }
+
           });
       });
 
@@ -326,6 +330,22 @@ function authStateObserver(user) {
   }
 }
 
+
+function authStateObserverManageContest(user) {
+  if (user) {
+    var profilePicUrl = getProfilePicUrl();
+    var userName = getUserName();
+
+    userNavItem.removeAttribute('hidden');
+    userNavPic.src = getProfilePicUrl();
+    userNavName.textContent = userName;
+    contestAuthorName.textContent = userName;
+    contestAuthorProfilePicture.src = getProfilePicUrl();
+
+  } else {
+    userNavItem.setAttribute('hidden', 'true');
+  }
+}
 
 function authStateObserverCreateProblem(user) {
   if (user) {

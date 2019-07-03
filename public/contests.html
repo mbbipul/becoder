@@ -1352,6 +1352,7 @@ function createContest() {
 
       var createcontestDb = {
         contestName: contestname,
+        contestAuthorId : getCurrentUserId(),
         organizationName: organizationname,
         organizationType: organizatio_type_value,
         startTime: Date.parse(contestStartTimeUnix),

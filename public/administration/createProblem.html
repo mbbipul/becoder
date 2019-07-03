@@ -283,7 +283,6 @@ html, body {
 
 </div>
 <hr />
-<form>
 
 <div class="landingPageForm">
           <div class="create_challange_div">
@@ -361,7 +360,6 @@ html, body {
 
 </div>
 
-</form>
 
 </div>
 
@@ -418,6 +416,7 @@ function creeateProblemOk(){
 
   var createProblemDb = {
     problemName : problemName,
+    problemNameLower : problemName.toLowerCase(),
     problemStatement : editors.editor.getData(),
     inputFormate : editors.editor2.getData(),
     problemConstraints : editors.editor3.getData(),
