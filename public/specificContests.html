@@ -571,7 +571,90 @@
   							</div>
 
   							<div class="tab-pane fade " id="standing" role="tabpanel" aria-labelledby="standing-tab">
-  							standing here
+                  <table class="table table-sm  table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Contestant</th>
+        <th scope="col">Solved problem</th>
+        <th scope="col">Penalty</th>
+        <th scope="col">A</th>
+        <th scope="col">B</th>
+        <th scope="col">C</th>
+        <th scope="col">D</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="pt-4">1</th>
+        <td class="pt-4">Bipul Mandol</td>
+        <td class="pt-4">3</td>
+        <td class="pt-4">120</td>
+        <td class="pt-3">
+            <span class="text-success">
+              <i class="fas fa-check-circle text-success mr-1"></i>
+              2
+            </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+          <span class="text-success">
+            <i class="fas fa-check-circle text-success mr-1"></i>
+            2
+          </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+          <span class="text-danger">
+            <i class="fas fa-minus-circle text-danger mr-1"></i>
+            2
+          </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+            <span class="text-danger">
+              <i class="fas fa-minus-circle text-danger mr-1"></i>
+              5
+            </span>
+            <p>12:30</p>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="pt-4">1</th>
+        <td class="pt-4">Bipul Mandol</td>
+        <td class="pt-4">3</td>
+        <td class="pt-4">120</td>
+        <td class="pt-3">
+            <span class="text-success">
+              <i class="fas fa-check-circle text-success mr-1"></i>
+              2
+            </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+          <span class="text-success">
+            <i class="fas fa-check-circle text-success mr-1"></i>
+            2
+          </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+          <span class="text-danger">
+            <i class="fas fa-minus-circle text-danger mr-1"></i>
+            2
+          </span>
+            <p>12:30</p>
+        </td>
+        <td class="pt-3">
+            <span class="text-danger">
+              <i class="fas fa-minus-circle text-danger mr-1"></i>
+              5
+            </span>
+            <p>12:30</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
   							</div>
 						</div>
 						<!-- End tab Contents -->
@@ -738,6 +821,7 @@
     firestore.collection("contests").doc(mContestId).collection("contestProblems")
     .onSnapshot(function(snapshot) {
       $("#contestProblemListTableM").empty();
+      $("#contestProblemIdSelcetOpForSubmit").empty();
       var count = 65;
       snapshot.forEach(function(doc) {
         var data = doc.data();
@@ -1024,9 +1108,38 @@
               console.log(data+"bipul d");
               data.submissionTime = Date.parse(new Date());
               console.log(testtags);;
-                firestore.collection("contests").doc(contestIdRef).collection("submissions").add(data)
+                firestore.collection("contests").doc(contestIdRef)
+                .collection("submissions")
+                .add(data)
                 .then(function(docRef) {
                     console.log("Document written with ID bipulsd: ", docRef.id);
+                    var data = {
+                    				userId: getCurrentUserId(),
+                    				userName : getUserName(),
+                    				penalty : 125,
+                    				problemDetails : {
+                    					problemA : {
+                    						status : false,
+                    						trying : 1,
+                    						time : "12:30"
+                                        },
+                    					B : {
+                    						status : "solved",
+                    						trying : 2,
+                    						time : "12:30"
+                                        }
+                            }
+                    }
+                    firestore.collection("contests").doc(contestIdRef)
+                    .collection("standings").doc(getCurrentUserId())
+                    .set(data.status)
+                    .then(function() {
+                        console.log("Document successfully written!");
+                    })
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
+
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
@@ -1041,7 +1154,9 @@
               data.submissionTime = Date.parse(new Date());
                 console.log(testtags);;
 
-                firestore.collection("contests").doc(contestIdRef).collection("submissions").add(data)
+                firestore.collection("contests").doc(contestIdRef)
+                .collection("submissions")
+                .add(data)
                 .then(function(docRef) {
                     console.log("Document written with ID bipulsd: ", docRef.id);
                 })

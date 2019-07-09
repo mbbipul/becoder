@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="assets/images/becoder.png" type="image/gif" sizes="16x16">
+  <title>becoder</title>
+  <!-- Font Awesome -->
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/library/mdb/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="assets/library/mdb/js/mdb.min.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-app.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-auth.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
+  <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
+  <!--  firebase config-->
+<script src="/__/firebase/init.js"></script>
+<style>
+.shape{
+  text-align:center;
+  background:
+    linear-gradient(65deg , transparent 50%,rgba(3,78,136) 50%) left no-repeat,
+    linear-gradient(0deg , rgba(3,78,136,0.7),rgba(3,78,136)) 30px 0 no-repeat;
+
+  background-size:30px 100%, 100% 100%;
+  width:200px;
+  height:60px;
+  line-height:60px;
+  padding:0 20px;
+  color:white;
+  margin:20px auto;
+  position:relative;
+}
+.backs {
+  background-image:url("assets/images/imgs.jpg");
+  background-size:100%;
+
+  }
+
+  .black{
+    background-color: #212121;
+  }
+
+</style>
+</head>
+<body class="backs">
+
+  <nav class="navbar navbar-expand-xl sticky-top navbar-dark info-color">
+    <a class="navbar-brand ml-5" href="index.html" >
+      <img src="assets/images/becoder.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      becoder
+    </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto " style="margin-left:680px;">
+            <li class="nav-item active mr-4">
+               <a class="nav-link waves-effect waves-light" href="#about">About <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link waves-effect waves-light" href="#prizes">Prizes</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link waves-effect waves-light" href="#rules">Rules</a>
+            </li>
+            <li class="nav-item mr-4">
+                <a class="nav-link waves-effect waves-light" href="#scoring">Scoring</a>
+            </li>
+            <li class="nav-item ">
+                <button class="nav-link waves-effect waves-light btn-sm btn btn-success " id="reagisterEnterButton" >Register</button>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+<main style="padding:100px;">
+    <div class="col-md-12 ">
+      <div class="card p-5">
+        <h1 align="center"><strong id="contestName">Contest Name</strong></h1>
+        <p align="center" id="organization_name">Barisal University Programming Club</p>
+        <p align="center">May 5th, 10:05am PDT. See your time zone here.</p>
+      </div>
+    </div>
+
+    <div class="shape" id="about">
+      About
+    </div>
+    <div class="col-md-12">
+               <div class="card flex-md-row mb-4 shadow-sm h-md-250 p-3 pl-5" id="aboutDiv">
+               </div>
+    </div>
+
+     <div class="shape" id="rules">
+      Rules
+    </div>
+    <div class="col-md-12">
+               <div class="card flex-md-row mb-4 shadow-sm h-md-250 p-3 pl-5" id="rulesDiv">
+
+               </div>
+    </div>
+     <div class="shape" id="scoring">
+      Scoring
+    </div>
+    <div class="col-md-12">
+               <div id="scoreDiv" class="card flex-md-row mb-4 shadow-sm h-md-250 p-3 pl-5">
+
+               </div>
+    </div>
+    <div class="shape" id="prizes">
+      Prizes
+    </div>
+    <div class="col-md-12">
+               <div id="prizesDiv" class="card p-3 pl-5 flex-md-row mb-4 shadow-sm h-md-250">
+
+               </div>
+    </div>
+</main>
+
+
+<script type="text/javascript" src="bin/becoder.js"></script>
+
+        <script>
+          $(window).on("scroll", function() {
+             if($(window).scrollTop()) {
+                   $('nav').addClass('black');
+             }
+
+             else {
+                   $('nav').removeClass('black');
+             }
+          });
+          $(document).ready(function(){
+             var queryString = decodeURIComponent(window.location.search);
+             var contestIdRef = queryString.substring(1);
+             firestore.collection('contests').doc(contestIdRef)
+             .collection("landingpage").doc("landingPageDetails")
+             .get().then(function(doc) {
+                 if (doc.exists) {
+                    var data = doc.data();
+                     console.log("Document data:", doc.data());
+                     firestore.collection('contests').doc(contestIdRef)
+                     .get().then(function(docs) {
+                         if (docs.exists) {
+                            var datas = docs.data();
+                             console.log("Document data:", docs.data());
+                             $("#contestName").text(datas.contestName);
+                             $("#organization_name").text(datas.organizationName);
+                         } else {
+                             // doc.data() will be undefined in this case
+                             console.log("No such document!");
+                         }
+                     }).catch(function(error) {
+                         console.log("Error getting document:", error);
+                     });
+                     $("#aboutDiv").html(data.contestDescription);
+                     $("#rulesDiv").html(data.contestRules);
+                     $("#prizesDiv").html(data.contestPrizes);
+                     $("#scoreDiv").html(data.contestScoring);
+                     isContestRegisterByUser(contestIdRef);
+                 } else {
+                     // doc.data() will be undefined in this case
+                     console.log("No such document!");
+                 }
+             }).catch(function(error) {
+                 console.log("Error getting document:", error);
+             });
+
+
+
+             $("#reagisterEnterButton").click(function () {
+                if ($(this).hasClass("registerd")){
+                  window.location = "specificContests.html?"+contestIdRef;
+                } else {
+                  $(this).text("Registering....");
+                  var contestSatatObj = {
+                    registerBy : getCurrentUserId(),
+                    registerTime : Date.parse(new Date()),
+                    registerByName : getUserName(),
+                    registerByUserProPic : getProfilePicUrl()
+                  }
+                  firestore.collection('contests').doc(contestIdRef)
+                  .collection("contestStatistics")
+                  .doc(getCurrentUserId())
+                  .set(contestSatatObj)
+                   .then(function() {
+                      console.log("Document successfully written!");
+                      window.location = "specificContests.html?"+contestIdRef;
+
+                   })
+                   .catch(function(error) {
+                      console.error("Error writing document: ", error);
+                   });
+                }
+            });
+          });
+
+          function isContestRegisterByUser(mcontestIdRef){
+            firestore.collection('contests').doc(mcontestIdRef)
+            .collection("contestStatistics").where("registerBy", "==", getCurrentUserId())
+            .onSnapshot(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                  if(doc.exists){
+                    $("#reagisterEnterButton").text("Enter Now");
+                    $("#reagisterEnterButton").addClass("registerd");
+                  }else{
+                    $("#reagisterEnterButton").text("Register");
+                  }
+                });
+
+            });
+          }
+        </script>
+
+</body>
+</html>

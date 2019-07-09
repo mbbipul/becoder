@@ -431,6 +431,7 @@ function addSizeToGoogleProfilePic(url) {
   return url;
 }
 
+
 // A loading image URL.
 var LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
 function checkSetup() {

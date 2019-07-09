@@ -342,6 +342,7 @@ html, body {
         <li class="nav-item ml-5" style="margin-left: 300px!important">
           <button class="btn btn-sm btn-success" id="previewContestButton">Preview Contest</button>
         </li>
+
       </ul>
 
       <div class="container-fluid tab-content " id="myTabContentJust" >
@@ -835,6 +836,7 @@ html, body {
 
     <!-- Copyright -->
     <div class="footer-copyright text-right py-3 pr-5">
+      <button class="btn btn-default float-left ml-5 " id="previewLandPageButton">Preview Landingpage</button>
       <button id="update_contest_save_changes_button" type="button" class="btn btn-success" >Save Changes</a>
     </div>
     <!-- Copyright -->
@@ -869,7 +871,6 @@ html, body {
       $(document).ready(function(){
         var queryString = decodeURIComponent(window.location.search);
         var contestIdRef = queryString.substring(1);
-
         getContextDetails(contestIdRef);
         getProblemList(contestIdRef);
         listenForNewProblemAddToContest(contestIdRef);
@@ -904,6 +905,10 @@ html, body {
         $("#update_contest_save_changes_button").click(function(){
           updateContestDetails(contestIdRef);
           updateContestLandingPage(contestIdRef);
+        });
+
+        $("#previewLandPageButton").click(function(){
+          location.href = "../contestLandingPage.html?"+contestIdRef;
         });
 
         $("#previewContestButton").click(function(){
