@@ -572,89 +572,15 @@
 
   							<div class="tab-pane fade " id="standing" role="tabpanel" aria-labelledby="standing-tab">
                   <table class="table table-sm  table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Contestant</th>
-        <th scope="col">Solved problem</th>
-        <th scope="col">Penalty</th>
-        <th scope="col">A</th>
-        <th scope="col">B</th>
-        <th scope="col">C</th>
-        <th scope="col">D</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" class="pt-4">1</th>
-        <td class="pt-4">Bipul Mandol</td>
-        <td class="pt-4">3</td>
-        <td class="pt-4">120</td>
-        <td class="pt-3">
-            <span class="text-success">
-              <i class="fas fa-check-circle text-success mr-1"></i>
-              2
-            </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-          <span class="text-success">
-            <i class="fas fa-check-circle text-success mr-1"></i>
-            2
-          </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-          <span class="text-danger">
-            <i class="fas fa-minus-circle text-danger mr-1"></i>
-            2
-          </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-            <span class="text-danger">
-              <i class="fas fa-minus-circle text-danger mr-1"></i>
-              5
-            </span>
-            <p>12:30</p>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" class="pt-4">1</th>
-        <td class="pt-4">Bipul Mandol</td>
-        <td class="pt-4">3</td>
-        <td class="pt-4">120</td>
-        <td class="pt-3">
-            <span class="text-success">
-              <i class="fas fa-check-circle text-success mr-1"></i>
-              2
-            </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-          <span class="text-success">
-            <i class="fas fa-check-circle text-success mr-1"></i>
-            2
-          </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-          <span class="text-danger">
-            <i class="fas fa-minus-circle text-danger mr-1"></i>
-            2
-          </span>
-            <p>12:30</p>
-        </td>
-        <td class="pt-3">
-            <span class="text-danger">
-              <i class="fas fa-minus-circle text-danger mr-1"></i>
-              5
-            </span>
-            <p>12:30</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+                    <thead>
+                      <tr id="standingTableHeader">
+
+                      </tr>
+                    </thead>
+                    <tbody id="standingTableBody">
+
+                    </tbody>
+                  </table>
   							</div>
 						</div>
 						<!-- End tab Contents -->
@@ -810,6 +736,7 @@
       getAllContestProblem(contestIdRef);
       getMySubmissionAll(contestIdRef);
       getAllSubmission(contestIdRef);
+      updateSatndingTableData(contestIdRef);
     } else { // User is signed out!
       // Hide user's profile and sign-out button.
       userNavItem.setAttribute('hidden', 'true');
@@ -819,6 +746,7 @@
 
   function getAllContestProblem(mContestId){
     firestore.collection("contests").doc(mContestId).collection("contestProblems")
+    .orderBy("problemTag")
     .onSnapshot(function(snapshot) {
       $("#contestProblemListTableM").empty();
       $("#contestProblemIdSelcetOpForSubmit").empty();
@@ -897,7 +825,10 @@
          console.log("Error getting documents: ", error);
       });
   }
-  function getAllProblemLanguagesForSubmitOption(problemIdRefs){
+  function getAllProblemLanguagesForSubmitOption(values){
+    var res = values.split("$data$")
+    var problemIdRefs = res[0];
+    console.log(problemIdRefs);
     firestore.collection('problemsTest').doc(problemIdRefs)
     .collection("problemLanguages")
     .where('languageCheck', '==', true)
@@ -1037,13 +968,28 @@
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
     return time;
   }
+  function getTimeRemainingd(penaltyTUnix) {
+    var t = penaltyTUnix;
+    var seconds = Math.floor((t / 1000) % 60);
+    var minutes = Math.floor((t / 1000 / 60) % 60);
+    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    var days = Math.floor(t / (1000 * 60 * 60 * 24));
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  }
 </script>
 <script>
   var stopFetch = false;
   var counterForJudge = 1;
   var isFinishedAllTestCaseJudge = false;
   var stopUpdateToFirestore = false;
-  var problemIdRef = $('#contestProblemIdSelcetOpForSubmit').val();
+
+
   var snapSize;
   if (window.location.protocol !== "file:") {
     $("input[name=apiUrl]").attr('value', window.location.origin);
@@ -1094,6 +1040,7 @@
         if ((data.status === undefined || data.status.id <= 2) && (data.status_id === undefined || data.status_id <= 2) && !stopFetch) {
           setTimeout(fetchSubmission.bind(null, apiUrl, token,testtags,languageId,languageName,problemIdRefs,problemName), 1500);
         } else if (!stopFetch) {
+          var contestStartTimeDb;
           console.log(data);
           if(stopUpdateToFirestore==false){
             data.testCaseId = testtags;
@@ -1104,41 +1051,30 @@
             data.problemId = problemIdRefs;
             data.problemName = problemName;
 
+            firestore.collection("contests").doc(contestIdRef)
+            .get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data().startTime);
+                    contestStartTimeDb = doc.data().startTime;
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+
             if ((data.status.description != "Accepted")){
               console.log(data+"bipul d");
-              data.submissionTime = Date.parse(new Date());
+              var subTime = Date.parse(new Date());;
+              data.submissionTime = subTime;
               console.log(testtags);;
                 firestore.collection("contests").doc(contestIdRef)
                 .collection("submissions")
                 .add(data)
                 .then(function(docRef) {
                     console.log("Document written with ID bipulsd: ", docRef.id);
-                    var data = {
-                    				userId: getCurrentUserId(),
-                    				userName : getUserName(),
-                    				penalty : 125,
-                    				problemDetails : {
-                    					problemA : {
-                    						status : false,
-                    						trying : 1,
-                    						time : "12:30"
-                                        },
-                    					B : {
-                    						status : "solved",
-                    						trying : 2,
-                    						time : "12:30"
-                                        }
-                            }
-                    }
-                    firestore.collection("contests").doc(contestIdRef)
-                    .collection("standings").doc(getCurrentUserId())
-                    .set(data.status)
-                    .then(function() {
-                        console.log("Document successfully written!");
-                    })
-                    .catch(function(error) {
-                        console.error("Error writing document: ", error);
-                    });
+                    updateContestStanding(contestIdRef,problemIdRefs,false,subTime,0,false,problemName);
 
                 })
                 .catch(function(error) {
@@ -1151,7 +1087,9 @@
             if(counterForJudge == snapSize){
 
               console.log(data+"bipul d");
-              data.submissionTime = Date.parse(new Date());
+              var subTime = Date.parse(new Date());;
+
+              data.submissionTime = subTime;
                 console.log(testtags);;
 
                 firestore.collection("contests").doc(contestIdRef)
@@ -1159,6 +1097,8 @@
                 .add(data)
                 .then(function(docRef) {
                     console.log("Document written with ID bipulsd: ", docRef.id);
+                    updateContestStanding(contestIdRef,problemIdRefs,true,subTime,contestStartTimeDb,true,problemName);
+
                 })
                 .catch(function(error) {
                     console.error("Error adding document: ", error);
@@ -1188,6 +1128,7 @@
     stopUpdateToFirestore = false;
 
     var problemIdRefs = $('#contestProblemIdSelcetOpForSubmit').val();
+
     var problemName = $('#contestProblemIdSelcetOpForSubmit').find(":selected").text();
 
     console.log("bb id"+problemIdRefs);
@@ -1288,11 +1229,262 @@
 
 
   });
-
+  var datasb;
   // $("#stop").click(function() {
   //   stopFetch = true;
   // });
+  function updateContestStanding(contestIdRef,problemId,mstatus,mtime,contestStartTimeDb,prbSNum,problemName){
+    firestore.collection("contests").doc(contestIdRef)
+    .collection("standings").doc(getCurrentUserId())
+    .get().then(function(doc) {
+      console.log(mtime+"0");
+      var tagNum = problemName.split(".");
+      tagNum = tagNum[0];
+      if (doc.exists) {
+          var data = doc.data();
+          if ( typeof data.problemDetails[problemId] == 'undefined') {
+            var solved ;
+            var penalty;
+            if(mstatus){
+              var penaltyTUnix = mtime - contestStartTimeDb;
+              var penaltyOBJ = getTimeRemainingd(penaltyTUnix);
+              var pT =(penaltyOBJ.days*24*60)+ (penaltyOBJ.hours * 60) + penaltyOBJ.minutes;
+              penalty = data.penalty+pT;
+              solved = data.solved+1;
+            }else{
+              solved = data.solved;
+              penalty = data.penalty;
+            }
+            console.log("fuck it life");
+            firestore.collection("contests").doc(contestIdRef)
+            .collection("standings").doc(getCurrentUserId()).
+            update({
+              ['problemDetails.'+problemId] :{
+                        status : mstatus,
+                        trying : 1,
+                        problemTag : tagNum,
+                        time : mtime
+            },
+            solved : data.solved+1,
+            penalty : penalty});
+          }
+          else{
+            var solved ;
+            var penalty;
+            console.log("Document data:bbipul", data.problemDetails[problemId].trying);
+            if(data.problemDetails[problemId].status && mstatus){
+              solved = data.solved;
+            }else if(data.problemDetails[problemId].status && mstatus==false){
+              solved = data.solved-1;
+            }else if(data.problemDetails[problemId].status == false && mstatus){
+              solved = data.solved+1;
+            }else if(data.problemDetails[problemId].status == false && mstatus == false){
+              solved = data.solved;
+            }
 
+            if(mstatus){
+              var penaltyTUnix = mtime - contestStartTimeDb;
+              var penaltyOBJ = getTimeRemainingd(penaltyTUnix);
+              var pT =(penaltyOBJ.days*24*60)+ (penaltyOBJ.hours * 60) + penaltyOBJ.minutes;
+              penalty = pT+(data.problemDetails[problemId].trying+1)*20;
+            }else{
+              penalty = data.penalty;
+            }
+            firestore.collection("contests").doc(contestIdRef)
+            .collection("standings").doc(getCurrentUserId()).
+            update({
+              ['problemDetails.'+problemId] :{
+                status : mstatus,
+                trying : data.problemDetails[problemId].trying+1,
+                problemTag : data.problemDetails[problemId].problemTag,
+                time : mtime
+            },
+            solved : solved,
+            penalty : penalty});
+          }
+
+
+      } else {
+          // doc.data() will be undefined in this case
+          console.log(mtime+"1");
+          var penalty;
+          if(mstatus){
+            var penaltyTUnix = mtime - contestStartTimeDb;
+            var penaltyOBJ = getTimeRemainingd(penaltyTUnix);
+            penalty =(penaltyOBJ.days*24*60)+ (penaltyOBJ.hours * 60) + penaltyOBJ.minutes;
+          }else {
+            penalty = 0;
+          }
+          console.log(penalty+" bipul mandol");
+          addStanding(problemId,mstatus,mtime,penalty,prbSNum,tagNum);
+      }
+    }).catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+  }
+  function addStanding(problemId,mstatus,mtime,penalty,prbSNum,tagNum) {
+    console.log(penalty+" bipul mandol2");
+
+    var dataStanding = {
+            userId: getCurrentUserId(),
+            userName : getUserName(),
+            penalty : penalty,
+            problemDetails : {
+            }
+    };
+    if(prbSNum){
+      dataStanding.solved = 1;
+    }else{
+      dataStanding.solved = 0;
+    }
+    dataStanding.problemDetails[problemId] ={
+                status : mstatus,
+                trying : 1,
+                problemTag : tagNum,
+                time : mtime
+    };
+    console.log(mtime);
+
+    firestore.collection("contests").doc(contestIdRef)
+    .collection("standings").doc(getCurrentUserId())
+    .set(dataStanding)
+    .then(function() {
+        console.log("Document successfully written!");
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+  }
+
+  function hasPath(obj, path) {
+    if (typeof obj == 'undefined')
+        return false;
+    var propName = path.shift();
+    if ( obj.hasOwnProperty(propName) ) {
+        if ( path.length == 0 )
+            return true;
+        else
+            return hasPath(obj[propName], path);
+    }
+    return false;
+  }
+  var standingObj;
+  function updateSatndingTableData() {
+
+    firestore.collection('contests').doc(contestIdRef)
+    .collection("contestProblems")
+    .onSnapshot(function(snapshot) {
+      $("#standingTableHeader").empty();
+      var row ='<th scope="col">#</th>\
+            <th scope="col">Contestant</th>\
+            <th scope="col">Solved problem</th>\
+            <th scope="col">Penalty</th>';
+      $("#standingTableHeader").append(row);
+      var problemHCOunt = 65;
+      snapshot.forEach(function(doc) {
+          var rowHeader = '<th scope="col">'+String.fromCharCode(problemHCOunt);+'</th>';
+          $("#standingTableHeader").append(rowHeader);
+          problemHCOunt++;
+      });
+    });
+
+      firestore.collection('contests').doc(contestIdRef)
+      .collection("standings")
+      .orderBy("solved","desc").orderBy("penalty")
+      .onSnapshot(function(snapshot) {
+        $("#standingTableBody").empty();
+        var count = 1;
+        snapshot.forEach(function(doc) {
+          console.log(doc.data());
+          var data = doc.data();
+          var standingObj = data.problemDetails;
+          var objectArray = Object.keys(standingObj).map(function(key, index){
+              var res = new Array(2);
+              res[0] = key;
+              res[1] = standingObj[key].problemTag;
+              res[2] = standingObj[key].trying;
+              res[3] = standingObj[key].status;
+              res[4] = standingObj[key].time;
+              return res;
+          });
+          var problemNameRow="";
+
+          if(objectArray.length<2){
+            for(var i = 0;i<objectArray.length;i++){
+              objectArray.forEach(function (item){
+                  console.log(oblength+" "+item[1].charCodeAt());
+                  if(oblength == item[1].charCodeAt()){
+                    var time = getTimeRemainingd(item[4]);
+
+                    if(item[3]){
+                      problemNameRow += '<td class="pt-3">\
+                                <span class="text-success">\
+                                  <i class="fas fa-check-circle text-success mr-1"></i>\
+                                  '+item[2]+'\
+                                </span>\
+                                <p>'+time.hours+":"+time.minutes+'</p>\
+                            </td>';
+                    }else{
+                      problemNameRow += '<td class="pt-3">\
+                                <span class="text-danger">\
+                                  <i class="fas fa-minus-circle text-danger mr-1"></i>\
+                                  '+item[2]+'\
+                                </span>\
+                                <p>'+time.hours+":"+time.minutes+'</p>\
+                            </td>';
+                    }
+
+                  }
+                  console.log(item);
+                });
+                oblength++;
+            }
+          }else{
+            var oblength = 65;
+            for(var i = 0;i<objectArray.length;i++){
+              objectArray.forEach(function (item){
+                  console.log(oblength+" "+item[1].charCodeAt());
+                  if(oblength == item[1].charCodeAt()){
+                    var time = getTimeRemainingd(item[4]);
+
+                    if(item[3]){
+                      problemNameRow += '<td class="pt-3">\
+                                <span class="text-success">\
+                                  <i class="fas fa-check-circle text-success mr-1"></i>\
+                                  '+item[2]+'\
+                                </span>\
+                                <p>'+time.hours+":"+time.minutes+'</p>\
+                            </td>';
+                    }else{
+                      problemNameRow += '<td class="pt-3">\
+                                <span class="text-danger">\
+                                  <i class="fas fa-minus-circle text-danger mr-1"></i>\
+                                  '+item[2]+'\
+                                </span>\
+                                <p>'+time.hours+":"+time.minutes+'</p>\
+                            </td>';
+                    }
+
+                  }
+                  console.log(item);
+                });
+                oblength++;
+            }
+          }
+          var row = '<tr>\
+              <th scope="row" class="pt-4">'+count+'</th>\
+              <td class="pt-4">'+data.userName+'</td>\
+              <td class="pt-4">'+data.solved+'</td>\
+              <td class="pt-4">'+data.penalty+'</td>'+problemNameRow+'\
+            </tr>';
+            $("#standingTableBody").append(row);
+            count++;
+        });
+
+         }, function(error) {
+           console.log("Error getting documents: ", error);
+         });
+  }
 </script>
 </body>
 

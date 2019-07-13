@@ -1198,6 +1198,7 @@ html, body {
                 $("#addProblmProblemList").append(listItem);
                 $("#addingProblemToContest"+doc.id).click(function(){
                 var addProblemToConOBJ = {
+                     problemTag : Date.parse(new Date()),
                      contestProblemId : doc.id,
                      problemCreatorAuthorId: data.problemCreatorAuthorId,
                      problemName : data.problemName,
@@ -1243,7 +1244,8 @@ html, body {
 
       function listenForNewProblemAddToContest(mcontestIdref){
 
-        firestore.collection("contests").doc(mcontestIdref).collection("contestProblems")
+        firestore.collection("contests").doc(mcontestIdref)
+        .collection("contestProblems").orderBy("problemTag")
         .onSnapshot(function(querySnapshot) {
           $("#contestProblemListTableBody").empty();
           var count = 1;
