@@ -1,20 +1,20 @@
 # becoder
-Learn code, practice code, compete code and be coder.
+Learn code, practice code, compete code and be coder.<br>
 
-This is a website that hosts competitive programming contests.
+This is a website that hosts competitive programming contests.<br>
 
-Feature:
-	Tutorials for learner
-	Create your own tutorial
-	Articles by user
-	Practice problem
-	View All contest (running ,previous, upcoming)
-	All time Ranking
-	Notifications for user
-	Userprofile
-	Create a Contest
-	Create a problem
-	Manage Problem
-	Manage Contest
-	Submit problem code in 42 different language
+<b>Feature</b><br>
+	Tutorials for learner<br>
+	Create your own tutorial<br>
+	Articles by user<br>
+	Practice problem<br>
+	View All contest (running ,previous, upcoming)<br>
+	All time Ranking<br>
+	Notifications for user<br>
+	Userprofile<br>
+	Create a Contest<br>
+	Create a problem<br>
+	Manage Problem<br>
+	Manage Contest<br>
+	Submit problem code in 42 different language<br>
 	
