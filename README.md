@@ -1,5 +1,5 @@
 # becoder
-Learn code, practice code, compete code and be coder.<br>
+A website to learn code, practice code, compete code and be coder.<br>
 
 This is a website that hosts competitive programming contests.<br>
 
